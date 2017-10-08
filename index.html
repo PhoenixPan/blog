@@ -333,8 +333,10 @@
         
           
             <h1 id="News-Feed-System"><a href="#News-Feed-System" class="headerlink" title="News Feed System"></a>News Feed System</h1><h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><ol>
-<li>Your <strong>news feed</strong> consists of the <strong>timelines</strong> of all your friends or users that you are following. </li>
+<li>Your <strong>news feed</strong> consists of the <strong>timelines</strong> of all your friends or users that you are following</li>
 <li>Core algorithm: merge k sorted array/list/any</li>
+<li>Daily active users(DAU), monthly active users(MAU), query per second(QPS). Peak value and growth expectation</li>
+<li>Number of reads and writes</li>
 <li>Examples:  <ul>
 <li>Twitter</li>
 <li>Facebook</li>
@@ -343,14 +345,14 @@
 </li>
 </ol>
 <h2 id="Pull-model-and-Push-model"><a href="#Pull-model-and-Push-model" class="headerlink" title="Pull model and Push model"></a>Pull model and Push model</h2><h3 id="Pull-model"><a href="#Pull-model" class="headerlink" title="Pull model"></a>Pull model</h3><p>Get the first N tweets from K(all of your) following users, merge them, and then take the first N tweets. </p>
-<h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>K  blocking (阻塞型) DB read request, could be very slow to load the posts.</p>
+<h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Long waiting period. It takes K times blocking (阻塞型) DB read request to load the news feed.</p>
 <h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>Cache, for both timeline and news feed:</p>
 <ol>
 <li>Cache timeline: cache the most recent n tweets for each user (DB read –&gt; cache read)</li>
 <li>Cache news feed: If read within x seconds from the last time, read from cache. If not, only merge the K tweets after a certain timestamp (such as since the last update)</li>
 </ol>
 <h3 id="Push-mode"><a href="#Push-mode" class="headerlink" title="Push mode"></a>Push mode</h3><p>Store a news feed list in the <strong>database</strong> for each user. When a user publishes a new tweet, do a <strong>fanout</strong> to push the tweet to all the news feed lists of his/her followers. The fanout is performed asynchronously in another task. </p>
-<h4 id="Problem-1"><a href="#Problem-1" class="headerlink" title="Problem"></a>Problem</h4><p>If we have a star user who has 100 million followers, the fanout is 100 million write operations, which could take hours and is unacceptable for those unlucky followers. </p>
+<h4 id="Problem-1"><a href="#Problem-1" class="headerlink" title="Problem"></a>Problem</h4><p>Delayed display for some users. If we have a star user who has 100 million followers, the fanout will have 100 million write operations, which could take hours and is unacceptable for those unlucky followers. </p>
 <h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>Rank users by active level; find star users(who have a lot of followers) and use pull model for them.</p>
 <h3 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h3><table>
 <thead>
