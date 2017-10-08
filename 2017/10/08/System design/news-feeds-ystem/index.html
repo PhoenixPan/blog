@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Phoenix Pan&#39;s">
 <meta property="og:description" content="News Feed SystemBasics Your news feed consists of the timelines of all your friends or users that you are following Core algorithm: merge k sorted array/list/any Daily active users(DAU), monthly activ">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-08T14:27:50.589Z">
+<meta property="og:updated_time" content="2017-10-08T14:30:52.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="News Feed System">
 <meta name="twitter:description" content="News Feed SystemBasics Your news feed consists of the timelines of all your friends or users that you are following Core algorithm: merge k sorted array/list/any Daily active users(DAU), monthly activ">
@@ -344,19 +344,19 @@
 </li>
 </ol>
 <h2 id="Pull-model-and-Push-model"><a href="#Pull-model-and-Push-model" class="headerlink" title="Pull model and Push model"></a>Pull model and Push model</h2><h3 id="Pull-model"><a href="#Pull-model" class="headerlink" title="Pull model"></a>Pull model</h3><p>Get the first N tweets from K(all of your) following users, merge them, and then take the first N tweets. </p>
-<h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Long waiting period. It takes K times blocking (阻塞型) DB read request to load the news feed.</p>
-<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>Cache, for both timeline and news feed:</p>
+<p><strong>Problem:</strong> Long waiting period. It takes K times blocking (阻塞型) DB read request to load the news feed.</p>
+<p><strong>Solution:</strong> Cache, for both timeline and news feed:</p>
 <ol>
 <li>Cache timeline: cache the most recent n tweets for each user (DB read –&gt; cache read)</li>
 <li>Cache news feed: If read within x seconds from the last time, read from cache. If not, only merge the K tweets after a certain timestamp (such as since the last update)</li>
 </ol>
 <h3 id="Push-mode"><a href="#Push-mode" class="headerlink" title="Push mode"></a>Push mode</h3><p>Store a news feed list in the <strong>database</strong> for each user. When a user publishes a new tweet, do a <strong>fanout</strong> to push the tweet to all the news feed lists of his/her followers. The fanout is performed asynchronously in another task. </p>
-<h4 id="Problem-1"><a href="#Problem-1" class="headerlink" title="Problem"></a>Problem</h4><p>Delayed display for some users. If we have a star user who has 100 million followers, the fanout will have 100 million write operations, which could take hours and is unacceptable for those unlucky followers. </p>
-<h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>Rank users by active level; find star users(who have a lot of followers) and use pull model for them.</p>
+<p><strong>Problem:</strong> Delayed display for some users. If we have a star user who has 100 million followers, the fanout will have 100 million write operations, which could take hours and is unacceptable for those unlucky followers. </p>
+<p><strong>Solution:</strong> Rank users by active level; find star users(who have a lot of followers) and use pull model for them.</p>
 <h3 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h3><table>
 <thead>
 <tr>
-<th>.</th>
+<th>Item</th>
 <th>pull</th>
 <th>push</th>
 </tr>
@@ -544,7 +544,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#News-Feed-System"><span class="nav-number">1.</span> <span class="nav-text">News Feed System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basics"><span class="nav-number">1.1.</span> <span class="nav-text">Basics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pull-model-and-Push-model"><span class="nav-number">1.2.</span> <span class="nav-text">Pull model and Push model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pull-model"><span class="nav-number">1.2.1.</span> <span class="nav-text">Pull model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Push-mode"><span class="nav-number">1.2.2.</span> <span class="nav-text">Push mode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-1"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-1"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparison"><span class="nav-number">1.2.3.</span> <span class="nav-text">Comparison</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#News-Feed-System"><span class="nav-number">1.</span> <span class="nav-text">News Feed System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basics"><span class="nav-number">1.1.</span> <span class="nav-text">Basics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pull-model-and-Push-model"><span class="nav-number">1.2.</span> <span class="nav-text">Pull model and Push model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pull-model"><span class="nav-number">1.2.1.</span> <span class="nav-text">Pull model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Push-mode"><span class="nav-number">1.2.2.</span> <span class="nav-text">Push mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparison"><span class="nav-number">1.2.3.</span> <span class="nav-text">Comparison</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
