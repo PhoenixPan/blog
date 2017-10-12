@@ -494,15 +494,17 @@
       
         
           
-            <p>Follow the general steps from this <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/" target="_blank" rel="external">official instruction</a> from CloudFlare. </p>
-<p>Several things you may need to notice: </p>
+            <h2 id="First-and-foremost"><a href="#First-and-foremost" class="headerlink" title="First and foremost"></a>First and foremost</h2><p>Firstly, read and follow the steps on this <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/" target="_blank" rel="external">official instruction</a> from CloudFlare. Do not change the auto-generated DNS rules unless you know what you are doing.</p>
+<h2 id="Not-working"><a href="#Not-working" class="headerlink" title="Not working?"></a>Not working?</h2><p>Several things you may need to change if you have completed all the steps but your site is still not working properly. Be aware, it <strong>takes a long time</strong> for the newly updated DNS to be effective, be patient and do not worry and change things randomly. I waited for about 24 hours. </p>
 <ol>
 <li>You need a <code>CNAME</code> file in your repo root, containing only one line: <code>yourdomain.com</code> <strong>OR</strong> <code>www.yourdomain.com</code>. It decides which domain will response by default. Personally, I prefer the one with <code>www</code></li>
 <li>Configure your DNS in CloudFlare:<br>The first rule enables <code>yourdomain.com</code> and the second enables <code>www.yourdomain.com</code><br><img src="https://user-images.githubusercontent.com/14355257/31495829-cbeaa142-afa4-11e7-95da-af7f68dbf1bc.png" alt="seetting1"> </li>
 <li>Configure your Page Rules to allow Https connections<br>Order matters!<br><img src="https://user-images.githubusercontent.com/14355257/31495830-cd092e0e-afa4-11e7-9788-efb7559a5be9.png" alt="seetting2"></li>
 </ol>
-<p><strong>Notice:</strong> It takes a long time for the updated DNS to be effective, be patient and do not worry and change things randomly. I waited for about 24 hours. </p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.jonathan-petitcolas.com/2017/01/13/using-https-with-custom-domain-name-on-github-pages.html" target="_blank" rel="external">https://www.jonathan-petitcolas.com/2017/01/13/using-https-with-custom-domain-name-on-github-pages.html</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/" target="_blank" rel="external">https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/</a>  </li>
+<li><a href="https://www.jonathan-petitcolas.com/2017/01/13/using-https-with-custom-domain-name-on-github-pages.html" target="_blank" rel="external">https://www.jonathan-petitcolas.com/2017/01/13/using-https-with-custom-domain-name-on-github-pages.html</a>  </li>
+</ol>
 
           
         
