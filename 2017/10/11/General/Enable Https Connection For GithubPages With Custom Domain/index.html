@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="(To be completed once it’s succeed) Create a CNAME file in our repository If the CNAME file contains example.com, then www.example.com will redirect to example.com.If the CNAME file contains www.examp">
+<meta name="description" content="Follow the general steps from this official instruction from CloudFlare.  Several things you may need to notice:   You need a CNAME file in your repo root, containing only one line: yourdomain.com OR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Enable Https Connection For GithubPages With Custom Domain">
 <meta property="og:url" content="http://www.phoenixpan.com/blog/2017/10/11/General/Enable Https Connection For GithubPages With Custom Domain/index.html">
 <meta property="og:site_name" content="Phoenix Pan&#39;s">
-<meta property="og:description" content="(To be completed once it’s succeed) Create a CNAME file in our repository If the CNAME file contains example.com, then www.example.com will redirect to example.com.If the CNAME file contains www.examp">
+<meta property="og:description" content="Follow the general steps from this official instruction from CloudFlare.  Several things you may need to notice:   You need a CNAME file in your repo root, containing only one line: yourdomain.com OR">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-11T10:58:50.052Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/31495829-cbeaa142-afa4-11e7-95da-af7f68dbf1bc.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/31495830-cd092e0e-afa4-11e7-9788-efb7559a5be9.png">
+<meta property="og:updated_time" content="2017-10-12T12:35:42.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Enable Https Connection For GithubPages With Custom Domain">
-<meta name="twitter:description" content="(To be completed once it’s succeed) Create a CNAME file in our repository If the CNAME file contains example.com, then www.example.com will redirect to example.com.If the CNAME file contains www.examp">
+<meta name="twitter:description" content="Follow the general steps from this official instruction from CloudFlare.  Several things you may need to notice:   You need a CNAME file in your repo root, containing only one line: yourdomain.com OR">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/14355257/31495829-cbeaa142-afa4-11e7-95da-af7f68dbf1bc.png">
 
 
 
@@ -331,9 +334,13 @@
       
 
       
-        <p>(To be completed once it’s succeed)</p>
-<p>Create a CNAME file in our repository</p>
-<p>If the CNAME file contains example.com, then www.example.com will redirect to example.com.<br>If the CNAME file contains www.example.com, then example.com will redirect to www.example.com.</p>
+        <p>Follow the general steps from this <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/" target="_blank" rel="external">official instruction</a> from CloudFlare. </p>
+<p>Several things you may need to notice: </p>
+<ol>
+<li>You need a <code>CNAME</code> file in your repo root, containing only one line: <code>yourdomain.com</code> <strong>OR</strong> <code>www.yourdomain.com</code>. It decides which domain will response by default. Personally, I prefer the one with <code>www</code></li>
+<li>Configure your DNS in CloudFlare:<br>The first rule enables <code>yourdomain.com</code> and the second enables <code>www.yourdomain.com</code><br><img src="https://user-images.githubusercontent.com/14355257/31495829-cbeaa142-afa4-11e7-95da-af7f68dbf1bc.png" alt="seetting1"> </li>
+<li>Configure your Page Rules to allow Https connections<br>Order matters!<br><img src="https://user-images.githubusercontent.com/14355257/31495830-cd092e0e-afa4-11e7-9788-efb7559a5be9.png" alt="seetting2"></li>
+</ol>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.jonathan-petitcolas.com/2017/01/13/using-https-with-custom-domain-name-on-github-pages.html" target="_blank" rel="external">https://www.jonathan-petitcolas.com/2017/01/13/using-https-with-custom-domain-name-on-github-pages.html</a></p>
 
       
