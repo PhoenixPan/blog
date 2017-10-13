@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/11/SystemDesign/User System/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/12/leetcode/086-partition-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -258,7 +258,584 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/10/11/SystemDesign/User System/" itemprop="url">User System</a></h1>
+                <a class="post-title-link" href="/blog/2017/10/12/leetcode/086-partition-list/" itemprop="url">086. Partition List</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T10:21:46+11:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>Keep a tail pointer when we need the end node.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">partition</span><span class="params">(ListNode head, <span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    ListNode leftHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);        </div><div class="line">    ListNode left = leftHead;        </div><div class="line">    ListNode rightHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode right = rightHead;</div><div class="line">    ListNode next = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</div><div class="line">        next = head.next;</div><div class="line">        head.next = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (head.val &lt; x) &#123;</div><div class="line">            left.next = head;</div><div class="line">            left = head;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            right.next = head;</div><div class="line">            right = head;</div><div class="line">        &#125;</div><div class="line">        head = next;</div><div class="line">    &#125;</div><div class="line">    left.next = rightHead.next; <span class="comment">// left = leftHead if no elements were sorted to left</span></div><div class="line">    <span class="keyword">return</span> leftHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/" itemprop="url">237.Delete Node in a Linked List</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T10:21:46+11:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted-3ms"><a href="#Solution-1-accepted-3ms" class="headerlink" title="Solution 1: accepted 3ms"></a>Solution 1: accepted 3ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (node != <span class="keyword">null</span> &amp;&amp; node.next != <span class="keyword">null</span>) &#123; <span class="comment">// not necessary in the question's scope</span></div><div class="line">        node.val = node.next.val;</div><div class="line">        node.next = node.next.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/12/leetcode/142-linked-list-cycle-ii/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/10/12/leetcode/142-linked-list-cycle-ii/" itemprop="url">142.Linked List Cycle II</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T10:21:46+11:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><ol>
+<li>A: the distance from the beginning to the start of the cycle</li>
+<li>B: the distance slow pointer moved the start of the cycle</li>
+<li>L: the length of the cycle</li>
+</ol>
+<p>So the slow pointer has moved A+B, therefore the fast pointer 2A+2B. Since the fast pointer have moved L more steps, we have A+B+L=2A+2B –&gt; L=A+B. Since L=A+B, the slow pointer has moved B, the rest of the cycle(back to the starting point) is A, the same as the distance from head to the start of the cycle.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);  <span class="comment">// no need to introduce dummy</span></div><div class="line">    dummy.next = head;</div><div class="line">    ListNode fast = dummy;</div><div class="line">    ListNode slow = dummy;</div><div class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span> &amp;&amp; fast.next.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line">        <span class="keyword">if</span> (fast == slow) &#123;</div><div class="line">            ListNode start = dummy; <span class="comment">// start with dummy</span></div><div class="line">            <span class="keyword">while</span> (slow != start) &#123;</div><div class="line">                slow = slow.next;</div><div class="line">                start = start.next;</div><div class="line">            &#125;                </div><div class="line">            <span class="keyword">return</span> start;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Without dummy<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    ListNode fast = head;</div><div class="line">    ListNode slow = head;</div><div class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span> &amp;&amp; fast.next.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line">        <span class="keyword">if</span> (fast == slow) &#123;</div><div class="line">            ListNode start = head;</div><div class="line">            <span class="keyword">while</span> (slow != start) &#123;</div><div class="line">                slow = slow.next;</div><div class="line">                start = start.next;</div><div class="line">            &#125;                </div><div class="line">            <span class="keyword">return</span> start;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/12/leetcode/141-linked-list-cycle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/10/12/leetcode/141-linked-list-cycle/" itemprop="url">141.Linked List Cycle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T10:21:46+11:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>The use of dummy is optional. If we do <code>fast = head</code>, we need to verify that <code>head != null</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</div><div class="line">    dummy.next = head;</div><div class="line">    ListNode fast = dummy;</div><div class="line">    ListNode slow = dummy;</div><div class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span> &amp;&amp; fast.next.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line">        <span class="keyword">if</span> (fast == slow) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/11/system-design/user-system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/10/11/system-design/user-system/" itemprop="url">User System</a></h1>
         
 
         <div class="post-meta">
@@ -401,7 +978,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/11/General/Enable Https Connection For GithubPages With Custom Domain/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/11/general/enable-https-connection-for-github-pages-with-custom-domain/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -420,7 +997,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/10/11/General/Enable Https Connection For GithubPages With Custom Domain/" itemprop="url">Enable Https Connection For GithubPages With Custom Domain</a></h1>
+                <a class="post-title-link" href="/blog/2017/10/11/general/enable-https-connection-for-github-pages-with-custom-domain/" itemprop="url">Enable Https Connection For GithubPages With Custom Domain</a></h1>
         
 
         <div class="post-meta">
@@ -495,7 +1072,7 @@
         
           
             <h2 id="First-and-foremost"><a href="#First-and-foremost" class="headerlink" title="First and foremost"></a>First and foremost</h2><p>Firstly, read and follow the steps on this <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/" target="_blank" rel="external">official instruction</a> from CloudFlare. Do not change the auto-generated DNS rules unless you know what you are doing.</p>
-<h2 id="Not-working"><a href="#Not-working" class="headerlink" title="Not working?"></a>Not working?</h2><p>Several things you may need to change if you have completed all the steps but your site is still not working properly. Be aware, it <strong>takes a long time</strong> for the newly updated DNS to be effective, be patient and do not worry and change things randomly. I waited for about 24 hours. </p>
+<h2 id="Not-working"><a href="#Not-working" class="headerlink" title="Not working?"></a>Not working?</h2><p>Several things you may need to change if your site is not working properly after you completed all the steps. Be aware, it <strong>takes a long time</strong> for the newly updated DNS to be effective, be patient and do not worry and change things randomly. I waited for about 24 hours. </p>
 <ol>
 <li>You need a <code>CNAME</code> file in your repo root, containing only one line: <code>yourdomain.com</code> <strong>OR</strong> <code>www.yourdomain.com</code>. It decides which domain will response by default. Personally, I prefer the one with <code>www</code></li>
 <li>Configure your DNS in CloudFlare:<br>The first rule enables <code>yourdomain.com</code> and the second enables <code>www.yourdomain.com</code><br><img src="https://user-images.githubusercontent.com/14355257/31495829-cbeaa142-afa4-11e7-95da-af7f68dbf1bc.png" alt="seetting1"> </li>
@@ -553,7 +1130,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/09/SystemDesign/News Feeds System/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/09/system-design/news-feeds-system/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -572,7 +1149,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/10/09/SystemDesign/News Feeds System/" itemprop="url">News Feed System</a></h1>
+                <a class="post-title-link" href="/blog/2017/10/09/system-design/news-feeds-system/" itemprop="url">News Feed System</a></h1>
         
 
         <div class="post-meta">
@@ -752,7 +1329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/06/General/Configure Hexo for GithubPages/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/06/general/configure-hexo-for-github-pages/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -771,7 +1348,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/10/06/General/Configure Hexo for GithubPages/" itemprop="url">Get Hexo running on Github Pages</a></h1>
+                <a class="post-title-link" href="/blog/2017/10/06/general/configure-hexo-for-github-pages/" itemprop="url">Get Hexo running on Github Pages</a></h1>
         
 
         <div class="post-meta">
@@ -900,7 +1477,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/08/16/Linux/Screen/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/232-implement-queue-using-stacks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -919,7 +1496,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/08/16/Linux/Screen/" itemprop="url">Linux - screen</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/28/leetcode/232-implement-queue-using-stacks/" itemprop="url">232.Implement Queue using Stacks</a></h1>
         
 
         <div class="post-meta">
@@ -931,8 +1508,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-16T13:15:47+10:00">
-                2017-08-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-28T20:01:39+10:00">
+                2017-09-28
               </time>
             
 
@@ -954,8 +1531,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
 
@@ -993,26 +1570,8 @@
       
         
           
-            <h1 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h1><h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><p>All commends lead by <code>ctrl+a</code>, followed by <code>?</code> to check the entire reference. </p>
-<ol>
-<li><code>c</code> create new window</li>
-<li><code>n</code> and <code>p</code>: next window / previous window</li>
-<li><code>w</code> to see all windows</li>
-<li><code>(ctrl+)&quot;</code> goes directly to the wanted window</li>
-<li><code>A</code> change the window’s name (default: bash)</li>
-<li><code>k</code> kill this window</li>
-<li><code>\</code> quit screen and kill all windows</li>
-<li><code>d</code> detach from a screen session to the main console, <code>screen -r</code> return to the screen session</li>
-<li>What if we have multiple screen sessions? First, use <code>screen -ls</code> to check all screen sessions with ids, then use<code>screen -r 1234</code> to attach a certain session</li>
-</ol>
-<h2 id="Keep-processes-running-after-we-disconnected"><a href="#Keep-processes-running-after-we-disconnected" class="headerlink" title="Keep processes running after we disconnected"></a>Keep processes running after we disconnected</h2><ol>
-<li>Enter screen by <code>screen</code></li>
-<li>Create a new window <code>c</code></li>
-<li>Run the process here</li>
-<li>Detach screen <code>d</code></li>
-<li>Disconnect</li>
-</ol>
-<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-screen-on-an-ubuntu-cloud-server" target="_blank" rel="external">Reference1</a></p>
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Amortized O(1) operations: pop() and peek().  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; input;</div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; output;</div><div class="line">    </div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyQueue</span><span class="params">()</span> </span>&#123;</div><div class="line">        input = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        output = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Push element x to the back of queue. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        input.push(x);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Removes the element from in front of queue and returns that element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (output.isEmpty()) &#123;</div><div class="line">            <span class="keyword">while</span> (!input.isEmpty()) &#123;</div><div class="line">                output.push(input.pop());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output.isEmpty()? <span class="number">1</span> : output.pop();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Get the front element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123; <span class="comment">// similar to pop()</span></div><div class="line">        <span class="keyword">if</span> (output.isEmpty()) &#123;</div><div class="line">            <span class="keyword">while</span> (!input.isEmpty()) &#123;</div><div class="line">                output.push(input.pop());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output.isEmpty()? <span class="number">1</span> : output.peek();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Returns whether the queue is empty. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> input.isEmpty() &amp;&amp; output.isEmpty();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1061,7 +1620,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/10/15619CouldComputing/Project2.1_Guide/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/155-min-stack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1080,7 +1639,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/10/15619CouldComputing/Project2.1_Guide/" itemprop="url">15619 Project2.1 Guide</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/28/leetcode/155-min-stack/" itemprop="url">155.Min Stack</a></h1>
         
 
         <div class="post-meta">
@@ -1092,8 +1651,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-10T18:45:09+10:00">
-                2017-07-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-28T20:01:39+10:00">
+                2017-09-28
               </time>
             
 
@@ -1115,8 +1674,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
-                    <span itemprop="name">15619 Cloud Computing</span>
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
 
@@ -1154,323 +1713,9 @@
       
         
           
-            <h1 id="Project2-1-Horizontal-Scaling-and-Advanced-Resource-Scaling"><a href="#Project2-1-Horizontal-Scaling-and-Advanced-Resource-Scaling" class="headerlink" title="Project2.1 Horizontal Scaling and Advanced Resource Scaling"></a>Project2.1 Horizontal Scaling and Advanced Resource Scaling</h1><p>Goal: Using APIs to programatically control AWS Load Balancer and Auto Scaling Group.</p>
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Create working instances</li>
-<li>Create an elastic load balancer LB1: set up health check page</li>
-<li>Create an auto-scaling launch configuration</li>
-<li>Create an auto-scaling group: attach the ELB just created (advanced - load balancing) and use the same subnet</li>
-</ol>
-<h2 id="Elastic-Load-Balancer"><a href="#Elastic-Load-Balancer" class="headerlink" title="Elastic Load Balancer"></a>Elastic Load Balancer</h2><p>Elastic Load Balancer automatically divides traffic to connected instances and handles instance failures by doing health checks. The default distribution strategy is Round-Robin. If an instance is unhealthy, it will stop routing requests to it.</p>
-<h2 id="Auto-Scaling-Group"><a href="#Auto-Scaling-Group" class="headerlink" title="Auto Scaling Group"></a>Auto Scaling Group</h2><p>Auto Scaling Group automatically adds or removes identical resources by responding to changes in demands. </p>
-<p><strong>Auto Scaling Policy:</strong> Auto Scaling Group reacts when user-specified threadhols(i.e. CPU utilization) are triggered(by CloudWatch). It maintains a desired number(between specified minium and maximum) of instances at all times. It can also scale based on specific schedule(i.e. more server during the weekend). Auto Scaling Group does health checks as well. If an instance is unhealthy, it will launch new instances to replace them. </p>
-<p><strong>Auto Scaling Template:</strong>  instance AMI, instance type, key pairs, security group, etc. The applications in the instances should run automatically when the instances are up.</p>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ol>
-<li>The auto-generated instances will NOT be tagged if you terminate it too soon after you launched them!</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/09/15619CouldComputing/Project1.2_Guide/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/07/09/15619CouldComputing/Project1.2_Guide/" itemprop="url">15619 Project1.2 Guide</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-09T23:22:17+10:00">
-                2017-07-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
-                    <span itemprop="name">15619 Cloud Computing</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Project1-2-Parallel-Programming-using-EMR"><a href="#Project1-2-Parallel-Programming-using-EMR" class="headerlink" title="Project1.2 Parallel Programming using EMR"></a>Project1.2 Parallel Programming using EMR</h1><p>Goal: filter and analyze a large dataset using Hadoop MapReducer through AWS EMR.  </p>
-<h2 id="MapReduce-configuration"><a href="#MapReduce-configuration" class="headerlink" title="MapReduce configuration"></a>MapReduce configuration</h2><ol>
-<li>Please do not use “.” (periods) or, in general, any other non alphanumeric characters in your bucket name (the bucket to which your mapper and reducer code is uploaded), otherwise the EMR job might fail.</li>
-<li>You may want to preserve your cluster by unchecking the “Terminate on failure” option and adding steps manually in the EMR web console</li>
-<li>Config:  </li>
-</ol>
-<p><img src="https://user-images.githubusercontent.com/14355257/26965668-f5d2c0c4-4d35-11e7-955b-bfc9f24cdfef.png" alt="image"></p>
-<p>jar –cvf mapper.jar Mapper.class<br>jar –cvf reducer.jar Reducer.class</p>
-<p>phoenixpan@Ghost:~/Desktop$ javac -cp test.jar Main.java <strong>doesn’t work</strong><br>phoenixpan@Ghost:~/Desktop$ java -cp test.jar Main <strong>will work</strong>  </p>
-<p><img src="https://user-images.githubusercontent.com/14355257/26965671-f8793862-4d35-11e7-9449-339f9a5ed612.png" alt="image"></p>
-<p>java -cp Mapper.jar Mapper<br>java -cp Reducer.jar Reducer</p>
-<p>-files s3://ccproject0102/Mapper.jar,S3://ccproject0102/Reducer.jar</p>
-<h2 id="Extra-practice-find-common-friends"><a href="#Extra-practice-find-common-friends" class="headerlink" title="Extra practice: find common friends"></a>Extra practice: find common friends</h2><p><img src="https://user-images.githubusercontent.com/14355257/26966264-87942708-4d38-11e7-801f-4fec9c370814.jpg" alt="mapr"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/09/15619CouldComputing/Project1.1_Guide/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/07/09/15619CouldComputing/Project1.1_Guide/" itemprop="url">15619 Project1.1 Guide</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-09T17:45:21+10:00">
-                2017-07-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
-                    <span itemprop="name">15619 Cloud Computing</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Project1-1-Sequential-Programming"><a href="#Project1-1-Sequential-Programming" class="headerlink" title="Project1.1 Sequential Programming"></a>Project1.1 Sequential Programming</h1><p>Goal: Write script and code to filter and analyze a medium dataset locally. </p>
-<h5 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h5><p>Firstly, we need to filter the data with our programs before analyzing it. I used Java, but you can use Python or Bash if you feel comfortable with them. In my program, I used a BufferedReader to check each line. Since the result data set has to be sorted, I temporarily store all matches in an ArrayList, which will be sorted at the end. However, for a larger data set, this approach is not recommended, as it will exhausts your memory. If you’re confused by some filtering conditions, please ask your TAs to make it clear, as it may affect your result greatly.   </p>
-<h5 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h5><p>As for analysis, we have to answer nine questions using the data set we got. If you think your answer-hunting programs are correct, you’d better go back to chcek your filter program to see whether you’ve misunderstood some conditions. For the first several questions, such as counting the total number of lines, I <strong>strongly recommand</strong> you to use Bash. One reason is because the prorams will be really simple. You may need only one line to complete your job, another reason is that you will have to use Bash in a future project anyway. Yes, you’ll not run away from it, so enjoy. For complited questions, you will use regular expression to match the works. This site can check your expressions: <a href="https://regex101.com/" target="_blank" rel="external">https://regex101.com/</a>. To fill in the answer sheet (runner.sh), you need to open it with a compiler (I used vim), and put your code in.</p>
-<p>For Java users, replace the “echo” with “javac” and “java” there. Please also upload your code to the same folder:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">answer_2() &#123;</div><div class="line">        javac Project1_1.java</div><div class="line">        java Project1_1</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>For Bash users, replace the “echo” with your command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">answer_1() &#123;</div><div class="line">	grep -P &apos;Keyword&apos; FileName.csv | wc -l</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Test your answers by running<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./runner.sh</div></pre></td></tr></table></figure></p>
-<p>If everything seems alright, submitted it. You should have unlimited tries throughout all the projects, but please confirm this with your TAs. </p>
-<p>Generally, it’s an easy project to warm you up. I have no programming foundation, but it costs me only one day to finish. Cheers. </p>
+            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;]</div><div class="line">[[],[512],[-1024],[-1024],[512],[],[],[],[],[],[]]</div><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;top&quot;,&quot;getMin&quot;]</div><div class="line">[[],[-2],[0],[-3],[],[],[],[]]</div><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;]</div><div class="line">[[],[0],[1],[0],[],[],[]]</div><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;top&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;push&quot;,&quot;top&quot;,&quot;getMin&quot;,&quot;push&quot;,&quot;top&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;]</div><div class="line">[[],[2147483646],[2147483646],[2147483647],[],[],[],[],[],[],[2147483647],[],[],[-2147483648],[],[],[],[]]</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-111ms"><a href="#Solution-1-accepted-111ms" class="headerlink" title="Solution 1: accepted 111ms"></a>Solution 1: accepted 111ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; master;    </div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; min;</div><div class="line"></div><div class="line">    <span class="comment">/** initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MinStack</span><span class="params">()</span> </span>&#123;</div><div class="line">        master = <span class="keyword">new</span> Stack&lt;&gt;();    </div><div class="line">        min = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        master.push(x);</div><div class="line">        <span class="keyword">if</span> (min.size() == <span class="number">0</span> || min.peek() &gt;= x) &#123;  <span class="comment">// &gt;= rather than &gt;, there could be multiple minimum values</span></div><div class="line">            min.push(x);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (master.pop().equals(min.peek())) &#123;  <span class="comment">// Integer, use equals not ==</span></div><div class="line">            min.pop();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> master.peek();   </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> min.peek();    </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow-up:"></a>Follow-up:</h2><p>If the given numbers have a lot of duplicates, how to optimize the space use of the min stack?<br>We now maintain <code>&lt;number, the index of the number when it&#39;s added&gt;</code> in the <code>min</code> stack and we only pop it when the current index is equal or smaller than the index of the top element in the <code>min</code> stack. As a result, we also need a <code>int count</code> to track the index.  </p>
 
           
         
@@ -1509,6 +1754,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/13/">13</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1552,7 +1801,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1563,7 +1812,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
