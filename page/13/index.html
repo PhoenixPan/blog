@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/Leetcode/062-unique-paths1/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/064-minimum-path-sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/Leetcode/062-unique-paths1/" itemprop="url">062.Unique Paths1</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/064-minimum-path-sum/" itemprop="url">064.Minimum Path Sum</a></h1>
         
 
         <div class="post-meta">
@@ -293,7 +293,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -332,9 +332,7 @@
       
         
           
-            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>Two-dimension DP: For ways to current position, w(current), equals to ways to its top plus ways to its left, w(current) = w(top) + w(left).<br>Time: O(m<em>n)<br>Space: O(m</em>n)  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">      <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">              <span class="keyword">if</span>(i==<span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) </div><div class="line">                  dp[i][i] = <span class="number">1</span>;</div><div class="line">              <span class="keyword">else</span></div><div class="line">                  dp[i][j] = dp[Math.max(<span class="number">0</span>, i-<span class="number">1</span>)][j] + dp[i][Math.max(<span class="number">0</span>, j-<span class="number">1</span>)];</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> dp[m-<span class="number">1</span>][n-<span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2:"></a>Solution 2:</h2><p>One-dimension DP.  </p>
+            <h2 id="Solution-1-accepted-5ms"><a href="#Solution-1-accepted-5ms" class="headerlink" title="Solution 1: accepted 5ms"></a>Solution 1: accepted 5ms</h2><p>DP.<br>Time: O(n)<br>Space: O(n) (extra space 0)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123; </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.length; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].length; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) </div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span>)</div><div class="line">                    grid[i][j] = grid[i][j] + grid[i][j-<span class="number">1</span>];</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">0</span>)</div><div class="line">                    grid[i][j] = grid[i][j] + grid[i-<span class="number">1</span>][j];</div><div class="line">                <span class="keyword">else</span></div><div class="line">                    grid[i][j] = grid[i][j] + Math.min(grid[i][j-<span class="number">1</span>], grid[i-<span class="number">1</span>][j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> grid[grid.length-<span class="number">1</span>][grid[<span class="number">0</span>].length-<span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
           
         
@@ -383,7 +381,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/Leetcode/066-plus-one/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/066-plus-one/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -402,7 +400,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/Leetcode/066-plus-one/" itemprop="url">066.Plus One</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/066-plus-one/" itemprop="url">066.Plus One</a></h1>
         
 
         <div class="post-meta">
@@ -437,7 +435,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -528,7 +526,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/Leetcode/070-climbing-stairs/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/063-unique-paths2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -547,7 +545,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/Leetcode/070-climbing-stairs/" itemprop="url">070.Climbing Stairs</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/063-unique-paths2/" itemprop="url">063.Unique Paths2</a></h1>
         
 
         <div class="post-meta">
@@ -582,7 +580,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -621,11 +619,11 @@
       
         
           
-            <h2 id="Solution-1-time-limit-exceeded"><a href="#Solution-1-time-limit-exceeded" class="headerlink" title="Solution 1: time limit exceeded"></a>Solution 1: time limit exceeded</h2><p>Time: O(2^n)<br>I forget to remove “static” on ways and it accumulates the results of all test cases.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> ways = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &gt; <span class="number">1</span>) </div><div class="line">          climbStairs(n - <span class="number">2</span>);</div><div class="line">        <span class="keyword">if</span> (n &gt; <span class="number">0</span>) </div><div class="line">          climbStairs(n - <span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>)</div><div class="line">          ways++;</div><div class="line">        <span class="keyword">return</span> ways;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>A better alternative<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">0</span> || n == <span class="number">1</span>) </div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> climbStairs(n-<span class="number">1</span>) + climbStairs(n-<span class="number">2</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Solution-2-accepted-0ms"><a href="#Solution-2-accepted-0ms" class="headerlink" title="Solution 2: accepted 0ms"></a>Solution 2: accepted 0ms</h2><p>Time: O(n)<br>Straight fibonacci: f(n) = f(n-1) + f(n-2)    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(n &lt; <span class="number">3</span>) <span class="keyword">return</span> n;</div><div class="line">    <span class="keyword">int</span> f1 = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> f2 = <span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> temp = f2;</div><div class="line">        f2 += f1;</div><div class="line">        f1 = temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> f2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[0,0]]</div><div class="line">[[0,0,0],[0,1,0],[0,0,0]]</div><div class="line">[[0,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,0,0]]</div><div class="line">[[0,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,0,1]]</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-2ms"><a href="#Solution-1-accepted-2ms" class="headerlink" title="Solution 1: accepted 2ms"></a>Solution 1: accepted 2ms</h2><p>DP: do we really need to create another grid? Nope.<br>Time: O(mn)<br>Space: O(2mn)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="keyword">int</span>[][] obstacleGrid)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (obstacleGrid[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> m = obstacleGrid[<span class="number">0</span>].length;</div><div class="line">    <span class="keyword">int</span> n = obstacleGrid.length;</div><div class="line"></div><div class="line">    <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="keyword">if</span>(i==<span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) &#123; </div><div class="line">                dp[i][i] = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (obstacleGrid[j][i] == <span class="number">1</span>)</div><div class="line">                    dp[i][j] = <span class="number">0</span>;</div><div class="line">                <span class="keyword">else</span> </div><div class="line">                    dp[i][j] = dp[Math.max(<span class="number">0</span>, i-<span class="number">1</span>)][j] + dp[i][Math.max(<span class="number">0</span>, j-<span class="number">1</span>)];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dp[m-<span class="number">1</span>][n-<span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-2-accepted-2ms"><a href="#Solution-2-accepted-2ms" class="headerlink" title="Solution 2: accepted 2ms"></a>Solution 2: accepted 2ms</h2><p>Time: O(mn)<br>Space: O(mn)   </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="keyword">int</span>[][] input)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (input[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> m = input[<span class="number">0</span>].length;</div><div class="line">    <span class="keyword">int</span> n = input.length;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="keyword">if</span>(i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) </div><div class="line">                input[j][i] = <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                input[j][i] = (input[j][i] == <span class="number">1</span>)? <span class="number">0</span> : input[Math.max(<span class="number">0</span>, j-<span class="number">1</span>)][i] + input[j][Math.max(<span class="number">0</span>, i-<span class="number">1</span>)];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> input[n-<span class="number">1</span>][m-<span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -674,7 +672,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/08/16/Linux/screen/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/08/16/linux/screen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -693,7 +691,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/08/16/Linux/screen/" itemprop="url">Linux - screen</a></h1>
+                <a class="post-title-link" href="/blog/2017/08/16/linux/screen/" itemprop="url">Linux - screen</a></h1>
         
 
         <div class="post-meta">
@@ -728,7 +726,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Linux/" itemprop="url" rel="index">
+                  <a href="/blog/categories/linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
                   </a>
                 </span>
@@ -835,7 +833,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/10/15619-Cloud-Computing/project2.1_guide/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/17/15619-cloud-computing/project3.2_guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -854,7 +852,526 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/10/15619-Cloud-Computing/project2.1_guide/" itemprop="url">15619 Project2.1 Guide</a></h1>
+                <a class="post-title-link" href="/blog/2017/07/17/15619-cloud-computing/project3.2_guide/" itemprop="url">15619 Project3.2 Guide</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-17T23:41:27+10:00">
+                2017-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
+                    <span itemprop="name">15619 Cloud Computing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Project3-2-Partitioning-Sharding-And-Replication"><a href="#Project3-2-Partitioning-Sharding-And-Replication" class="headerlink" title="Project3.2 Partitioning (Sharding) And Replication"></a>Project3.2 Partitioning (Sharding) And Replication</h1><h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><p><strong>Replication:</strong> keep multiple copies of data to improve GET performance and recover from database outages.<br><strong>Partitioning(Sharding):</strong> separate data among many nodes to improve PUT performance. Horizental partitioning: shard by rows, vertical partitioning: shard by columns.</p>
+<h2 id="Part-1-Implementing-Replication-with-Strong-Consistency"><a href="#Part-1-Implementing-Replication-with-Strong-Consistency" class="headerlink" title="Part 1: Implementing Replication with Strong Consistency"></a>Part 1: Implementing Replication with Strong Consistency</h2><p><strong>Strong consistency:</strong> </p>
+<ol>
+<li>Strict Consistency: same key has same value all the time</li>
+<li>Strict Ordering: fulfill requests in the order they arrive</li>
+<li>Atomic Operations: one fails all fail</li>
+<li>Controlled Access: lock the item while writing is being fulfilled</li>
+</ol>
+<p>Create a lockshop <code>HashMap&lt;String, ReentrantReadWriteLock&gt; lockShop</code> to set lock for each key </p>
+<h2 id="Part-2-Implementing-Sharding-with-Even-Distribution"><a href="#Part-2-Implementing-Sharding-with-Even-Distribution" class="headerlink" title="Part 2: Implementing Sharding with Even Distribution"></a>Part 2: Implementing Sharding with Even Distribution</h2><p><strong>Consistency hashing:</strong> assign keys to nodes evenly with fault tolerance. The hashing algorithm must return the same value for the same key at all times. </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/14/15619-cloud-computing/project3.1_guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/07/14/15619-cloud-computing/project3.1_guide/" itemprop="url">15619 Project3.1 Guide</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-14T21:05:11+10:00">
+                2017-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
+                    <span itemprop="name">15619 Cloud Computing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Project3-1-Files-and-Databases"><a href="#Project3-1-Files-and-Databases" class="headerlink" title="Project3.1 Files and Databases"></a>Project3.1 Files and Databases</h1><p>Goal: compare the efficiency of three kinds of queries:</p>
+<ol>
+<li>Query with .csv files using <code>grep</code> and <code>awk</code></li>
+<li>Query with MySQL</li>
+<li>Query with HBase</li>
+</ol>
+<h2 id="Part-1-File-query-skipped"><a href="#Part-1-File-query-skipped" class="headerlink" title="Part 1. File query (skipped)"></a>Part 1. File query (skipped)</h2><h2 id="Part-2-MySQL"><a href="#Part-2-MySQL" class="headerlink" title="Part 2. MySQL"></a>Part 2. MySQL</h2><h3 id="Configure-database"><a href="#Configure-database" class="headerlink" title="Configure database"></a>Configure database</h3><ol>
+<li><p>Install MySQL using </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mysql-server</div></pre></td></tr></table></figure>
+</li>
+<li><p>Connect to the root user, type your password following -p</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql -u root -ppassword</div><div class="line">SHOW DATABASES;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create new user</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE USER &apos;newuser&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;team&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Grant partial or all priviledges and login again, here we grant all priviledges:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT PRIVILEDGES ON teamproj.* to &apos;newuser&apos; @ &apos;localhost&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create database and table which support full unicode</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE DATABASE blah;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Answer-questions"><a href="#Answer-questions" class="headerlink" title="Answer questions"></a>Answer questions</h3><h4 id="Q8-amp-Q9"><a href="#Q8-amp-Q9" class="headerlink" title="Q8 &amp; Q9"></a>Q8 &amp; Q9</h4><p>use index to dramatically decrease query time</p>
+<h4 id="Q10"><a href="#Q10" class="headerlink" title="Q10"></a>Q10</h4><ol>
+<li>Here, we use <code>LIKE</code> to match a regular expression case insensitive, use <code>LIKE BINARY</code> to match case sensitive, which is required here. Binary match a character’s ASC code instead of its value, so it’s an exact match. </li>
+<li>As <code>release</code> is a reserved word in MySQL, we have to use <code>songs.release</code> to escape it. Notice, we may use <code>&#39;release&#39;</code> (with single quotation mark) when we create a table, but <code>tableName.columnName</code> in a query.</li>
+</ol>
+<h4 id="Q11"><a href="#Q11" class="headerlink" title="Q11"></a>Q11</h4><p>At the end of the query, we use <code>AS filtered</code> otherwise, we will get <code>Exception:Every derived table must have its own alias</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT artist_name FROM (SELECT artist_id, artist_name, COUNT(artist_id) AS frequency FROM songs GROUP BY artist_id ORDER BY frequency DESC LIMIT 2,1) AS filtered</div></pre></td></tr></table></figure></p>
+<h4 id="Bonus-Load-data"><a href="#Bonus-Load-data" class="headerlink" title="Bonus: Load data"></a>Bonus: Load data</h4><p>Log in with <code>--local-infile</code> flag<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -pdb15319root song_db --local-infile</div></pre></td></tr></table></figure></p>
+<p>and then execute<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">load data infile &apos;million_songs_metadata.csv&apos; into table songs fields terminated by &apos;,&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="Part-3-Disk-performance-test"><a href="#Part-3-Disk-performance-test" class="headerlink" title="Part 3. Disk performance test"></a>Part 3. Disk performance test</h2><p>We benchmark the performance of FileIO using four settings, t1.micro and m3.large, magnetic disk and SSD. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">t1.micro magnetic</div><div class="line">136.24</div><div class="line">179.84</div><div class="line">193.00</div><div class="line"></div><div class="line">t1.micro SSD</div><div class="line">629.33</div><div class="line">627.00</div><div class="line">626.69</div><div class="line"></div><div class="line">m3.large magnetic</div><div class="line">1168.99</div><div class="line">1336.60</div><div class="line">1484.45</div><div class="line"></div><div class="line">m3.large SSD</div><div class="line">1959.00</div><div class="line">2279.25</div><div class="line">2328.66</div></pre></td></tr></table></figure>
+<h2 id="Part-4-HBase"><a href="#Part-4-HBase" class="headerlink" title="Part 4. HBase"></a>Part 4. HBase</h2><p>First, we build an EMR with one master and one core (slave), and SSH into the master core. You shoud be able to see your hard drive condition through these two commands<br>(PS: Don’t mistakenly ssh into the slave. You can find instance ID under EMR)</p>
+<ol>
+<li>Launch an EMR cluster with 1 master and 1 core node.<ol>
+<li>Select “Go to advanced options” on the top of create cluster page</li>
+<li>Make sure all instances are m1.large.</li>
+<li>Make sure that the EMR cluster is created within the same VPC as your project instance (the one with your runner.sh).</li>
+<li>Choose AMI version 3.11.0 (hadoop version 2).</li>
+<li>Remove any existing services such as Pig and Hive and choose to install HBase version 0.94.</li>
+<li>You must specify a key-pair to be able to SSH to the individual instances. Note that the username to use while SSHing to these instances is hadoop.</li>
+<li>Do not forget to set a tag that will be automatically propagated to the individual instances in the cluster.</li>
+<li>Enable “termination protection” and “keep-alive” for your cluster.</li>
+</ol>
+</li>
+<li>Set the security group of both master and core node to allow ALL traffic. 11. Use the Master public DNS as the SSH DNS.</li>
+<li><p>After you SSH into master node, you can run the following command to verify that HDFS is healthy given how it’s being reported per datanode:<br>hadoop dfsadmin -report</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo parted -l</div><div class="line">df -h</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a directory in guest machine (where you are right now) and move the .csv file to that location </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir P3_1</div><div class="line">cd P3_1</div><div class="line">wget https://s3.amazonaws.com/15319-p31/million_songs_metadata.csv</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a directory in HDFS to store the file</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hadoop fs -mkdir /csv</div></pre></td></tr></table></figure>
+</li>
+<li><p>Put the file into HDFS. HowToUse -put: -put /local/directory /hdfs/directory</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hadoop fs -put /home/hadoop/P3_1/million_songs_metadata.csv /csv</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a new table in HBase by log in into shell using:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hbase shell</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a new table whose name is <strong>songdata</strong> and column family <strong>data</strong></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create &apos;songdata&apos;,&apos;data&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Exit shell, and gety ready the data for inputing it to HBase, you should see a process bar telling you the progress of input like:<br> [======&gt;       ]45%</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns=&quot;HBASE_ROW_KEY,data:title,data:song_id,data:release,data:artist_id,data:artist_mbid,data:artist_name,data:duration,data:artist_familiarity,data:artist_hotttnesss,data:year&quot; -Dimporttsv.separator=&quot;,&quot; -Dimporttsv.bulk.output=hdfs:///output songdata hdfs:///csv</div></pre></td></tr></table></figure>
+</li>
+<li><p>Load the data into table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles hdfs:///output songdata</div></pre></td></tr></table></figure>
+</li>
+<li><p>Now, scan the table to make sure data has been loaded successfully, use Ctrl+C to stop scanning</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scan &apos;songdata&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Note down the private IP and enter it into the java file, run demo through commands</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">javac HbaseTasks.java</div><div class="line">java HbaseTasks demo</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>If you see the result of 96 rows, you could process to answer the questions now : )</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/12/15619-cloud-computing/project2.3_guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/07/12/15619-cloud-computing/project2.3_guide/" itemprop="url">15619 Project2.3 Guide</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-12T21:05:11+10:00">
+                2017-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
+                    <span itemprop="name">15619 Cloud Computing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Project2-3-Advanced-Scaling-Concepts-Caching"><a href="#Project2-3-Advanced-Scaling-Concepts-Caching" class="headerlink" title="Project2.3 Advanced Scaling Concepts: Caching"></a>Project2.3 Advanced Scaling Concepts: Caching</h1><p>Goal: Explain and implement cache.</p>
+<ol>
+<li>Temporal locality: set caceh TTL</li>
+<li>Spatial locality: get a batch of data which are likely to be accessed together</li>
+</ol>
+<p>In this project, we will create a simple cache using HashMap. Some suggested that we should use LinkedHashMap, why? As I tried, I didn’t see any improvement in performance. We suppose to apply a sophisticated strategy, however I end up with this simple strategy:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">else &#123;</div><div class="line">	int start = targetInt - 30;</div><div class="line">	int end = targetInt + 49;		</div><div class="line">	</div><div class="line">	// Update most recent ID</div><div class="line">	mostRecentID = targetInt;</div><div class="line">	</div><div class="line">	// Return the response of target ID</div><div class="line">	return storeRangeIntoMap(start, end, targetInt);</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>I tried to distinguish decrease and increase but didn’t see any improvement neither. Is there a better way to do this?</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/10/15619-cloud-computing/project2.1_guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/07/10/15619-cloud-computing/project2.1_guide/" itemprop="url">15619 Project2.1 Guide</a></h1>
         
 
         <div class="post-meta">
@@ -889,7 +1406,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>
@@ -990,7 +1507,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/09/15619-Cloud-Computing/project1.2-guide/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/09/15619-cloud-computing/project1.2-guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1009,7 +1526,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/09/15619-Cloud-Computing/project1.2-guide/" itemprop="url">15619 Project1.2 Guide</a></h1>
+                <a class="post-title-link" href="/blog/2017/07/09/15619-cloud-computing/project1.2-guide/" itemprop="url">15619 Project1.2 Guide</a></h1>
         
 
         <div class="post-meta">
@@ -1044,7 +1561,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>
@@ -1144,7 +1661,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/09/15619-Cloud-Computing/project1.1-guide/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/09/15619-cloud-computing/project1.1-guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1163,7 +1680,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/09/15619-Cloud-Computing/project1.1-guide/" itemprop="url">15619 Project1.1 Guide</a></h1>
+                <a class="post-title-link" href="/blog/2017/07/09/15619-cloud-computing/project1.1-guide/" itemprop="url">15619 Project1.1 Guide</a></h1>
         
 
         <div class="post-meta">
@@ -1198,7 +1715,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>
@@ -1330,7 +1847,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
