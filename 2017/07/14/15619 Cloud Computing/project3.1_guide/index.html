@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Project3.1 Files and DatabasesGoal: compare the efficiency of three kinds of queries:  Query with .csv files using grep and awk Query with MySQL Query with HBase  Part 1. File query (skipped)Part 2. M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="15619 Project3.1 Guide">
+<meta property="og:url" content="http://www.phoenixpan.com/blog/2017/07/14/15619 Cloud Computing/project3.1_guide/index.html">
+<meta property="og:site_name" content="Phoenix Pan&#39;s">
+<meta property="og:description" content="Project3.1 Files and DatabasesGoal: compare the efficiency of three kinds of queries:  Query with .csv files using grep and awk Query with MySQL Query with HBase  Part 1. File query (skipped)Part 2. M">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-10-15T08:37:15.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="15619 Project3.1 Guide">
+<meta name="twitter:description" content="Project3.1 Files and DatabasesGoal: compare the efficiency of three kinds of queries:  Query with .csv files using grep and awk Query with MySQL Query with HBase  Part 1. File query (skipped)Part 2. M">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.phoenixpan.com/blog/2017/07/14/15619 Cloud Computing/project3.1_guide/"/>
+
+
+
+
+
+  <title>15619 Project3.1 Guide | Phoenix Pan's</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Phoenix Pan's</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/14/15619 Cloud Computing/project3.1_guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">15619 Project3.1 Guide</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-14T21:05:11+10:00">
+                2017-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
+                    <span itemprop="name">15619 Cloud Computing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Project3-1-Files-and-Databases"><a href="#Project3-1-Files-and-Databases" class="headerlink" title="Project3.1 Files and Databases"></a>Project3.1 Files and Databases</h1><p>Goal: compare the efficiency of three kinds of queries:</p>
+<ol>
+<li>Query with .csv files using <code>grep</code> and <code>awk</code></li>
+<li>Query with MySQL</li>
+<li>Query with HBase</li>
+</ol>
+<h2 id="Part-1-File-query-skipped"><a href="#Part-1-File-query-skipped" class="headerlink" title="Part 1. File query (skipped)"></a>Part 1. File query (skipped)</h2><h2 id="Part-2-MySQL"><a href="#Part-2-MySQL" class="headerlink" title="Part 2. MySQL"></a>Part 2. MySQL</h2><h3 id="Configure-database"><a href="#Configure-database" class="headerlink" title="Configure database"></a>Configure database</h3><ol>
+<li><p>Install MySQL using </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mysql-server</div></pre></td></tr></table></figure>
+</li>
+<li><p>Connect to the root user, type your password following -p</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql -u root -ppassword</div><div class="line">SHOW DATABASES;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create new user</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE USER &apos;newuser&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;team&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Grant partial or all priviledges and login again, here we grant all priviledges:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT PRIVILEDGES ON teamproj.* to &apos;newuser&apos; @ &apos;localhost&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create database and table which support full unicode</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE DATABASE blah;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Answer-questions"><a href="#Answer-questions" class="headerlink" title="Answer questions"></a>Answer questions</h3><h4 id="Q8-amp-Q9"><a href="#Q8-amp-Q9" class="headerlink" title="Q8 &amp; Q9"></a>Q8 &amp; Q9</h4><p>use index to dramatically decrease query time</p>
+<h4 id="Q10"><a href="#Q10" class="headerlink" title="Q10"></a>Q10</h4><ol>
+<li>Here, we use <code>LIKE</code> to match a regular expression case insensitive, use <code>LIKE BINARY</code> to match case sensitive, which is required here. Binary match a character’s ASC code instead of its value, so it’s an exact match. </li>
+<li>As <code>release</code> is a reserved word in MySQL, we have to use <code>songs.release</code> to escape it. Notice, we may use <code>&#39;release&#39;</code> (with single quotation mark) when we create a table, but <code>tableName.columnName</code> in a query.</li>
+</ol>
+<h4 id="Q11"><a href="#Q11" class="headerlink" title="Q11"></a>Q11</h4><p>At the end of the query, we use <code>AS filtered</code> otherwise, we will get <code>Exception:Every derived table must have its own alias</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT artist_name FROM (SELECT artist_id, artist_name, COUNT(artist_id) AS frequency FROM songs GROUP BY artist_id ORDER BY frequency DESC LIMIT 2,1) AS filtered</div></pre></td></tr></table></figure></p>
+<h4 id="Bonus-Load-data"><a href="#Bonus-Load-data" class="headerlink" title="Bonus: Load data"></a>Bonus: Load data</h4><p>Log in with <code>--local-infile</code> flag<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -pdb15319root song_db --local-infile</div></pre></td></tr></table></figure></p>
+<p>and then execute<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">load data infile &apos;million_songs_metadata.csv&apos; into table songs fields terminated by &apos;,&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="Part-3-Disk-performance-test"><a href="#Part-3-Disk-performance-test" class="headerlink" title="Part 3. Disk performance test"></a>Part 3. Disk performance test</h2><p>We benchmark the performance of FileIO using four settings, t1.micro and m3.large, magnetic disk and SSD. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">t1.micro magnetic</div><div class="line">136.24</div><div class="line">179.84</div><div class="line">193.00</div><div class="line"></div><div class="line">t1.micro SSD</div><div class="line">629.33</div><div class="line">627.00</div><div class="line">626.69</div><div class="line"></div><div class="line">m3.large magnetic</div><div class="line">1168.99</div><div class="line">1336.60</div><div class="line">1484.45</div><div class="line"></div><div class="line">m3.large SSD</div><div class="line">1959.00</div><div class="line">2279.25</div><div class="line">2328.66</div></pre></td></tr></table></figure>
+<h2 id="Part-4-HBase"><a href="#Part-4-HBase" class="headerlink" title="Part 4. HBase"></a>Part 4. HBase</h2><p>First, we build an EMR with one master and one core (slave), and SSH into the master core. You shoud be able to see your hard drive condition through these two commands<br>(PS: Don’t mistakenly ssh into the slave. You can find instance ID under EMR)</p>
+<ol>
+<li>Launch an EMR cluster with 1 master and 1 core node.<ol>
+<li>Select “Go to advanced options” on the top of create cluster page</li>
+<li>Make sure all instances are m1.large.</li>
+<li>Make sure that the EMR cluster is created within the same VPC as your project instance (the one with your runner.sh).</li>
+<li>Choose AMI version 3.11.0 (hadoop version 2).</li>
+<li>Remove any existing services such as Pig and Hive and choose to install HBase version 0.94.</li>
+<li>You must specify a key-pair to be able to SSH to the individual instances. Note that the username to use while SSHing to these instances is hadoop.</li>
+<li>Do not forget to set a tag that will be automatically propagated to the individual instances in the cluster.</li>
+<li>Enable “termination protection” and “keep-alive” for your cluster.</li>
+</ol>
+</li>
+<li>Set the security group of both master and core node to allow ALL traffic. 11. Use the Master public DNS as the SSH DNS.</li>
+<li><p>After you SSH into master node, you can run the following command to verify that HDFS is healthy given how it’s being reported per datanode:<br>hadoop dfsadmin -report</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo parted -l</div><div class="line">df -h</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a directory in guest machine (where you are right now) and move the .csv file to that location </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir P3_1</div><div class="line">cd P3_1</div><div class="line">wget https://s3.amazonaws.com/15319-p31/million_songs_metadata.csv</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a directory in HDFS to store the file</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hadoop fs -mkdir /csv</div></pre></td></tr></table></figure>
+</li>
+<li><p>Put the file into HDFS. HowToUse -put: -put /local/directory /hdfs/directory</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hadoop fs -put /home/hadoop/P3_1/million_songs_metadata.csv /csv</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a new table in HBase by log in into shell using:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hbase shell</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a new table whose name is <strong>songdata</strong> and column family <strong>data</strong></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create &apos;songdata&apos;,&apos;data&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Exit shell, and gety ready the data for inputing it to HBase, you should see a process bar telling you the progress of input like:<br> [======&gt;       ]45%</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns=&quot;HBASE_ROW_KEY,data:title,data:song_id,data:release,data:artist_id,data:artist_mbid,data:artist_name,data:duration,data:artist_familiarity,data:artist_hotttnesss,data:year&quot; -Dimporttsv.separator=&quot;,&quot; -Dimporttsv.bulk.output=hdfs:///output songdata hdfs:///csv</div></pre></td></tr></table></figure>
+</li>
+<li><p>Load the data into table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles hdfs:///output songdata</div></pre></td></tr></table></figure>
+</li>
+<li><p>Now, scan the table to make sure data has been loaded successfully, use Ctrl+C to stop scanning</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scan &apos;songdata&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Note down the private IP and enter it into the java file, run demo through commands</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">javac HbaseTasks.java</div><div class="line">java HbaseTasks demo</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>If you see the result of 96 rows, you could process to answer the questions now : )</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/07/12/15619 Cloud Computing/project2.3_guide/" rel="next" title="15619 Project2.3 Guide">
+                <i class="fa fa-chevron-left"></i> 15619 Project2.3 Guide
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/07/17/15619 Cloud Computing/project3.2_guide/" rel="prev" title="15619 Project3.2 Guide">
+                15619 Project3.2 Guide <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Phoenix Pan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">130</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Project3-1-Files-and-Databases"><span class="nav-number">1.</span> <span class="nav-text">Project3.1 Files and Databases</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-1-File-query-skipped"><span class="nav-number">1.1.</span> <span class="nav-text">Part 1. File query (skipped)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-2-MySQL"><span class="nav-number">1.2.</span> <span class="nav-text">Part 2. MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-database"><span class="nav-number">1.2.1.</span> <span class="nav-text">Configure database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Answer-questions"><span class="nav-number">1.2.2.</span> <span class="nav-text">Answer questions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q8-amp-Q9"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Q8 & Q9</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q10"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Q10</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q11"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">Q11</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bonus-Load-data"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">Bonus: Load data</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-3-Disk-performance-test"><span class="nav-number">1.3.</span> <span class="nav-text">Part 3. Disk performance test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-4-HBase"><span class="nav-number">1.4.</span> <span class="nav-text">Part 4. HBase</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Phoenix Pan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
