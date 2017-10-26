@@ -239,6 +239,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/232-implement-queue-using-stacks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/28/leetcode/232-implement-queue-using-stacks/" itemprop="url">232.Implement Queue using Stacks</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-28T20:01:39+10:00">
+                2017-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Amortized O(1) operations: pop() and peek().  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; input;</div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; output;</div><div class="line">    </div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyQueue</span><span class="params">()</span> </span>&#123;</div><div class="line">        input = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        output = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Push element x to the back of queue. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        input.push(x);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Removes the element from in front of queue and returns that element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (output.isEmpty()) &#123;</div><div class="line">            <span class="keyword">while</span> (!input.isEmpty()) &#123;</div><div class="line">                output.push(input.pop());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output.isEmpty()? <span class="number">1</span> : output.pop();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Get the front element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123; <span class="comment">// similar to pop()</span></div><div class="line">        <span class="keyword">if</span> (output.isEmpty()) &#123;</div><div class="line">            <span class="keyword">while</span> (!input.isEmpty()) &#123;</div><div class="line">                output.push(input.pop());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output.isEmpty()? <span class="number">1</span> : output.peek();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Returns whether the queue is empty. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> input.isEmpty() &amp;&amp; output.isEmpty();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/203-remove-linked-list-elements/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -382,7 +525,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/155-min-stack/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/206-reverse-linked-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -401,7 +544,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/28/leetcode/155-min-stack/" itemprop="url">155.Min Stack</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/28/leetcode/206-reverse-linked-list/" itemprop="url">206.Reverse Linked List</a></h1>
         
 
         <div class="post-meta">
@@ -475,153 +618,20 @@
       
         
           
-            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;]</div><div class="line">[[],[512],[-1024],[-1024],[512],[],[],[],[],[],[]]</div><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;top&quot;,&quot;getMin&quot;]</div><div class="line">[[],[-2],[0],[-3],[],[],[],[]]</div><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;]</div><div class="line">[[],[0],[1],[0],[],[],[]]</div><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;top&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;push&quot;,&quot;top&quot;,&quot;getMin&quot;,&quot;push&quot;,&quot;top&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;]</div><div class="line">[[],[2147483646],[2147483646],[2147483647],[],[],[],[],[],[],[2147483647],[],[],[-2147483648],[],[],[],[]]</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-111ms"><a href="#Solution-1-accepted-111ms" class="headerlink" title="Solution 1: accepted 111ms"></a>Solution 1: accepted 111ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; master;    </div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; min;</div><div class="line"></div><div class="line">    <span class="comment">/** initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MinStack</span><span class="params">()</span> </span>&#123;</div><div class="line">        master = <span class="keyword">new</span> Stack&lt;&gt;();    </div><div class="line">        min = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        master.push(x);</div><div class="line">        <span class="keyword">if</span> (min.size() == <span class="number">0</span> || min.peek() &gt;= x) &#123;  <span class="comment">// &gt;= rather than &gt;, there could be multiple minimum values</span></div><div class="line">            min.push(x);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (master.pop().equals(min.peek())) &#123;  <span class="comment">// Integer, use equals not ==</span></div><div class="line">            min.pop();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> master.peek();   </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> min.peek();    </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow-up:"></a>Follow-up:</h2><p>If the given numbers have a lot of duplicates, how to optimize the space use of the min stack?<br>We now maintain <code>&lt;number, the index of the number when it&#39;s added&gt;</code> in the <code>min</code> stack and we only pop it when the current index is equal or smaller than the index of the top element in the <code>min</code> stack. As a result, we also need a <code>int count</code> to track the index.  </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/150-evaluate-reverse-polish-notation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/28/leetcode/150-evaluate-reverse-polish-notation/" itemprop="url">150.Evaluate Reverse Polish Notation</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-28T20:01:39+10:00">
-                2017-09-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1-accepted-12ms-86"><a href="#Solution-1-accepted-12ms-86" class="headerlink" title="Solution 1: accepted: 12ms 86%"></a>Solution 1: accepted: 12ms 86%</h2><p>As long as we realize this question is best resolved using stacks, we should be fine. So we need to be clear about when to use stack: When we scan from left to right and always need to look back.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">evalRPN</span><span class="params">(String[] tokens)</span> </span>&#123;</div><div class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tokens.length; i++) &#123;</div><div class="line">            String cur = tokens[i];  <span class="comment">// without it its 14ms</span></div><div class="line">             <span class="keyword">if</span> (cur.equals(<span class="string">"+"</span>)) &#123;</div><div class="line">                 stack.push(stack.pop() + stack.pop());</div><div class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur.equals(<span class="string">"-"</span>)) &#123;</div><div class="line">                 stack.push(-stack.pop() + stack.pop());</div><div class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur.equals(<span class="string">"*"</span>)) &#123;</div><div class="line">                 stack.push(stack.pop() * stack.pop());</div><div class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur.equals(<span class="string">"/"</span>)) &#123;</div><div class="line">                 <span class="keyword">int</span> n2 = stack.pop();</div><div class="line">                 <span class="keyword">int</span> n1 = stack.pop();</div><div class="line">                 stack.push(n1 / n2);</div><div class="line">             &#125; <span class="keyword">else</span> &#123;</div><div class="line">                 stack.push(Integer.parseInt(cur));</div><div class="line">             &#125;   </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> stack.pop();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><em>How to convert standard arithmetic expressions to Reverse Polish Notation(RPN), aka postfix notation?</em></p>
+            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>Create a new node, looks not good. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    ListNode cur = head;</div><div class="line">    ListNode newHead = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</div><div class="line">        ListNode temp = <span class="keyword">new</span> ListNode(cur.val);</div><div class="line">        temp.next = newHead;</div><div class="line">        newHead = temp;</div><div class="line">        cur = cur.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newHead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-2-accepted-0ms"><a href="#Solution-2-accepted-0ms" class="headerlink" title="Solution 2: accepted 0ms"></a>Solution 2: accepted 0ms</h2><p>No new nodes created yet still complicated.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    ListNode newHead = <span class="keyword">null</span>;</div><div class="line">    ListNode next = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</div><div class="line">        next = head.next;</div><div class="line">        <span class="keyword">if</span> (newHead != <span class="keyword">null</span>) &#123;  <span class="comment">// unnecessary condition</span></div><div class="line">            head.next = newHead;</div><div class="line">            newHead = head;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            newHead = head;</div><div class="line">            newHead.next = <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        head = next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newHead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-3-accepted-0ms"><a href="#Solution-3-accepted-0ms" class="headerlink" title="Solution 3: accepted 0ms"></a>Solution 3: accepted 0ms</h2><p>Should be the most concise iterative solution.  </p>
+<p>Time: O(n)<br>Space: O(1)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    ListNode newHead = <span class="keyword">null</span>;</div><div class="line">    ListNode next = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</div><div class="line">        next = head.next;</div><div class="line">        head.next = newHead;</div><div class="line">        newHead = head;</div><div class="line">        head = next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> newHead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-4-accepted-1ms"><a href="#Solution-4-accepted-1ms" class="headerlink" title="Solution 4: accepted 1ms"></a>Solution 4: accepted 1ms</h2><p>Recursive solution.  </p>
+<ol>
+<li>Base case: when <code>head == null || head.next == null</code>, we have the newHead, which is the last element in LinkedList. </li>
+<li>Recursive rule: next.next = current; current.next = null. </li>
+</ol>
+<p>Time: O(n)<br>Space: O(n) (stack space consumption)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> head; <span class="comment">// find the newHead which remains throughout the program</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ListNode newHead = reverseList(head.next);</div><div class="line">    head.next.next = head; <span class="comment">// if we use newHead.next, we lost nodes in the middle</span></div><div class="line">    head.next = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">return</span> newHead;       </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -955,6 +965,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/24/leetcode/98-validate-binary-search-tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/24/leetcode/98-validate-binary-search-tree/" itemprop="url">98.Validate Binary Search Tree</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T19:59:58+10:00">
+                2017-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>In-order traversal.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> last = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> first = <span class="keyword">true</span>; <span class="comment">// for special case [-2147483648]</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidBST</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (!isValidBST(root.left)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (!first &amp;&amp; last &gt;= root.val) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        first = <span class="keyword">false</span>;</div><div class="line">        last = root.val;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (!isValidBST(root.right)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">                </div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/24/leetcode/107-binary-tree-level-order-traversal-ii/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1098,7 +1251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/24/leetcode/102-binary-tree-level-order-traversal/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/24/leetcode/061-rotate-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1117,7 +1270,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/24/leetcode/102-binary-tree-level-order-traversal/" itemprop="url">102.Binary Tree Level Order Traversal</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/24/leetcode/061-rotate-list/" itemprop="url">061.Rotate List</a></h1>
         
 
         <div class="post-meta">
@@ -1191,13 +1344,8 @@
       
         
           
-            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>BFS. </p>
-<ol>
-<li>two queues</li>
-<li>one queue + one flag node</li>
-<li>one queue + int size (chosen)</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</div><div class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">    queue.add(root);</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">      ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">      <span class="keyword">int</span> size = queue.size();</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">        TreeNode node = queue.poll();</div><div class="line">        list.add(node.val);</div><div class="line">        <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) &#123;</div><div class="line">          queue.add(node.left);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</div><div class="line">          queue.add(node.right);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      result.add(list);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted-16ms"><a href="#Solution-1-accepted-16ms" class="headerlink" title="Solution 1: accepted 16ms"></a>Solution 1: accepted 16ms</h2><p>A common brute force solution </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">rotateRight</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || k == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line">    ListNode dummy = head;</div><div class="line">    ListNode tail = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (dummy != <span class="keyword">null</span>) &#123;</div><div class="line">        tail = dummy;</div><div class="line">        dummy = dummy.next;</div><div class="line">        length++;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    k = k % length;</div><div class="line">    dummy = head;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; length - k; i++) &#123;</div><div class="line">        dummy = dummy.next;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    ListNode newHead = head;</div><div class="line">    <span class="keyword">if</span> (dummy.next != <span class="keyword">null</span>) &#123;</div><div class="line">        newHead = dummy.next;</div><div class="line">        dummy.next = <span class="keyword">null</span>;</div><div class="line">        tail.next = head;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newHead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1341,149 +1489,6 @@
           
             <h2 id="Solution-1-accepted-3ms-93"><a href="#Solution-1-accepted-3ms-93" class="headerlink" title="Solution 1: accepted 3ms 93%"></a>Solution 1: accepted 3ms 93%</h2><p>Well, it shouldn’t be this long. Can we optimize it?</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseBetween</span><span class="params">(ListNode head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    dummy.next = head;</div><div class="line">    head = dummy;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</div><div class="line">        head = head.next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ListNode cur = head.next;</div><div class="line">    ListNode rev = <span class="keyword">null</span>; <span class="comment">// reversed part</span></div><div class="line">    ListNode tail = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">int</span> count = n - m;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &lt;= n; i++) &#123;</div><div class="line">        ListNode temp = cur.next;</div><div class="line">        <span class="keyword">if</span> (rev != <span class="keyword">null</span>) &#123;</div><div class="line">            cur.next = rev;</div><div class="line">            rev = cur;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            rev = cur;</div><div class="line">            tail = cur;</div><div class="line">            rev.next = <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        cur = temp;</div><div class="line">        count--;</div><div class="line">        <span class="keyword">if</span> (i &gt;= n) &#123;</div><div class="line">            tail.next = cur;</div><div class="line">            head.next = rev;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dummy.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/24/leetcode/98-validate-binary-search-tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/24/leetcode/98-validate-binary-search-tree/" itemprop="url">98.Validate Binary Search Tree</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T19:59:58+10:00">
-                2017-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>In-order traversal.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> last = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> first = <span class="keyword">true</span>; <span class="comment">// for special case [-2147483648]</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidBST</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (!isValidBST(root.left)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (!first &amp;&amp; last &gt;= root.val) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        first = <span class="keyword">false</span>;</div><div class="line">        last = root.val;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (!isValidBST(root.right)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">                </div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
