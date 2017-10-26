@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/24/Leetcode/103-binary-tree-zigzag-level-order-traversal/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/24/Leetcode/061-rotate-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/24/Leetcode/103-binary-tree-zigzag-level-order-traversal/" itemprop="url">103.Binary Tree Zigzag Level Order Traversal</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/24/Leetcode/061-rotate-list/" itemprop="url">061.Rotate List</a></h1>
         
 
         <div class="post-meta">
@@ -332,8 +332,8 @@
       
         
           
-            <h2 id="Solution-1-accepted-3ms"><a href="#Solution-1-accepted-3ms" class="headerlink" title="Solution 1: accepted 3ms"></a>Solution 1: accepted 3ms</h2><p>BFS. Viration of question 102.Try recursive as well.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) &#123;</div><div class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">    queue.add(root);</div><div class="line">    <span class="keyword">boolean</span> reverse = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">      ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">      <span class="keyword">int</span> size = queue.size(); <span class="comment">// get size now as it's dynamic</span></div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">        TreeNode node = queue.poll();</div><div class="line">        list.add(node.val);</div><div class="line">        <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) &#123;</div><div class="line">          queue.add(node.left);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</div><div class="line">          queue.add(node.right);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (reverse) &#123;</div><div class="line">          Collections.reverse(list);</div><div class="line">          reverse = <span class="keyword">false</span>;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">          reverse = <span class="keyword">true</span>;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      result.add(list);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted-16ms"><a href="#Solution-1-accepted-16ms" class="headerlink" title="Solution 1: accepted 16ms"></a>Solution 1: accepted 16ms</h2><p>A common brute force solution </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">rotateRight</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || k == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line">    ListNode dummy = head;</div><div class="line">    ListNode tail = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (dummy != <span class="keyword">null</span>) &#123;</div><div class="line">        tail = dummy;</div><div class="line">        dummy = dummy.next;</div><div class="line">        length++;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    k = k % length;</div><div class="line">    dummy = head;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; length - k; i++) &#123;</div><div class="line">        dummy = dummy.next;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    ListNode newHead = head;</div><div class="line">    <span class="keyword">if</span> (dummy.next != <span class="keyword">null</span>) &#123;</div><div class="line">        newHead = dummy.next;</div><div class="line">        dummy.next = <span class="keyword">null</span>;</div><div class="line">        tail.next = head;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newHead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -382,7 +382,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/24/Leetcode/083-remove-duplicates-from-sorted-list/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/24/Leetcode/082-remove-duplicates-from-sorted-list-ii/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -401,7 +401,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/24/Leetcode/083-remove-duplicates-from-sorted-list/" itemprop="url">083.Remove Duplicates from Sorted List</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/24/Leetcode/082-remove-duplicates-from-sorted-list-ii/" itemprop="url">082.Remove Duplicates from Sorted List II</a></h1>
         
 
         <div class="post-meta">
@@ -475,8 +475,11 @@
       
         
           
-            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>pointer - slow<br>next - fast  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    ListNode pointer = head;</div><div class="line">    <span class="keyword">while</span> (pointer != <span class="keyword">null</span>) &#123;</div><div class="line">        ListNode next = pointer.next;</div><div class="line">        <span class="keyword">while</span> (next != <span class="keyword">null</span> &amp;&amp; pointer.val == next.val) &#123;</div><div class="line">            next = next.next;</div><div class="line">        &#125;</div><div class="line">        pointer.next = next;</div><div class="line">        pointer = pointer.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[]</div><div class="line">[1,1]</div><div class="line">[1,1,2]</div><div class="line">[1,1,2,2]</div><div class="line">[1,2,2,3]</div><div class="line">[1,2,2,3,3]</div><div class="line">[1,2,3,4,5]</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>Try to use only ListNode</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line"></div><div class="line">    ListNode pointer = head;</div><div class="line">    ListNode previous = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">while</span> (pointer != <span class="keyword">null</span>) &#123;    </div><div class="line">        ListNode fast = pointer.next;</div><div class="line">        <span class="keyword">boolean</span> duplicate = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (fast != <span class="keyword">null</span> &amp;&amp; pointer.val == fast.val) &#123;</div><div class="line">            fast = fast.next;</div><div class="line">            duplicate = <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!duplicate) &#123;</div><div class="line">            previous = pointer;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (previous == <span class="keyword">null</span>) &#123; <span class="comment">// [1,1,...]</span></div><div class="line">                head = fast;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                previous.next = fast; <span class="comment">// [1,2,2,3...]</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        pointer = fast;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-2-accepted-1ms"><a href="#Solution-2-accepted-1ms" class="headerlink" title="Solution 2: accepted 1ms"></a>Solution 2: accepted 1ms</h2><p>Use a virtual node to help organize the list</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;        </div><div class="line">    ListNode virtualHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    virtualHead.next = head;</div><div class="line">    ListNode pre = virtualHead;</div><div class="line">    ListNode cur = head;</div><div class="line">    <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;                </div><div class="line">        <span class="keyword">while</span> (cur.next != <span class="keyword">null</span> &amp;&amp; cur.val == cur.next.val) &#123;</div><div class="line">            cur = cur.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (pre.next == cur) &#123; <span class="comment">// if both pre and cur point to the same node (no duplicates detected)</span></div><div class="line">            pre = cur; <span class="comment">// simply move on</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123; </div><div class="line">            pre.next = cur.next; <span class="comment">// skip points in between</span></div><div class="line">        &#125;</div><div class="line">        cur = cur.next; <span class="comment">// move on</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> virtualHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -990,7 +993,7 @@ private String formatList(List&lt;Integer&gt; path) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/16/Leetcode/046-permutations/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/16/Leetcode/026-remove-duplicates-from-sorted-array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1009,7 +1012,7 @@ private String formatList(List&lt;Integer&gt; path) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/16/Leetcode/046-permutations/" itemprop="url">046.Permutations</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/16/Leetcode/026-remove-duplicates-from-sorted-array/" itemprop="url">026.Remove Duplicates from Sorted Array</a></h1>
         
 
         <div class="post-meta">
@@ -1083,8 +1086,8 @@ private String formatList(List&lt;Integer&gt; path) {
       
         
           
-            <h2 id="Solution-1-accepted-7ms"><a href="#Solution-1-accepted-7ms" class="headerlink" title="Solution 1: accepted 7ms"></a>Solution 1: accepted 7ms</h2><p>DFS, similar to question 078.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        permuteHelper(result, list, nums);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">permuteHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; list, <span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length == list.size()) &#123;</div><div class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(list));  <span class="comment">// use "else" or "return" after it to end the recursion</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (!list.contains(nums[i])) &#123;</div><div class="line">                    list.add(nums[i]);</div><div class="line">                    permuteHelper(result, list, nums);</div><div class="line">                    list.remove(list.size() - <span class="number">1</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[]</div><div class="line">[0, 2]</div><div class="line">[2, 2]</div><div class="line">[1, 1, 2]</div><div class="line">[0, 1, 2]</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-13ms"><a href="#Solution-1-accepted-13ms" class="headerlink" title="Solution 1: accepted 13ms"></a>Solution 1: accepted 13ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> len = nums.length;</div><div class="line">  <span class="keyword">if</span> (nums.length &lt; <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> len;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> count = <span class="number">1</span>;      </div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (nums[i - <span class="number">1</span>] != nums[i]) &#123;</div><div class="line">      nums[count] = nums[i];</div><div class="line">      count++;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">    <span class="keyword">return</span> count;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1133,7 +1136,7 @@ private String formatList(List&lt;Integer&gt; path) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/16/Leetcode/039-combination-sum/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/16/Leetcode/090-subsets-ii/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1152,7 +1155,7 @@ private String formatList(List&lt;Integer&gt; path) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/16/Leetcode/039-combination-sum/" itemprop="url">039.Combination Sum</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/16/Leetcode/090-subsets-ii/" itemprop="url">090.Subsets II</a></h1>
         
 
         <div class="post-meta">
@@ -1226,8 +1229,151 @@ private String formatList(List&lt;Integer&gt; path) {
       
         
           
-            <h2 id="Solution-1-accepted-18ms-80"><a href="#Solution-1-accepted-18ms-80" class="headerlink" title="Solution 1: accepted 18ms 80%"></a>Solution 1: accepted 18ms 80%</h2><p>DFS. </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">  List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">  List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">  Arrays.sort(nums);</div><div class="line">  comboHelper(result, list, nums, target, <span class="number">0</span>);</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">comboHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, </span></span></div><div class="line"><span class="function"><span class="params">                      List&lt;Integer&gt; list, </span></span></div><div class="line"><span class="function"><span class="params">                      <span class="keyword">int</span>[] nums, </span></span></div><div class="line"><span class="function"><span class="params">                      <span class="keyword">int</span> remain,</span></span></div><div class="line"><span class="function"><span class="params">                      <span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (remain == <span class="number">0</span>) &#123;</div><div class="line">      result.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(list));</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="comment">// i = start will ignore the digits before so it won't repeat a sequence in different order</span></div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; nums.length; i++) &#123;  </div><div class="line">          <span class="keyword">if</span> (remain - nums[i] &gt;= <span class="number">0</span>) &#123; <span class="comment">// exit condition</span></div><div class="line">              list.add(nums[i]);</div><div class="line">              comboHelper(result, list, nums, remain - nums[i], i);</div><div class="line">              list.remove(list.size() - <span class="number">1</span>);</div><div class="line">          &#125; <span class="keyword">else</span> &#123; <span class="comment">// since the array is sorted, no need to check the following numbers</span></div><div class="line">              <span class="keyword">break</span>;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted-3ms"><a href="#Solution-1-accepted-3ms" class="headerlink" title="Solution 1: accepted 3ms"></a>Solution 1: accepted 3ms</h2><p>DFS. Follow-up of 078 Subset.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">        Arrays.sort(nums);</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">        subsetsHelper(result, list, nums, <span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subsetsHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result,</span></span></div><div class="line"><span class="function"><span class="params">                              List&lt;Integer&gt; list,</span></span></div><div class="line"><span class="function"><span class="params">                              <span class="keyword">int</span>[] nums,</span></span></div><div class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> pos)</span> </span>&#123;</div><div class="line">        result.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(list));</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = pos; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i == pos || nums[i] != nums[i - <span class="number">1</span>]) &#123; <span class="comment">// only remove duplicates in this level, i.e. [1,2] and [1,2]</span></div><div class="line">                list.add(nums[i]);</div><div class="line">                subsetsHelper(result, list, nums, i + <span class="number">1</span>); <span class="comment">// will reset duplicates, so we will still have [1, 2, 2]</span></div><div class="line">                list.remove(list.size() - <span class="number">1</span>);</div><div class="line">            &#125; </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/16/Leetcode/060-permutation-sequence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/16/Leetcode/060-permutation-sequence/" itemprop="url">060.Permutation Sequence</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-16T15:00:12+10:00">
+                2017-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">9</div><div class="line">54494</div><div class="line">9</div><div class="line">171669</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-tle"><a href="#Solution-1-tle" class="headerlink" title="Solution 1: tle"></a>Solution 1: tle</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPermutation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &lt; <span class="number">1</span> || k &lt; <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        permuteHelper(result, sb, n, k);</div><div class="line">        <span class="keyword">return</span> result.get(k - <span class="number">1</span>).toString();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">permuteHelper</span><span class="params">(List&lt;String&gt; result, </span></span></div><div class="line"><span class="function"><span class="params">                              StringBuilder sb, </span></span></div><div class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> n,</span></span></div><div class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (result.size() &lt; k) &#123;                       </div><div class="line">          <span class="keyword">if</span> (sb.length() == n) &#123;</div><div class="line">              result.add(sb.toString());</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">              <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">                  <span class="keyword">if</span> (sb.indexOf(i + <span class="string">""</span>) &lt; <span class="number">0</span>) &#123;</div><div class="line">                      sb.append(i + <span class="string">""</span>);</div><div class="line">                      permuteHelper(result, sb, n);</div><div class="line">                      sb.setLength(sb.length() - <span class="number">1</span>);</div><div class="line">                  &#125;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1424,7 +1570,7 @@ private String formatList(List&lt;Integer&gt; path) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/16/Leetcode/374-guess-number-higher-or-lower/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/16/Leetcode/046-permutations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1443,7 +1589,7 @@ private String formatList(List&lt;Integer&gt; path) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/16/Leetcode/374-guess-number-higher-or-lower/" itemprop="url">374.Guess Number Higher or Lower</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/16/Leetcode/046-permutations/" itemprop="url">046.Permutations</a></h1>
         
 
         <div class="post-meta">
@@ -1517,151 +1663,8 @@ private String formatList(List&lt;Integer&gt; path) {
       
         
           
-            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>The most standard binary search.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> <span class="keyword">extends</span> <span class="title">GuessGame</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">guessNumber</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> lo = <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> hi = n;</div><div class="line">        <span class="keyword">while</span> (lo + <span class="number">1</span> &lt; hi) &#123;</div><div class="line">            <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line">            System.out.println(mid);</div><div class="line">            <span class="keyword">if</span> (guess(mid) &gt; <span class="number">0</span>) &#123;</div><div class="line">                lo = mid;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guess(mid) &lt; <span class="number">0</span>) &#123;</div><div class="line">                hi = mid;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (guess(lo) == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> lo;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guess(hi) == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> hi;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/16/Leetcode/026-remove-duplicates-from-sorted-array/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/16/Leetcode/026-remove-duplicates-from-sorted-array/" itemprop="url">026.Remove Duplicates from Sorted Array</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-16T15:00:12+10:00">
-                2017-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[]</div><div class="line">[0, 2]</div><div class="line">[2, 2]</div><div class="line">[1, 1, 2]</div><div class="line">[0, 1, 2]</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-13ms"><a href="#Solution-1-accepted-13ms" class="headerlink" title="Solution 1: accepted 13ms"></a>Solution 1: accepted 13ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> len = nums.length;</div><div class="line">  <span class="keyword">if</span> (nums.length &lt; <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> len;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> count = <span class="number">1</span>;      </div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (nums[i - <span class="number">1</span>] != nums[i]) &#123;</div><div class="line">      nums[count] = nums[i];</div><div class="line">      count++;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">    <span class="keyword">return</span> count;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted-7ms"><a href="#Solution-1-accepted-7ms" class="headerlink" title="Solution 1: accepted 7ms"></a>Solution 1: accepted 7ms</h2><p>DFS, similar to question 078.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        permuteHelper(result, list, nums);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">permuteHelper</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; list, <span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length == list.size()) &#123;</div><div class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(list));  <span class="comment">// use "else" or "return" after it to end the recursion</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (!list.contains(nums[i])) &#123;</div><div class="line">                    list.add(nums[i]);</div><div class="line">                    permuteHelper(result, list, nums);</div><div class="line">                    list.remove(list.size() - <span class="number">1</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1701,7 +1704,7 @@ private String formatList(List&lt;Integer&gt; path) {
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/13/">13</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/14/">14</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1747,7 +1750,7 @@ private String formatList(List&lt;Integer&gt; path) {
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">130</span>
+                  <span class="site-state-item-count">131</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

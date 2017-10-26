@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Social Networking Timeline with Heterogeneous BackendsOverall3 data sources are MySQL, HBase, and MongoDB. We need to load the given data to the databases and optimized them to have required performan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Social Networking Timeline with Heterogeneous Backends">
+<meta property="og:url" content="http://www.phoenixpan.com/blog/2017/07/25/15619 Cloud Computing/social-networking-timeline-with-heterogeneous-backends/index.html">
+<meta property="og:site_name" content="Phoenix Pan&#39;s">
+<meta property="og:description" content="Social Networking Timeline with Heterogeneous BackendsOverall3 data sources are MySQL, HBase, and MongoDB. We need to load the given data to the databases and optimized them to have required performan">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/27278253-eb384282-551f-11e7-8f8e-b9500f2e8fab.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/27278576-e91a11fa-5520-11e7-83c5-d7816f10faf7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/32049290-425989bc-ba98-11e7-854f-fa11b514c7e5.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/32050614-2e36a6d6-ba9d-11e7-815a-fb812edb071f.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/32050615-2ea909a6-ba9d-11e7-864c-a55386744136.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/32050616-2f2691b4-ba9d-11e7-8a31-1bf1a28931db.png">
+<meta property="og:updated_time" content="2017-10-26T12:05:52.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Social Networking Timeline with Heterogeneous Backends">
+<meta name="twitter:description" content="Social Networking Timeline with Heterogeneous BackendsOverall3 data sources are MySQL, HBase, and MongoDB. We need to load the given data to the databases and optimized them to have required performan">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/14355257/27278253-eb384282-551f-11e7-8f8e-b9500f2e8fab.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.phoenixpan.com/blog/2017/07/25/15619 Cloud Computing/social-networking-timeline-with-heterogeneous-backends/"/>
+
+
+
+
+
+  <title>Social Networking Timeline with Heterogeneous Backends | Phoenix Pan's</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Phoenix Pan's</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/25/15619 Cloud Computing/social-networking-timeline-with-heterogeneous-backends/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Social Networking Timeline with Heterogeneous Backends</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-25T23:05:11+10:00">
+                2017-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                    <span itemprop="name">15619 Cloud Computing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Social-Networking-Timeline-with-Heterogeneous-Backends"><a href="#Social-Networking-Timeline-with-Heterogeneous-Backends" class="headerlink" title="Social Networking Timeline with Heterogeneous Backends"></a>Social Networking Timeline with Heterogeneous Backends</h1><h2 id="Overall"><a href="#Overall" class="headerlink" title="Overall"></a>Overall</h2><p><img src="https://user-images.githubusercontent.com/14355257/27278253-eb384282-551f-11e7-8f8e-b9500f2e8fab.png" alt="architecture"><br>3 data sources are MySQL, HBase, and MongoDB. We need to load the given data to the databases and optimized them to have required performance.</p>
+<p><strong>Source code:</strong> <a href="https://github.com/PhoenixPan/CloudComputing/tree/master/Project3.4" target="_blank" rel="external">https://github.com/PhoenixPan/CloudComputing/tree/master/Project3.4</a></p>
+<h2 id="Task1-Implementing-Basic-Login-with-MySQL-on-RDS"><a href="#Task1-Implementing-Basic-Login-with-MySQL-on-RDS" class="headerlink" title="Task1: Implementing Basic Login with MySQL on RDS"></a>Task1: Implementing Basic Login with MySQL on RDS</h2><p><strong>Dataset:</strong></p>
+<ol>
+<li>users.csv [UserID, Password]</li>
+<li>userinfo.csv [UserID, Name, Profile Image URL]</li>
+</ol>
+<p><strong>Request format:</strong> <code>GET /task1?id=[UserID]&amp;pwd=[Password]</code><br><strong>Response format:</strong> <code>{&quot;name&quot;:&quot;my_name&quot;, &quot;profile&quot;:&quot;profile_image_url&quot;}</code></p>
+<p>If the Id and password combination was found in database, return and display user profile image(as the image below), otherwise return and display error message. </p>
+<p><img src="https://user-images.githubusercontent.com/14355257/27278576-e91a11fa-5520-11e7-83c5-d7816f10faf7.png" alt="task1"></p>
+<h2 id="Task2-Storing-Social-Graph-using-HBase"><a href="#Task2-Storing-Social-Graph-using-HBase" class="headerlink" title="Task2: Storing Social Graph using HBase"></a>Task2: Storing Social Graph using HBase</h2><p><strong>Dataset:</strong><br>links.csv [Followee, Follower]</p>
+<p><strong>Request format:</strong> <code>GET /task2?id=[UserID]</code><br><strong>Response format:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   &quot;followers&quot;:[  </div><div class="line">      &#123;  </div><div class="line">         &quot;name&quot;:&quot;follower_name_1&quot;,</div><div class="line">         &quot;profile&quot;:&quot;profile_image_url_1&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;  </div><div class="line">         &quot;name&quot;:&quot;follower_name_2&quot;,</div><div class="line">         &quot;profile&quot;:&quot;profile_image_url_2&quot;</div><div class="line">      &#125;</div><div class="line">   ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>In HBase, we store the database as <code>key:follower, column: followee1, followee2, followee3,...</code>. </p>
+<ol>
+<li>Get all followees of the given user</li>
+<li>Extract the followees’ IDs</li>
+<li>Sort by name in ascending alphabet order</li>
+<li>Find their profile image in MySQL database just like we did in Task1 and return </li>
+</ol>
+<p>Eventally, we could display something like:<br><img src="https://user-images.githubusercontent.com/14355257/32049290-425989bc-ba98-11e7-854f-fa11b514c7e5.png" alt="task2"></p>
+<h2 id="Task3-Build-Homepage-using-MongoDB"><a href="#Task3-Build-Homepage-using-MongoDB" class="headerlink" title="Task3: Build Homepage using MongoDB"></a>Task3: Build Homepage using MongoDB</h2><p><strong>Dataset:</strong> posts.csv [posts in JSON format]<br><strong>Request format:</strong> <code>GET /task3?id=[UserID]</code><br><strong>Response format:</strong> <code>{&quot;posts&quot;:[{post1_json}, {post2_json}, ...]}</code></p>
+<p>Find posts which match the required “uid”, sort them in ascending timestamp order, and return as response. </p>
+<ol>
+<li>Remove the <code>_id</code> field when getting JSON from MongoDB.</li>
+</ol>
+<p>Example results:<br><img src="https://user-images.githubusercontent.com/14355257/32050614-2e36a6d6-ba9d-11e7-815a-fb812edb071f.jpg" alt="task3_1"></p>
+<h2 id="Task4-Put-Everything-Together"><a href="#Task4-Put-Everything-Together" class="headerlink" title="Task4: Put Everything Together"></a>Task4: Put Everything Together</h2><p><strong>Request format:</strong> <code>http://backend-public-dns:8080/MiniSite/task4?id=99</code><br><strong>Response format:</strong><br>One single JSON object includes user name, user profile, an array of followers, and an array of posts.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jsonResponse.put(<span class="string">"name"</span>, name);</div><div class="line">jsonResponse.put(<span class="string">"profile"</span>, profile);</div><div class="line">jsonResponse.put(<span class="string">"followers"</span>, followersArray);</div><div class="line">jsonResponse.put(<span class="string">"posts"</span>, postsArray);</div></pre></td></tr></table></figure></p>
+<p>As the title suggests, we put the previous three tasks together. We need to:</p>
+<ol>
+<li>Get user profile</li>
+<li>Get all the followers</li>
+<li>Get the most recent 30 posts for each user, which are sorted by timestamp and then by post id</li>
+<li>Return the most recent 30 posts from all selected posts in step 3</li>
+</ol>
+<ul>
+<li>This is a complicated system, I put details of design such a <strong>News Feed System</strong> in an separate article. </li>
+</ul>
+<p>Final Result:<br><img src="https://user-images.githubusercontent.com/14355257/32050615-2ea909a6-ba9d-11e7-864c-a55386744136.jpg" alt="task4"></p>
+<h2 id="Bonus-Task-Basic-Recommendation"><a href="#Bonus-Task-Basic-Recommendation" class="headerlink" title="Bonus Task: Basic Recommendation"></a>Bonus Task: Basic Recommendation</h2><p><strong>Request format:</strong> <code>http://backend-public-dns:8080/MiniSite/task5?id=&lt;user_id&gt;</code><br><strong>Response format:</strong> 10 users that appeared most frequently</p>
+<p>We were asked to implement a very simple and yet successful recommendation model, Collaborative filtering. Simply speaking, in a directed graph, we need to find all qualified user R, where min_distance(me, R) = 2. For example:   </p>
+<ol>
+<li>Given:<br> Followee A follows {B, C, D}<br> Followee B follows {C, E, A}<br> followee C follows {F, G}<br> followee D follows {G, H}  </li>
+<li>To recommend to A, we collaborate B, C, D and get:<br>{A:1, C: 1, E: 1, F: 1, G: 2, H: 1}  </li>
+<li>Then we remove A’s direct followee {B, C, D}   </li>
+<li>Eventually we have {G: 2, E: 1, F: 1, H: 1}  </li>
+</ol>
+<p>In our project, we will do:</p>
+<ol>
+<li>Find all followees(E) of the user</li>
+<li>Find all followees of the followees(EE)</li>
+<li>Store them(EE) in HashMap<userid, appearence=""></userid,></li>
+<li>Remove direct followee(E)</li>
+<li>Return the first 10 user with the most frequent appearence</li>
+</ol>
+<p>Final Result:<br><img src="https://user-images.githubusercontent.com/14355257/32050616-2f2691b4-ba9d-11e7-8a31-1bf1a28931db.png" alt="task5"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/07/17/15619 Cloud Computing/project3.2_guide/" rel="next" title="15619 Project3.2 Guide">
+                <i class="fa fa-chevron-left"></i> 15619 Project3.2 Guide
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/08/16/Linux/screen/" rel="prev" title="Linux - screen">
+                Linux - screen <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Phoenix Pan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">131</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Social-Networking-Timeline-with-Heterogeneous-Backends"><span class="nav-number">1.</span> <span class="nav-text">Social Networking Timeline with Heterogeneous Backends</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overall"><span class="nav-number">1.1.</span> <span class="nav-text">Overall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task1-Implementing-Basic-Login-with-MySQL-on-RDS"><span class="nav-number">1.2.</span> <span class="nav-text">Task1: Implementing Basic Login with MySQL on RDS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task2-Storing-Social-Graph-using-HBase"><span class="nav-number">1.3.</span> <span class="nav-text">Task2: Storing Social Graph using HBase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task3-Build-Homepage-using-MongoDB"><span class="nav-number">1.4.</span> <span class="nav-text">Task3: Build Homepage using MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task4-Put-Everything-Together"><span class="nav-number">1.5.</span> <span class="nav-text">Task4: Put Everything Together</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bonus-Task-Basic-Recommendation"><span class="nav-number">1.6.</span> <span class="nav-text">Bonus Task: Basic Recommendation</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Phoenix Pan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
