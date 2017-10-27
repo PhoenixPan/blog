@@ -239,6 +239,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/001-two-sum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/001-two-sum/" itemprop="url">001.Two sum</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-time-limit-exceeded"><a href="#Solution-1-time-limit-exceeded" class="headerlink" title="Solution 1: time limit exceeded"></a>Solution 1: time limit exceeded</h2><p>Time complexity: O(n^2)<br>Space complexity: O(1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public static int[] twoSum(int[] nums, int target) &#123;</div><div class="line">  if (nums == null)</div><div class="line">    return null;</div><div class="line">    </div><div class="line">  int len = nums.length;</div><div class="line">        </div><div class="line">  for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">    for (int j = i + 1; j &lt; nums.length; j++) &#123;</div><div class="line">      if (nums[i] + nums[j] == target) &#123;</div><div class="line">        System.out.println(i + &quot; &quot; + j);</div><div class="line">        return new int[] &#123;i,j&#125;;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return new int[] &#123;0,0&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Solution-2-accepted"><a href="#Solution-2-accepted" class="headerlink" title="Solution 2: accepted"></a>Solution 2: accepted</h2><p>Two-pass hashing, using Hashmap to reduce the time for each lookup to O(1).  </p>
+<p>Time complexity: O(n)<br>Space complexity: O(n)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public static int[] twoSumMap(int[] nums, int target) &#123;</div><div class="line">  if (nums == null)</div><div class="line">  return null;</div><div class="line">    </div><div class="line">  Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();</div><div class="line">  for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">    int complement = target - nums[i];</div><div class="line">    if (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123; // Can&apos;t use any element twice</div><div class="line">      return new int[] &#123;i, map.get(complement)&#125;;</div><div class="line">    &#125;</div><div class="line">    map.put(nums[i], i);</div><div class="line">  &#125;</div><div class="line">  return null;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution 3"></a>Solution 3</h2><p>Array Approaching  </p>
+<p>Time complexity: O(nlogn + n) (time used to sort the array should be counted)<br>Space complexity: O(n)  </p>
+<p>We can also use array. We order the array first and then we find the indices of the minimum (0) and the maximum (n-1), and then add these two numbers together and compare the result with the target. If the result is larget than the target, we decrement the maximum index, otherwise we increment the minimum index.</p>
+<h2 id="Other-Notes"><a href="#Other-Notes" class="headerlink" title="Other Notes"></a>Other Notes</h2><ol>
+<li><p>Creating a temporary array almost does not cost time: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int[] array = new int[2];</div><div class="line">array[0] = i;                      same as      return new int[] &#123;i, j&#125;;</div><div class="line">array[1] = j;                      ======&gt;</div><div class="line">return array;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Should verify the input;</p>
+</li>
+<li>Should return null while the result is not excepted;</li>
+<li>Define nums.length to get a tiny gain;</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/209-minimum-size-subarray-sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -382,7 +539,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/213-house-robber-ii/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/002-add-two-numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -401,7 +558,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/213-house-robber-ii/" itemprop="url">213.House Robber II</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/002-add-two-numbers/" itemprop="url">002.Add two numbers</a></h1>
         
 
         <div class="post-meta">
@@ -475,9 +632,8 @@
       
         
           
-            <h2 id="Test-case"><a href="#Test-case" class="headerlink" title="Test case"></a>Test case</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[]</div><div class="line">[1]</div><div class="line">[1,2]</div><div class="line">[2,1]</div><div class="line">[1,3,2]</div><div class="line">[1,2,3]</div><div class="line">[1,2,3,4,5,6,8]</div><div class="line">[8,6,5,4,3,2,1]</div><div class="line">[1,2,3,4,5,6,7,8]</div><div class="line">[8,7,6,5,4,3,2,1]</div><div class="line">[1,0,3,5,6,4,1,4,2,9,5,8]</div><div class="line">[1,0,3,5,6,4,1,4,2,9,5,8,6]</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-0ms"><a href="#Solution-1-accepted-0ms" class="headerlink" title="Solution 1: accepted 0ms"></a>Solution 1: accepted 0ms</h2><p>Time: O(n), Space: O(1)<br>Based on the solution of House Robber 1, the only difference is that, we cannot rob both of the first and the last house at one time. So we assume two situations, one includes only the first house, the other includes only the last house.    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> len = nums.length;</div><div class="line">        <span class="keyword">if</span> (len == <span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">int</span> group1 = robRange(nums, <span class="number">1</span>, len);        </div><div class="line">        <span class="keyword">int</span> group2 = robRange(nums, <span class="number">0</span>, len-<span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> Math.max(group1, group2);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">robRange</span><span class="params">(<span class="keyword">int</span> nums[], <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> doit = <span class="number">0</span>; <span class="comment">// total stash if we do rob the current house</span></div><div class="line">        <span class="keyword">int</span> dont = <span class="number">0</span>; <span class="comment">// total stash if don't rob the current house</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; end; i++) &#123;</div><div class="line">            <span class="keyword">int</span> current = dont + nums[i];</div><div class="line">            dont = Math.max(doit, dont);</div><div class="line">            doit = current;</div><div class="line">        &#125;       </div><div class="line">        <span class="keyword">return</span> Math.max(dont, doit);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Try to make it simple and readable.<br>Be aware of the concepts of reference and pointer, know how Java pass values.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</div><div class="line">        </div><div class="line">        ListNode output = new ListNode(0);</div><div class="line">        ListNode operation = output;</div><div class="line">        int carry = 0;</div><div class="line">        </div><div class="line">        if (l1 == null &amp;&amp; l2 == null)</div><div class="line">            return l1;</div><div class="line">        </div><div class="line">        while (l1 != null || l2 != null || carry &gt; 0) &#123; </div><div class="line">            int num1 = l1 == null ? 0 : l1.val;</div><div class="line">            int num2 = l2 == null ? 0 : l2.val;</div><div class="line">            int sum = num1 + num2 + carry;           // Get the total of all numbers, which could exceed 9</div><div class="line">            carry = sum / 10;                        // Get the carry</div><div class="line">            </div><div class="line">            operation.next = new ListNode(sum % 10); // Only take the remainder</div><div class="line">            operation = operation.next;</div><div class="line"></div><div class="line">            if (l1 != null)                          // Avoid NPE for .next</div><div class="line">                l1 = l1.next == null? null : l1.next;</div><div class="line">            if (l2 != null)</div><div class="line">                l2 = l2.next == null? null : l2.next;</div><div class="line">    </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        return output.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -526,7 +682,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/006-zigzag-conversion/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/049-group-anagrams/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -545,7 +701,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/006-zigzag-conversion/" itemprop="url">006.ZigZag Conversion</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/049-group-anagrams/" itemprop="url">049.Group Anagrams</a></h1>
         
 
         <div class="post-meta">
@@ -619,9 +775,8 @@
       
         
           
-            <h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1:"></a>Solution 1:</h2><p>In this question we need to rearrange a string according to certain order. We need to find out the order of rearrangement.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public static String convert(String s, int numRows) &#123;</div><div class="line"></div><div class="line">		if (numRows &lt; 2 || s == null || s.length() &lt; numRows)</div><div class="line">			return s;</div><div class="line"></div><div class="line">		StringBuilder sb = new StringBuilder();</div><div class="line">		int circleLength = 0;</div><div class="line">		if (numRows &lt; 3)</div><div class="line">			circleLength = numRows;</div><div class="line">		else</div><div class="line">			circleLength = numRows * 2 - 2;</div><div class="line"></div><div class="line">		for (int i = 1; i &lt;= numRows; i++) &#123;</div><div class="line">			for (int j = 1; j &lt;= s.length(); j++) &#123;</div><div class="line">				if (j % circleLength == i) &#123;</div><div class="line">					sb.append(s.charAt(j - 1));</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">				if (i == 2 &amp;&amp; j % circleLength == 0) &#123;</div><div class="line">					sb.append(s.charAt(j - 1));</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">				if (i &gt; 2 &amp;&amp; i != numRows &amp;&amp; j % circleLength == circleLength - i + 2) &#123;</div><div class="line">					sb.append(s.charAt(j - 1));</div><div class="line"></div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		return sb.toString();</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2:"></a>Solution 2:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public String convert(String s, int nRows) &#123;  </div><div class="line">	int len = s.length();  </div><div class="line">	if (len == 0 || nRows &lt; 2) return s;  </div><div class="line"></div><div class="line">	String ret = &quot;&quot;;  </div><div class="line">	int lag = 2*nRows - 2; //循环周期  </div><div class="line">	for (int i = 0; i &lt; nRows; i++) &#123;  </div><div class="line">	    for (int j = i; j &lt; len; j += lag) &#123;  </div><div class="line">		ret += s.charAt(j);  </div><div class="line"></div><div class="line">		//非首行和末行时还要加��?��?  </div><div class="line">		if (i &gt; 0 &amp;&amp; i &lt; nRows-1) &#123;  </div><div class="line">		    int t = j + lag - 2*i;  </div><div class="line">		    if (t &lt; len) &#123;  </div><div class="line">			ret += s.charAt(t);  </div><div class="line">		    &#125;  </div><div class="line">		&#125;  </div><div class="line">	    &#125;  </div><div class="line">	&#125;  </div><div class="line">	return ret;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-2-accepted"><a href="#Solution-2-accepted" class="headerlink" title="Solution 2: accepted"></a>Solution 2: accepted</h2><p>Try to divide it into two parts.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;</div><div class="line">        <span class="keyword">if</span> (strs == <span class="keyword">null</span> || strs.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;();</div><div class="line">        Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;String, List&lt;String&gt;&gt;();</div><div class="line">        <span class="keyword">for</span> (String s : strs) &#123;</div><div class="line">            <span class="keyword">char</span>[] ca = s.toCharArray();</div><div class="line">            Arrays.sort(ca);</div><div class="line">            String keyStr = String.valueOf(ca);</div><div class="line">            <span class="keyword">if</span> (!map.containsKey(keyStr)) map.put(keyStr, <span class="keyword">new</span> ArrayList&lt;String&gt;());</div><div class="line">            map.get(keyStr).add(s);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;(map.values());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -819,7 +974,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/007-reverse-integer/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/279-perfect-squares/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -838,7 +993,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/007-reverse-integer/" itemprop="url">007.Reverse Integer</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/279-perfect-squares/" itemprop="url">279.Perfect Squares</a></h1>
         
 
         <div class="post-meta">
@@ -912,305 +1067,11 @@
       
         
           
-            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">10000</div><div class="line">123321</div><div class="line">-2147483412</div><div class="line">2147483412</div><div class="line">-2147483648</div><div class="line">2147483647</div><div class="line">1534236469</div><div class="line">-1534236469</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Basicly hard code, not wise at all.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> reversed = <span class="number">0</span>;</div><div class="line">    	<span class="keyword">int</span> digit = <span class="number">0</span>;</div><div class="line">    	<span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</div><div class="line">		<span class="keyword">if</span> (digit == <span class="number">9</span>) &#123;<span class="comment">//2147483648</span></div><div class="line">			<span class="keyword">if</span> (reversed &gt; <span class="number">214748364</span> || reversed &lt; -<span class="number">214748364</span>)</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (reversed == <span class="number">214748364</span> &amp;&amp; x % <span class="number">10</span> &gt;<span class="number">7</span>)</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (reversed == -<span class="number">214748364</span> &amp;&amp; x % <span class="number">10</span> &gt;<span class="number">8</span>)</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// not happening as input is int</span></div><div class="line">		&#125;</div><div class="line">    		reversed = reversed * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">    		x = x / <span class="number">10</span>;</div><div class="line">		digit++;</div><div class="line">        &#125;</div><div class="line">	<span class="keyword">return</span> reversed;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution-2-accepted-41ms-54"><a href="#Solution-2-accepted-41ms-54" class="headerlink" title="Solution 2: accepted 41ms, 54%"></a>Solution 2: accepted 41ms, 54%</h2><p>Concise and fast. A smart way to detect overflow.   </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> reversed = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (x != <span class="number">0</span>) &#123; <span class="comment">// x could be negative</span></div><div class="line">    <span class="keyword">int</span> before = reversed;</div><div class="line">    <span class="keyword">int</span> tail = x % <span class="number">10</span>; <span class="comment">// this improves speed</span></div><div class="line">    reversed = reversed * <span class="number">10</span> + tail;</div><div class="line">    <span class="keyword">if</span> ((reversed - tail) / <span class="number">10</span> != before)  <span class="comment">// check overflow</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    x /= <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> reversed;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution-3-accepted-36ms-92"><a href="#Solution-3-accepted-36ms-92" class="headerlink" title="Solution 3: accepted 36ms 92%"></a>Solution 3: accepted 36ms 92%</h2><p>Even more concise and faster! Jump out of the “box”!  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">  <span class="keyword">long</span> reversed = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</div><div class="line">    reversed = reversed * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">    <span class="keyword">if</span> (reversed &gt; Integer.MAX_VALUE || reversed &lt; Integer.MIN_VALUE )</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    x /= <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> (<span class="keyword">int</span>)reversed;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/005-longest-palindromic-substring/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/005-longest-palindromic-substring/" itemprop="url">005.Longest Palindromic substring</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1��-time-limit-exceeded"><a href="#Solution-1��-time-limit-exceeded" class="headerlink" title="Solution 1��? time limit exceeded"></a>Solution 1��? time limit exceeded</h2><p>Time: O(n^2), Space: O(1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String longestPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() &lt; 2)</div><div class="line">            return s;</div><div class="line">            </div><div class="line">        String output = &quot;&quot;;</div><div class="line">        </div><div class="line">        for (int i = 0; i &lt; s.length(); i++) &#123;</div><div class="line">           for (int j = 0; j &lt; i + 1; j++) &#123;</div><div class="line">               int start = j;</div><div class="line">               int end = i;</div><div class="line">               while (s.charAt(start) == s.charAt(end)) &#123;</div><div class="line">                   if (end - start == 2 || end - start == 1) &#123;</div><div class="line">                        output = output.length() &gt;= s.substring(j,i + 1).length()? output: s.substring(j,i + 1);</div><div class="line">                        break;</div><div class="line">                   &#125;</div><div class="line">                   if (end == 0 || start == i)</div><div class="line">                       break;</div><div class="line">                   start++;</div><div class="line">                   end--;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">        &#125;</div><div class="line">    return output;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Mutation: Replacing string manipulation with int values, but it dones’t improve the performance.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String longestPalindrome(String s) &#123;</div><div class="line">        </div><div class="line">        int length = s.length();</div><div class="line">        int startLocation = 0;</div><div class="line">        int longestLength = 0;</div><div class="line">        if (s == null || length &lt; 2)</div><div class="line">            return s;</div><div class="line">        </div><div class="line">        for (int i = 0; i &lt; length; i++) &#123;</div><div class="line">           for (int j = 0; j &lt; i + 1; j++) &#123;</div><div class="line">               int start = j;</div><div class="line">               int end = i;</div><div class="line">               while (s.charAt(start) == s.charAt(end)) &#123;</div><div class="line">                   if (end - start == 2 || end - start == 1) &#123;</div><div class="line">                        if (longestLength &lt; i - j + 1) &#123;</div><div class="line">                            startLocation = j;</div><div class="line">                            longestLength = i - j + 1;</div><div class="line">                        &#125;</div><div class="line">                        break;</div><div class="line">                   &#125;</div><div class="line">                   if (end == 0 || start == i)</div><div class="line">                       break;</div><div class="line">                   start++;</div><div class="line">                   end--;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">        &#125;</div><div class="line">    return s.substring(startLocation, startLocation + longestLength);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Solution-2-accepted-37"><a href="#Solution-2-accepted-37" class="headerlink" title="Solution 2: accepted, 37%"></a>Solution 2: accepted, 37%</h2><p>中间��?��?   </p>
-<p>Time: O(2 n^2), Space: O(1)<br>avoid unnecessary check, but still O(n^2), failed the “aaaaaaaa…” test case.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">public static String longestPalindrome(String s) &#123;</div><div class="line">	if (s == null || s.length() &lt; 2) return s;</div><div class="line">    	int len = s.length();</div><div class="line">    	int start = 0;</div><div class="line">    	int max = 0;</div><div class="line">        for(int i = 0; i &lt; len; i++) &#123; </div><div class="line">        	// break if it&apos;s not possible to find longer output</div><div class="line">        	if (len - i &lt; max / 2)</div><div class="line">        		break;</div><div class="line">        	</div><div class="line">        	// for &quot;aba&quot;</div><div class="line">        	int left = i;</div><div class="line">        	int right = i;</div><div class="line">        	while (left &gt;= 0 &amp;&amp; right &lt; len &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</div><div class="line">        		left--;</div><div class="line">        		right++;</div><div class="line">        	&#125;</div><div class="line">        	if (right - left - 2 &gt;= max) &#123;</div><div class="line">        		max = right - left - 2;</div><div class="line">        		start = left + 1;</div><div class="line">        	&#125;    	</div><div class="line">        	</div><div class="line">        	// for &quot;abba&quot;</div><div class="line">        	left = i;</div><div class="line">        	right = i + 1;</div><div class="line">        	while (left &gt;= 0 &amp;&amp; right &lt; len &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</div><div class="line">        		left--;</div><div class="line">        		right++;</div><div class="line">        	&#125;</div><div class="line">        	if (right - left - 2 &gt;= max) &#123;</div><div class="line">        		max = right - left - 2;</div><div class="line">        		start = left + 1;</div><div class="line">        	&#125;    	</div><div class="line">        &#125;        </div><div class="line">        return s.substring(start, start + max + 1);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>We should be able to cut the time to half by check “aba” and “abba” in the same loop:</p>
-<h2 id="Solution-3-accepted-99"><a href="#Solution-3-accepted-99" class="headerlink" title="Solution 3: accepted, 99%"></a>Solution 3: accepted, 99%</h2><p>Amaing boost in performace simply because I changed the duplicated code block in solution 2 to method. Is this the truth?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    private int start, max;</div><div class="line"></div><div class="line">    public String longestPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() &lt; 2) return s;</div><div class="line">    	int len = s.length();</div><div class="line">        for(int i = 0; i &lt; len; i++) &#123; </div><div class="line">        	// break if it&apos;s not possible to find longer output</div><div class="line">        	if (len - i &lt; max / 2)</div><div class="line">        		break;</div><div class="line">        	extendPalindrome(s, i, i);</div><div class="line">        	extendPalindrome(s, i, i + 1);</div><div class="line">        &#125;        </div><div class="line">        return s.substring(start, start + max);</div><div class="line">    &#125;</div><div class="line">    private void extendPalindrome(String s, int left, int right) &#123;</div><div class="line">        while (left &gt;= 0 &amp;&amp; right &lt; s.length() &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</div><div class="line">    		left--;</div><div class="line">    		right++;</div><div class="line">    	&#125;</div><div class="line">    	if (max &lt; right - left - 1) &#123;</div><div class="line">    		start = left + 1;</div><div class="line">    		max = right - left - 1;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Test-case-1"><a href="#Test-case-1" class="headerlink" title="Test case 1"></a>Test case 1</h2><p>Solution 1: ~100ms<br>Solution 2: ~6ms  (without “len - i &lt; output.length() / 2” it will be 10ms and will not be accepted)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">System.out.println(longestPalindrome(&quot;&quot;) + &quot;/&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;a&quot;) + &quot;/a&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aa&quot;) + &quot;/aa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aaa&quot;) + &quot;/aaa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;abc&quot;) + &quot;/a&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aabaa&quot;) + &quot;/aabaa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;ababababa&quot;) + &quot;/ababababa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kaba&quot;) + &quot;/aba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;abak&quot;) + &quot;/aba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kabad&quot;) + &quot;/aba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kabba&quot;) + &quot;/abba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kabbad&quot;) + &quot;/abba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aaaakabbad&quot;) + &quot;/aaaa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kabbadaaaa&quot;) + &quot;/abba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;));</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/049-group-anagrams/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/049-group-anagrams/" itemprop="url">049.Group Anagrams</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-2-accepted"><a href="#Solution-2-accepted" class="headerlink" title="Solution 2: accepted"></a>Solution 2: accepted</h2><p>Try to divide it into two parts.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;</div><div class="line">        <span class="keyword">if</span> (strs == <span class="keyword">null</span> || strs.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;();</div><div class="line">        Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;String, List&lt;String&gt;&gt;();</div><div class="line">        <span class="keyword">for</span> (String s : strs) &#123;</div><div class="line">            <span class="keyword">char</span>[] ca = s.toCharArray();</div><div class="line">            Arrays.sort(ca);</div><div class="line">            String keyStr = String.valueOf(ca);</div><div class="line">            <span class="keyword">if</span> (!map.containsKey(keyStr)) map.put(keyStr, <span class="keyword">new</span> ArrayList&lt;String&gt;());</div><div class="line">            map.get(keyStr).add(s);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;(map.values());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted-48ms"><a href="#Solution-1-accepted-48ms" class="headerlink" title="Solution 1: accepted 48ms"></a>Solution 1: accepted 48ms</h2><ol>
+<li>Base case: dp[0] = 0;  </li>
+<li>Induction rule:<br><strong>dp[i] = min(dp[i - j <em> j] + 1) where j </em> j &lt;= i</strong><br>dp[1] = dp[0] + 1 = 1;<br>dp[2] = dp[1] + 1 = 2;<br>dp[3] = dp[3] + 1 = 3;<br>dp[4] = min(dp[4-1<em>1=3] + 1, dp[4-2</em>2=0] + 1) = 1;  </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</div><div class="line">    Arrays.fill(dp, Integer.MAX_VALUE);</div><div class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> j = <span class="number">1</span>; </div><div class="line">        <span class="keyword">while</span> (j * j &lt;= i) &#123;</div><div class="line">            dp[i] = Math.min(dp[i], dp[i - j * j] + <span class="number">1</span>);</div><div class="line">            j++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dp[n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1646,6 +1507,154 @@
           
             <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[10,9,2,5,3,7,101,18]</div><div class="line">[2,5,3,4]</div><div class="line">[2,5,3,4,6]</div><div class="line">[2,3,4,5]</div><div class="line">[5,4,3,2]</div><div class="line">[0]</div><div class="line">[1,1,1,1]</div></pre></td></tr></table></figure>
 <h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1:"></a>Solution 1:</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> len = nums.length;</div><div class="line">        <span class="keyword">if</span> (len &lt; <span class="number">2</span>) <span class="keyword">return</span> len;</div><div class="line">        </div><div class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">            map.put(i, <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> max = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (nums[j] &lt; nums[i]) &#123;</div><div class="line">                    <span class="keyword">int</span> bigger = map.get(i) &gt; map.get(j) + <span class="number">1</span> ? map.get(i) : map.get(j) + <span class="number">1</span>;</div><div class="line">                    map.put(i, bigger);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            max = max &gt; map.get(i)? max :  map.get(i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/029-divide-two-integers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/029-divide-two-integers/" itemprop="url">029.Divide Two Integers</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">5</div><div class="line">2</div><div class="line">5</div><div class="line">3</div><div class="line">0</div><div class="line">1</div><div class="line">-2147483648</div><div class="line">-1</div><div class="line">-2147483648</div><div class="line">-2147483648</div><div class="line">-2147483648</div><div class="line">5</div><div class="line">-2147483648</div><div class="line">-5</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-TLE"><a href="#Solution-1-TLE" class="headerlink" title="Solution 1: TLE"></a>Solution 1: TLE</h2><p>Brute force, TLE with no doubt.   </p>
+<p>Time: O(n)<br>Space: O(1)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (divisor == <span class="number">0</span>) </div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArithmeticException(<span class="string">"/zero"</span>);</div><div class="line">    <span class="keyword">if</span> (dividend == <span class="number">0</span>) </div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (dividend == Integer.MIN_VALUE &amp;&amp; divisor == -<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> Integer.MAX_VALUE;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sign = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> ((dividend &gt; <span class="number">0</span> &amp;&amp; divisor &gt; <span class="number">0</span>) || (dividend &lt; <span class="number">0</span> &amp;&amp; divisor &lt; <span class="number">0</span>))</div><div class="line">        sign = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">long</span> ldividend = Math.abs((<span class="keyword">long</span>) dividend);</div><div class="line">    <span class="keyword">long</span> ldivisor = Math.abs((<span class="keyword">long</span>) divisor);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (ldividend &lt; ldivisor) </div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;    </div><div class="line"></div><div class="line">    <span class="keyword">while</span> (ldividend &gt;= ldivisor) &#123;</div><div class="line">        ldividend -= ldivisor;</div><div class="line">        result++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sign * result;      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-2-accepted-38ms-72-8"><a href="#Solution-2-accepted-38ms-72-8" class="headerlink" title="Solution 2: accepted 38ms 72.8%"></a>Solution 2: accepted 38ms 72.8%</h2><p>Double the base if we can, decrease the time complexity to approximately logn.  </p>
+<p>Time: O(logn)<br>Space: O(1)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (divisor == <span class="number">0</span>) </div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArithmeticException(<span class="string">"/zero"</span>);</div><div class="line">    <span class="keyword">if</span> (dividend == <span class="number">0</span>) </div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (dividend == Integer.MIN_VALUE &amp;&amp; divisor == -<span class="number">1</span>) <span class="comment">// the only overflow case</span></div><div class="line">        <span class="keyword">return</span> Integer.MAX_VALUE;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> factor = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> sign = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> ((dividend &gt; <span class="number">0</span> &amp;&amp; divisor &gt; <span class="number">0</span>) || (dividend &lt; <span class="number">0</span> &amp;&amp; divisor &lt; <span class="number">0</span>))</div><div class="line">        sign = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">long</span> ldividend = Math.abs((<span class="keyword">long</span>) dividend); <span class="comment">// change to long and consider only positive side, making it easier  </span></div><div class="line">    <span class="keyword">long</span> ldivisor = Math.abs((<span class="keyword">long</span>) divisor);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (ldividend &lt; ldivisor) </div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;    </div><div class="line"></div><div class="line">    <span class="keyword">while</span> (ldividend &gt;= ldivisor) &#123; </div><div class="line">        <span class="keyword">long</span> temp = ldivisor;</div><div class="line">        <span class="keyword">while</span> (ldividend &gt;= ldivisor + ldivisor) &#123;  <span class="comment">// double the divisor as much as we can</span></div><div class="line">            ldivisor += ldivisor;</div><div class="line">            ldividend -= ldivisor;</div><div class="line">            factor += factor;</div><div class="line">            result += factor;</div><div class="line">        &#125;</div><div class="line">        ldivisor = temp;</div><div class="line">        factor = <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (ldividend &lt; ldivisor + ldivisor &amp;&amp; ldividend &gt;= ldivisor) &#123; <span class="comment">// deal with leftovers</span></div><div class="line">            ldividend -= ldivisor;</div><div class="line">            result++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sign * result;      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         

@@ -239,291 +239,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/12/leetcode/086-partition-list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/10/12/leetcode/086-partition-list/" itemprop="url">086. Partition List</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T10:21:46+11:00">
-                2017-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>Keep a tail pointer when we need the end node.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">partition</span><span class="params">(ListNode head, <span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    ListNode leftHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);        </div><div class="line">    ListNode left = leftHead;        </div><div class="line">    ListNode rightHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode right = rightHead;</div><div class="line">    ListNode next = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</div><div class="line">        next = head.next;</div><div class="line">        head.next = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (head.val &lt; x) &#123;</div><div class="line">            left.next = head;</div><div class="line">            left = head;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            right.next = head;</div><div class="line">            right = head;</div><div class="line">        &#125;</div><div class="line">        head = next;</div><div class="line">    &#125;</div><div class="line">    left.next = rightHead.next; <span class="comment">// left = leftHead if no elements were sorted to left</span></div><div class="line">    <span class="keyword">return</span> leftHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/" itemprop="url">237.Delete Node in a Linked List</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T10:21:46+11:00">
-                2017-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1-accepted-3ms"><a href="#Solution-1-accepted-3ms" class="headerlink" title="Solution 1: accepted 3ms"></a>Solution 1: accepted 3ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (node != <span class="keyword">null</span> &amp;&amp; node.next != <span class="keyword">null</span>) &#123; <span class="comment">// not necessary in the question's scope</span></div><div class="line">        node.val = node.next.val;</div><div class="line">        node.next = node.next.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/12/leetcode/141-linked-list-cycle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -619,6 +334,149 @@
           
             <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>The use of dummy is optional. If we do <code>fast = head</code>, we need to verify that <code>head != null</code>.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</div><div class="line">    dummy.next = head;</div><div class="line">    ListNode fast = dummy;</div><div class="line">    ListNode slow = dummy;</div><div class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span> &amp;&amp; fast.next.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line">        <span class="keyword">if</span> (fast == slow) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/12/leetcode/086-partition-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/10/12/leetcode/086-partition-list/" itemprop="url">086. Partition List</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T10:21:46+11:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>Keep a tail pointer when we need the end node.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">partition</span><span class="params">(ListNode head, <span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    ListNode leftHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);        </div><div class="line">    ListNode left = leftHead;        </div><div class="line">    ListNode rightHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode right = rightHead;</div><div class="line">    ListNode next = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</div><div class="line">        next = head.next;</div><div class="line">        head.next = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (head.val &lt; x) &#123;</div><div class="line">            left.next = head;</div><div class="line">            left = head;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            right.next = head;</div><div class="line">            right = head;</div><div class="line">        &#125;</div><div class="line">        head = next;</div><div class="line">    &#125;</div><div class="line">    left.next = rightHead.next; <span class="comment">// left = leftHead if no elements were sorted to left</span></div><div class="line">    <span class="keyword">return</span> leftHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -816,6 +674,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/" itemprop="url">237.Delete Node in a Linked List</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T10:21:46+11:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted-3ms"><a href="#Solution-1-accepted-3ms" class="headerlink" title="Solution 1: accepted 3ms"></a>Solution 1: accepted 3ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (node != <span class="keyword">null</span> &amp;&amp; node.next != <span class="keyword">null</span>) &#123; <span class="comment">// not necessary in the question's scope</span></div><div class="line">        node.val = node.next.val;</div><div class="line">        node.next = node.next.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/11/system-design/user-system/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -870,7 +870,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/system-design/" itemprop="url" rel="index">
+                  <a href="/blog/categories/System-Design/" itemprop="url" rel="index">
                     <span itemprop="name">System Design</span>
                   </a>
                 </span>
@@ -1032,7 +1032,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/general/" itemprop="url" rel="index">
+                  <a href="/blog/categories/General/" itemprop="url" rel="index">
                     <span itemprop="name">General</span>
                   </a>
                 </span>
@@ -1184,7 +1184,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/system-design/" itemprop="url" rel="index">
+                  <a href="/blog/categories/System-Design/" itemprop="url" rel="index">
                     <span itemprop="name">System Design</span>
                   </a>
                 </span>
@@ -1383,7 +1383,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/general/" itemprop="url" rel="index">
+                  <a href="/blog/categories/General/" itemprop="url" rel="index">
                     <span itemprop="name">General</span>
                   </a>
                 </span>
@@ -1477,7 +1477,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/155-min-stack/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/232-implement-queue-using-stacks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1496,7 +1496,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/28/leetcode/155-min-stack/" itemprop="url">155.Min Stack</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/28/leetcode/232-implement-queue-using-stacks/" itemprop="url">232.Implement Queue using Stacks</a></h1>
         
 
         <div class="post-meta">
@@ -1570,9 +1570,8 @@
       
         
           
-            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;]</div><div class="line">[[],[512],[-1024],[-1024],[512],[],[],[],[],[],[]]</div><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;top&quot;,&quot;getMin&quot;]</div><div class="line">[[],[-2],[0],[-3],[],[],[],[]]</div><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;]</div><div class="line">[[],[0],[1],[0],[],[],[]]</div><div class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;top&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;push&quot;,&quot;top&quot;,&quot;getMin&quot;,&quot;push&quot;,&quot;top&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;getMin&quot;]</div><div class="line">[[],[2147483646],[2147483646],[2147483647],[],[],[],[],[],[],[2147483647],[],[],[-2147483648],[],[],[],[]]</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-111ms"><a href="#Solution-1-accepted-111ms" class="headerlink" title="Solution 1: accepted 111ms"></a>Solution 1: accepted 111ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; master;    </div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; min;</div><div class="line"></div><div class="line">    <span class="comment">/** initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MinStack</span><span class="params">()</span> </span>&#123;</div><div class="line">        master = <span class="keyword">new</span> Stack&lt;&gt;();    </div><div class="line">        min = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        master.push(x);</div><div class="line">        <span class="keyword">if</span> (min.size() == <span class="number">0</span> || min.peek() &gt;= x) &#123;  <span class="comment">// &gt;= rather than &gt;, there could be multiple minimum values</span></div><div class="line">            min.push(x);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (master.pop().equals(min.peek())) &#123;  <span class="comment">// Integer, use equals not ==</span></div><div class="line">            min.pop();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> master.peek();   </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> min.peek();    </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow-up:"></a>Follow-up:</h2><p>If the given numbers have a lot of duplicates, how to optimize the space use of the min stack?<br>We now maintain <code>&lt;number, the index of the number when it&#39;s added&gt;</code> in the <code>min</code> stack and we only pop it when the current index is equal or smaller than the index of the top element in the <code>min</code> stack. As a result, we also need a <code>int count</code> to track the index.  </p>
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Amortized O(1) operations: pop() and peek().  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; input;</div><div class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; output;</div><div class="line">    </div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyQueue</span><span class="params">()</span> </span>&#123;</div><div class="line">        input = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        output = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Push element x to the back of queue. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        input.push(x);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Removes the element from in front of queue and returns that element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (output.isEmpty()) &#123;</div><div class="line">            <span class="keyword">while</span> (!input.isEmpty()) &#123;</div><div class="line">                output.push(input.pop());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output.isEmpty()? <span class="number">1</span> : output.pop();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Get the front element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123; <span class="comment">// similar to pop()</span></div><div class="line">        <span class="keyword">if</span> (output.isEmpty()) &#123;</div><div class="line">            <span class="keyword">while</span> (!input.isEmpty()) &#123;</div><div class="line">                output.push(input.pop());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output.isEmpty()? <span class="number">1</span> : output.peek();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Returns whether the queue is empty. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> input.isEmpty() &amp;&amp; output.isEmpty();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1621,7 +1620,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/150-evaluate-reverse-polish-notation/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/28/leetcode/203-remove-linked-list-elements/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1640,7 +1639,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/28/leetcode/150-evaluate-reverse-polish-notation/" itemprop="url">150.Evaluate Reverse Polish Notation</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/28/leetcode/203-remove-linked-list-elements/" itemprop="url">203.Remove Linked List Elements</a></h1>
         
 
         <div class="post-meta">
@@ -1714,9 +1713,8 @@
       
         
           
-            <h2 id="Solution-1-accepted-12ms-86"><a href="#Solution-1-accepted-12ms-86" class="headerlink" title="Solution 1: accepted: 12ms 86%"></a>Solution 1: accepted: 12ms 86%</h2><p>As long as we realize this question is best resolved using stacks, we should be fine. So we need to be clear about when to use stack: When we scan from left to right and always need to look back.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">evalRPN</span><span class="params">(String[] tokens)</span> </span>&#123;</div><div class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tokens.length; i++) &#123;</div><div class="line">            String cur = tokens[i];  <span class="comment">// without it its 14ms</span></div><div class="line">             <span class="keyword">if</span> (cur.equals(<span class="string">"+"</span>)) &#123;</div><div class="line">                 stack.push(stack.pop() + stack.pop());</div><div class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur.equals(<span class="string">"-"</span>)) &#123;</div><div class="line">                 stack.push(-stack.pop() + stack.pop());</div><div class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur.equals(<span class="string">"*"</span>)) &#123;</div><div class="line">                 stack.push(stack.pop() * stack.pop());</div><div class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur.equals(<span class="string">"/"</span>)) &#123;</div><div class="line">                 <span class="keyword">int</span> n2 = stack.pop();</div><div class="line">                 <span class="keyword">int</span> n1 = stack.pop();</div><div class="line">                 stack.push(n1 / n2);</div><div class="line">             &#125; <span class="keyword">else</span> &#123;</div><div class="line">                 stack.push(Integer.parseInt(cur));</div><div class="line">             &#125;   </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> stack.pop();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><em>How to convert standard arithmetic expressions to Reverse Polish Notation(RPN), aka postfix notation?</em></p>
+            <h2 id="Solution-1-accepted-2ms"><a href="#Solution-1-accepted-2ms" class="headerlink" title="Solution 1: accepted 2ms"></a>Solution 1: accepted 2ms</h2><p>Should be the most straight forward solution.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeElements</span><span class="params">(ListNode head, <span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">        dummy.next = head;</div><div class="line">        ListNode result = dummy;</div><div class="line">        <span class="keyword">while</span> (dummy.next != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (dummy.next.val == val) &#123;</div><div class="line">                dummy.next = dummy.next.next;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                dummy = dummy.next;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         

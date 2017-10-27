@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/279-perfect-squares/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/054-spiral-matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/279-perfect-squares/" itemprop="url">279.Perfect Squares</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/054-spiral-matrix/" itemprop="url">054.Spiral Matrix</a></h1>
         
 
         <div class="post-meta">
@@ -332,296 +332,8 @@
       
         
           
-            <h2 id="Solution-1-accepted-48ms"><a href="#Solution-1-accepted-48ms" class="headerlink" title="Solution 1: accepted 48ms"></a>Solution 1: accepted 48ms</h2><ol>
-<li>Base case: dp[0] = 0;  </li>
-<li>Induction rule:<br><strong>dp[i] = min(dp[i - j <em> j] + 1) where j </em> j &lt;= i</strong><br>dp[1] = dp[0] + 1 = 1;<br>dp[2] = dp[1] + 1 = 2;<br>dp[3] = dp[3] + 1 = 3;<br>dp[4] = min(dp[4-1<em>1=3] + 1, dp[4-2</em>2=0] + 1) = 1;  </li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</div><div class="line">    Arrays.fill(dp, Integer.MAX_VALUE);</div><div class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> j = <span class="number">1</span>; </div><div class="line">        <span class="keyword">while</span> (j * j &lt;= i) &#123;</div><div class="line">            dp[i] = Math.min(dp[i], dp[i - j * j] + <span class="number">1</span>);</div><div class="line">            j++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dp[n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/038-count-and-say/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/038-count-and-say/" itemprop="url">038.Count and Say</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>This is a hard one.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	    	StringBuilder curr=<span class="keyword">new</span> StringBuilder(<span class="string">"1"</span>);</div><div class="line">	    	StringBuilder prev;</div><div class="line">	    	<span class="keyword">int</span> count;</div><div class="line">	    	<span class="keyword">char</span> say;</div><div class="line">	        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line">	        	prev=curr;</div><div class="line">	 	        curr=<span class="keyword">new</span> StringBuilder();       </div><div class="line">	 	        count=<span class="number">1</span>;</div><div class="line">	 	        say=prev.charAt(<span class="number">0</span>);</div><div class="line">	 	        </div><div class="line">	 	        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>,len=prev.length();j&lt;len;j++)&#123;</div><div class="line">	 	        	<span class="keyword">if</span> (prev.charAt(j)!=say)&#123;</div><div class="line">	 	        		curr.append(count).append(say);</div><div class="line">	 	        		count=<span class="number">1</span>;</div><div class="line">	 	        		say=prev.charAt(j);</div><div class="line">	 	        	&#125;</div><div class="line">	 	        	<span class="keyword">else</span> count++;</div><div class="line">	 	        &#125;</div><div class="line">	 	        curr.append(count).append(say);</div><div class="line">	        &#125;	       	        </div><div class="line">	        <span class="keyword">return</span> curr.toString();</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/048-rotate-image/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/048-rotate-image/" itemprop="url">048.Rotate Image</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;matrix.length; i++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j&lt;matrix[<span class="number">0</span>].length; j++)&#123;</div><div class="line">                <span class="keyword">int</span> temp = <span class="number">0</span>;</div><div class="line">                temp = matrix[i][j];</div><div class="line">                matrix[i][j] = matrix[j][i];</div><div class="line">                matrix[j][i] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ; i&lt;matrix.length; i++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j&lt;matrix.length/<span class="number">2</span>; j++)&#123;</div><div class="line">                <span class="keyword">int</span> temp = <span class="number">0</span>;</div><div class="line">                temp = matrix[i][j];</div><div class="line">                matrix[i][j] = matrix[i][matrix.length-<span class="number">1</span>-j];</div><div class="line">                matrix[i][matrix.length-<span class="number">1</span>-j] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <p>##Solution 2: accepted</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> m = matrix.length;<span class="comment">// rows</span></div><div class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> result;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].length;<span class="comment">// columns</span></div><div class="line">        <span class="keyword">int</span> topOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> rightOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> bottomOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> leftOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            <span class="comment">// top</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = leftOffset; i &lt; n - rightOffset; i++) &#123;</div><div class="line">                result.add(matrix[topOffset][i]);</div><div class="line">            &#125;</div><div class="line">            topOffset++;</div><div class="line">            <span class="keyword">if</span> (topOffset + bottomOffset == m) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// right</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = topOffset; i &lt; m - bottomOffset; i++) &#123;</div><div class="line">                result.add(matrix[i][n - <span class="number">1</span> - rightOffset]);</div><div class="line">            &#125;</div><div class="line">            rightOffset++;</div><div class="line">            <span class="keyword">if</span> (leftOffset + rightOffset == n) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// bottom</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span> - rightOffset; i &gt;= leftOffset; i--) &#123;</div><div class="line">                result.add(matrix[m - <span class="number">1</span> - bottomOffset][i]);</div><div class="line">            &#125;</div><div class="line">            bottomOffset++;</div><div class="line">            <span class="keyword">if</span> (topOffset + bottomOffset == m) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// left</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = m - <span class="number">1</span> - bottomOffset; i &gt;= topOffset; i--) &#123;</div><div class="line">                result.add(matrix[i][leftOffset]);</div><div class="line">            &#125;</div><div class="line">            leftOffset++;</div><div class="line">            <span class="keyword">if</span> (leftOffset + rightOffset == n) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -815,7 +527,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/054-spiral-matrix/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/056-merge-intervals/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -834,7 +546,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/054-spiral-matrix/" itemprop="url">054.Spiral Matrix</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/056-merge-intervals/" itemprop="url">056.Merge Intervals</a></h1>
         
 
         <div class="post-meta">
@@ -908,8 +620,9 @@
       
         
           
-            <p>##Solution 2: accepted</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> m = matrix.length;<span class="comment">// rows</span></div><div class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> result;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].length;<span class="comment">// columns</span></div><div class="line">        <span class="keyword">int</span> topOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> rightOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> bottomOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> leftOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            <span class="comment">// top</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = leftOffset; i &lt; n - rightOffset; i++) &#123;</div><div class="line">                result.add(matrix[topOffset][i]);</div><div class="line">            &#125;</div><div class="line">            topOffset++;</div><div class="line">            <span class="keyword">if</span> (topOffset + bottomOffset == m) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// right</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = topOffset; i &lt; m - bottomOffset; i++) &#123;</div><div class="line">                result.add(matrix[i][n - <span class="number">1</span> - rightOffset]);</div><div class="line">            &#125;</div><div class="line">            rightOffset++;</div><div class="line">            <span class="keyword">if</span> (leftOffset + rightOffset == n) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// bottom</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span> - rightOffset; i &gt;= leftOffset; i--) &#123;</div><div class="line">                result.add(matrix[m - <span class="number">1</span> - bottomOffset][i]);</div><div class="line">            &#125;</div><div class="line">            bottomOffset++;</div><div class="line">            <span class="keyword">if</span> (topOffset + bottomOffset == m) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// left</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = m - <span class="number">1</span> - bottomOffset; i &gt;= topOffset; i--) &#123;</div><div class="line">                result.add(matrix[i][leftOffset]);</div><div class="line">            &#125;</div><div class="line">            leftOffset++;</div><div class="line">            <span class="keyword">if</span> (leftOffset + rightOffset == n) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted-28ms-59"><a href="#Solution-1-accepted-28ms-59" class="headerlink" title="Solution 1: accepted 28ms 59%"></a>Solution 1: accepted 28ms 59%</h2><p>Time: O(2n)<br>Space: O(n)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (intervals.size() &lt; <span class="number">2</span>) </div><div class="line">            <span class="keyword">return</span> intervals;</div><div class="line"></div><div class="line">        List&lt;Interval&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Collections.sort(intervals, <span class="keyword">new</span> IntervalComparator());</div><div class="line">        </div><div class="line">        Interval temp = <span class="keyword">new</span> Interval();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.size() - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (intervals.get(i).end &lt; intervals.get(i + <span class="number">1</span>).start) &#123;</div><div class="line">                result.add(intervals.get(i));</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (intervals.get(i).start == intervals.get(i + <span class="number">1</span>).start) &#123;</div><div class="line">                intervals.get(i + <span class="number">1</span>).end = Math.max(intervals.get(i).end, intervals.get(i + <span class="number">1</span>).end);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                intervals.get(i + <span class="number">1</span>).start = intervals.get(i).start;</div><div class="line">                intervals.get(i + <span class="number">1</span>).end = Math.max(intervals.get(i).end, intervals.get(i + <span class="number">1</span>).end);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        result.add(intervals.get(intervals.size() - <span class="number">1</span>));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">IntervalComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Interval</span>&gt; </span>&#123;</div><div class="line">        </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval a, Interval b)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span> (a.start &lt; b.start)</div><div class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (a.start &gt; b.start)</div><div class="line">                <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span> </div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Simplified"><a href="#Simplified" class="headerlink" title="Simplified"></a>Simplified</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (intervals.size() &lt; <span class="number">2</span>) </div><div class="line">            <span class="keyword">return</span> intervals;</div><div class="line"></div><div class="line">        List&lt;Interval&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Collections.sort(intervals, <span class="keyword">new</span> Comparator&lt;Interval&gt;() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval a, Interval b)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> a.start - b.start;</div><div class="line">        &#125;</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        Interval temp = <span class="keyword">new</span> Interval();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.size() - <span class="number">1</span>; i++) &#123;</div><div class="line">            Interval current = intervals.get(i);</div><div class="line">            Interval next = intervals.get(i + <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> (current.end &lt; next.start) &#123;</div><div class="line">                result.add(current);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                next.start = current.start;</div><div class="line">                next.end = Math.max(current.end, next.end);</div><div class="line">            &#125; </div><div class="line">        &#125;</div><div class="line">        result.add(intervals.get(intervals.size() - <span class="number">1</span>));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1105,6 +818,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/058-length-of-last-word/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/058-length-of-last-word/" itemprop="url">058.Length of Last Word</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&quot;&quot;</div><div class="line">&quot;Hello World&quot;</div><div class="line">&quot;OneWord&quot;</div><div class="line">&quot;Space &quot;</div><div class="line">&quot; Space&quot;</div><div class="line">&quot;b   a    &quot;</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-5ms"><a href="#Solution-1-accepted-5ms" class="headerlink" title="Solution 1: accepted 5ms"></a>Solution 1: accepted 5ms</h2><p>Time: O(n)<br>Space: O(1)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    s = s.trim();</div><div class="line">    <span class="keyword">int</span> len = s.length();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="keyword">if</span> (s.charAt(i) == <span class="string">' '</span>) &#123;</div><div class="line">            <span class="keyword">return</span> len - i- <span class="number">1</span>;</div><div class="line">            <span class="comment">// return s.substring(i + 1, len).length();  // improved</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> len == <span class="number">0</span>? <span class="number">0</span> : len;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Other-solutions"><a href="#Other-solutions" class="headerlink" title="Other solutions"></a>Other solutions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> s.trim().length()-s.trim().lastIndexOf(<span class="string">" "</span>)-<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        String s1 = s.trim();</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = s1.length() - <span class="number">1</span>; i &gt;=<span class="number">0</span>; i--)&#123;</div><div class="line">            <span class="keyword">if</span> (s1.charAt(i) != <span class="string">' '</span>)&#123;</div><div class="line">                count ++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">       <span class="keyword">return</span> count; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/059-spiral-matrix-ii/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1199,6 +1058,293 @@
         
           
             <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] generateMatrix(<span class="keyword">int</span> n) &#123;</div><div class="line">	<span class="keyword">int</span>[][] ret = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</div><div class="line">	<span class="keyword">int</span> left = <span class="number">0</span>,top = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> right = n -<span class="number">1</span>,down = n - <span class="number">1</span>;</div><div class="line">	<span class="keyword">int</span> count = <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (left &lt;= right) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = left; j &lt;= right; j ++) &#123;</div><div class="line">			ret[top][j] = count++;</div><div class="line">		&#125;</div><div class="line">		top ++;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = top; i &lt;= down; i ++) &#123;</div><div class="line">			ret[i][right] = count ++;</div><div class="line">		&#125;</div><div class="line">		right --;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = right; j &gt;= left; j --) &#123;</div><div class="line">			ret[down][j] = count ++;</div><div class="line">		&#125;</div><div class="line">		down --;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = down; i &gt;= top; i --) &#123;</div><div class="line">			ret[i][left] = count ++;</div><div class="line">		&#125;</div><div class="line">		left ++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ret;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/038-count-and-say/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/038-count-and-say/" itemprop="url">038.Count and Say</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>This is a hard one.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	    	StringBuilder curr=<span class="keyword">new</span> StringBuilder(<span class="string">"1"</span>);</div><div class="line">	    	StringBuilder prev;</div><div class="line">	    	<span class="keyword">int</span> count;</div><div class="line">	    	<span class="keyword">char</span> say;</div><div class="line">	        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line">	        	prev=curr;</div><div class="line">	 	        curr=<span class="keyword">new</span> StringBuilder();       </div><div class="line">	 	        count=<span class="number">1</span>;</div><div class="line">	 	        say=prev.charAt(<span class="number">0</span>);</div><div class="line">	 	        </div><div class="line">	 	        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>,len=prev.length();j&lt;len;j++)&#123;</div><div class="line">	 	        	<span class="keyword">if</span> (prev.charAt(j)!=say)&#123;</div><div class="line">	 	        		curr.append(count).append(say);</div><div class="line">	 	        		count=<span class="number">1</span>;</div><div class="line">	 	        		say=prev.charAt(j);</div><div class="line">	 	        	&#125;</div><div class="line">	 	        	<span class="keyword">else</span> count++;</div><div class="line">	 	        &#125;</div><div class="line">	 	        curr.append(count).append(say);</div><div class="line">	        &#125;	       	        </div><div class="line">	        <span class="keyword">return</span> curr.toString();</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/062-unique-paths1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/062-unique-paths1/" itemprop="url">062.Unique Paths1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>Two-dimension DP: For ways to current position, w(current), equals to ways to its top plus ways to its left, w(current) = w(top) + w(left).<br>Time: O(m<em>n)<br>Space: O(m</em>n)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">      <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">              <span class="keyword">if</span>(i==<span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) </div><div class="line">                  dp[i][i] = <span class="number">1</span>;</div><div class="line">              <span class="keyword">else</span></div><div class="line">                  dp[i][j] = dp[Math.max(<span class="number">0</span>, i-<span class="number">1</span>)][j] + dp[i][Math.max(<span class="number">0</span>, j-<span class="number">1</span>)];</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> dp[m-<span class="number">1</span>][n-<span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2:"></a>Solution 2:</h2><p>One-dimension DP.  </p>
 
           
         
@@ -1390,7 +1536,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/056-merge-intervals/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/036-valid-sudoku/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1409,7 +1555,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/056-merge-intervals/" itemprop="url">056.Merge Intervals</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/036-valid-sudoku/" itemprop="url">036.Valid Sudoku</a></h1>
         
 
         <div class="post-meta">
@@ -1483,155 +1629,9 @@
       
         
           
-            <h2 id="Solution-1-accepted-28ms-59"><a href="#Solution-1-accepted-28ms-59" class="headerlink" title="Solution 1: accepted 28ms 59%"></a>Solution 1: accepted 28ms 59%</h2><p>Time: O(2n)<br>Space: O(n)  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (intervals.size() &lt; <span class="number">2</span>) </div><div class="line">            <span class="keyword">return</span> intervals;</div><div class="line"></div><div class="line">        List&lt;Interval&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Collections.sort(intervals, <span class="keyword">new</span> IntervalComparator());</div><div class="line">        </div><div class="line">        Interval temp = <span class="keyword">new</span> Interval();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.size() - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (intervals.get(i).end &lt; intervals.get(i + <span class="number">1</span>).start) &#123;</div><div class="line">                result.add(intervals.get(i));</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (intervals.get(i).start == intervals.get(i + <span class="number">1</span>).start) &#123;</div><div class="line">                intervals.get(i + <span class="number">1</span>).end = Math.max(intervals.get(i).end, intervals.get(i + <span class="number">1</span>).end);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                intervals.get(i + <span class="number">1</span>).start = intervals.get(i).start;</div><div class="line">                intervals.get(i + <span class="number">1</span>).end = Math.max(intervals.get(i).end, intervals.get(i + <span class="number">1</span>).end);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        result.add(intervals.get(intervals.size() - <span class="number">1</span>));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">IntervalComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Interval</span>&gt; </span>&#123;</div><div class="line">        </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval a, Interval b)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span> (a.start &lt; b.start)</div><div class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (a.start &gt; b.start)</div><div class="line">                <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span> </div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="Simplified"><a href="#Simplified" class="headerlink" title="Simplified"></a>Simplified</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (intervals.size() &lt; <span class="number">2</span>) </div><div class="line">            <span class="keyword">return</span> intervals;</div><div class="line"></div><div class="line">        List&lt;Interval&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Collections.sort(intervals, <span class="keyword">new</span> Comparator&lt;Interval&gt;() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval a, Interval b)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> a.start - b.start;</div><div class="line">        &#125;</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        Interval temp = <span class="keyword">new</span> Interval();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.size() - <span class="number">1</span>; i++) &#123;</div><div class="line">            Interval current = intervals.get(i);</div><div class="line">            Interval next = intervals.get(i + <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> (current.end &lt; next.start) &#123;</div><div class="line">                result.add(current);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                next.start = current.start;</div><div class="line">                next.end = Math.max(current.end, next.end);</div><div class="line">            &#125; </div><div class="line">        &#125;</div><div class="line">        result.add(intervals.get(intervals.size() - <span class="number">1</span>));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/058-length-of-last-word/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/058-length-of-last-word/" itemprop="url">058.Length of Last Word</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&quot;&quot;</div><div class="line">&quot;Hello World&quot;</div><div class="line">&quot;OneWord&quot;</div><div class="line">&quot;Space &quot;</div><div class="line">&quot; Space&quot;</div><div class="line">&quot;b   a    &quot;</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-5ms"><a href="#Solution-1-accepted-5ms" class="headerlink" title="Solution 1: accepted 5ms"></a>Solution 1: accepted 5ms</h2><p>Time: O(n)<br>Space: O(1)  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    s = s.trim();</div><div class="line">    <span class="keyword">int</span> len = s.length();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="keyword">if</span> (s.charAt(i) == <span class="string">' '</span>) &#123;</div><div class="line">            <span class="keyword">return</span> len - i- <span class="number">1</span>;</div><div class="line">            <span class="comment">// return s.substring(i + 1, len).length();  // improved</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> len == <span class="number">0</span>? <span class="number">0</span> : len;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Other-solutions"><a href="#Other-solutions" class="headerlink" title="Other solutions"></a>Other solutions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> s.trim().length()-s.trim().lastIndexOf(<span class="string">" "</span>)-<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        String s1 = s.trim();</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = s1.length() - <span class="number">1</span>; i &gt;=<span class="number">0</span>; i--)&#123;</div><div class="line">            <span class="keyword">if</span> (s1.charAt(i) != <span class="string">' '</span>)&#123;</div><div class="line">                count ++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">       <span class="keyword">return</span> count; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <p>We only need to make sure that the board is valid. The worst case is O(n^2) and we will surely come up with a better solution. </p>
+<h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Space for speed.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</div><div class="line">        HashSet&lt;Character&gt; rows = <span class="keyword">new</span> HashSet&lt;Character&gt;();</div><div class="line">        HashSet&lt;Character&gt; columns = <span class="keyword">new</span> HashSet&lt;Character&gt;();</div><div class="line">        HashSet&lt;Character&gt; cube = <span class="keyword">new</span> HashSet&lt;Character&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(board[i][j]!=<span class="string">'.'</span> &amp;&amp; !rows.add(board[i][j]))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">if</span>(board[j][i]!=<span class="string">'.'</span> &amp;&amp; !columns.add(board[j][i]))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">int</span> RowIndex = <span class="number">3</span>*(i/<span class="number">3</span>);</div><div class="line">            <span class="keyword">int</span> ColIndex = <span class="number">3</span>*(i%<span class="number">3</span>);</div><div class="line">            <span class="keyword">if</span>(board[RowIndex + j/<span class="number">3</span>][ColIndex + j%<span class="number">3</span>]!=<span class="string">'.'</span> &amp;&amp; !cube.add(board[RowIndex + j/<span class="number">3</span>][ColIndex + j%<span class="number">3</span>]))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
