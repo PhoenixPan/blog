@@ -79,20 +79,17 @@
 
 
 
-<meta name="description" content="First and foremostFirstly, read and follow the steps on this official instruction from CloudFlare. Do not change the auto-generated DNS rules unless you know what you are doing. Not working?Several th">
+<meta name="description" content="ScreenBasicAll commends lead by ctrl+a, followed by ? to check the entire reference.   c create new window n and p: next window / previous window w to see all windows (ctrl+)&amp;quot; goes directly to th">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Enable Https Connection For GithubPages With Custom Domain">
-<meta property="og:url" content="http://www.phoenixpan.com/blog/2017/10/07/enable-https-connection-for-github-pages-with-custom-domain/index.html">
+<meta property="og:title" content="Linux - screen">
+<meta property="og:url" content="http://www.phoenixpan.com/blog/2017/08/16/linux/screen/index.html">
 <meta property="og:site_name" content="Phoenix Pan&#39;s">
-<meta property="og:description" content="First and foremostFirstly, read and follow the steps on this official instruction from CloudFlare. Do not change the auto-generated DNS rules unless you know what you are doing. Not working?Several th">
+<meta property="og:description" content="ScreenBasicAll commends lead by ctrl+a, followed by ? to check the entire reference.   c create new window n and p: next window / previous window w to see all windows (ctrl+)&amp;quot; goes directly to th">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/31495829-cbeaa142-afa4-11e7-95da-af7f68dbf1bc.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/14355257/31495830-cd092e0e-afa4-11e7-9788-efb7559a5be9.png">
-<meta property="og:updated_time" content="2017-10-27T13:08:41.665Z">
+<meta property="og:updated_time" content="2017-10-27T13:07:40.544Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Enable Https Connection For GithubPages With Custom Domain">
-<meta name="twitter:description" content="First and foremostFirstly, read and follow the steps on this official instruction from CloudFlare. Do not change the auto-generated DNS rules unless you know what you are doing. Not working?Several th">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/14355257/31495829-cbeaa142-afa4-11e7-95da-af7f68dbf1bc.png">
+<meta name="twitter:title" content="Linux - screen">
+<meta name="twitter:description" content="ScreenBasicAll commends lead by ctrl+a, followed by ? to check the entire reference.   c create new window n and p: next window / previous window w to see all windows (ctrl+)&amp;quot; goes directly to th">
 
 
 
@@ -122,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://www.phoenixpan.com/blog/2017/10/07/enable-https-connection-for-github-pages-with-custom-domain/"/>
+  <link rel="canonical" href="http://www.phoenixpan.com/blog/2017/08/16/linux/screen/"/>
 
 
 
 
 
-  <title>Enable Https Connection For GithubPages With Custom Domain | Phoenix Pan's</title>
+  <title>Linux - screen | Phoenix Pan's</title>
   
 
 
@@ -245,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/07/enable-https-connection-for-github-pages-with-custom-domain/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/08/16/linux/screen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -262,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Enable Https Connection For GithubPages With Custom Domain</h1>
+          <h1 class="post-title" itemprop="name headline">Linux - screen</h1>
         
 
         <div class="post-meta">
@@ -274,8 +271,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-07T12:31:58+11:00">
-                2017-10-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-16T13:15:47+10:00">
+                2017-08-16
               </time>
             
 
@@ -297,8 +294,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/General/" itemprop="url" rel="index">
-                    <span itemprop="name">General</span>
+                  <a href="/blog/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -334,17 +331,26 @@
       
 
       
-        <h2 id="First-and-foremost"><a href="#First-and-foremost" class="headerlink" title="First and foremost"></a>First and foremost</h2><p>Firstly, read and follow the steps on this <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/" target="_blank" rel="external">official instruction</a> from CloudFlare. Do not change the auto-generated DNS rules unless you know what you are doing.</p>
-<h2 id="Not-working"><a href="#Not-working" class="headerlink" title="Not working?"></a>Not working?</h2><p>Several things you may need to change if your site is not working properly after you completed all the steps. Be aware, it <strong>takes a long time</strong> for the newly updated DNS to be effective, be patient and do not worry and change things randomly. I waited for about 24 hours. </p>
+        <h1 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h1><h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><p>All commends lead by <code>ctrl+a</code>, followed by <code>?</code> to check the entire reference. </p>
 <ol>
-<li>You need a <code>CNAME</code> file in your repo root, containing only one line: <code>yourdomain.com</code> <strong>OR</strong> <code>www.yourdomain.com</code>. It decides which domain will response by default. Personally, I prefer the one with <code>www</code></li>
-<li>Configure your DNS in CloudFlare:<br>The first rule enables <code>yourdomain.com</code> and the second enables <code>www.yourdomain.com</code><br><img src="https://user-images.githubusercontent.com/14355257/31495829-cbeaa142-afa4-11e7-95da-af7f68dbf1bc.png" alt="seetting1"> </li>
-<li>Configure your Page Rules to allow Https connections<br>Order matters!<br><img src="https://user-images.githubusercontent.com/14355257/31495830-cd092e0e-afa4-11e7-9788-efb7559a5be9.png" alt="seetting2"></li>
+<li><code>c</code> create new window</li>
+<li><code>n</code> and <code>p</code>: next window / previous window</li>
+<li><code>w</code> to see all windows</li>
+<li><code>(ctrl+)&quot;</code> goes directly to the wanted window</li>
+<li><code>A</code> change the window’s name (default: bash)</li>
+<li><code>k</code> kill this window</li>
+<li><code>\</code> quit screen and kill all windows</li>
+<li><code>d</code> detach from a screen session to the main console, <code>screen -r</code> return to the screen session</li>
+<li>What if we have multiple screen sessions? First, use <code>screen -ls</code> to check all screen sessions with ids, then use<code>screen -r 1234</code> to attach a certain session</li>
 </ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/" target="_blank" rel="external">https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/</a>  </li>
-<li><a href="https://www.jonathan-petitcolas.com/2017/01/13/using-https-with-custom-domain-name-on-github-pages.html" target="_blank" rel="external">https://www.jonathan-petitcolas.com/2017/01/13/using-https-with-custom-domain-name-on-github-pages.html</a>  </li>
+<h2 id="Keep-processes-running-after-we-disconnected"><a href="#Keep-processes-running-after-we-disconnected" class="headerlink" title="Keep processes running after we disconnected"></a>Keep processes running after we disconnected</h2><ol>
+<li>Enter screen by <code>screen</code></li>
+<li>Create a new window <code>c</code></li>
+<li>Run the process here</li>
+<li>Detach screen <code>d</code></li>
+<li>Disconnect</li>
 </ol>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-screen-on-an-ubuntu-cloud-server" target="_blank" rel="external">Reference1</a></p>
 
       
     </div>
@@ -369,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/10/06/configure-hexo-for-github-pages/" rel="next" title="Get Hexo running on Github Pages">
-                <i class="fa fa-chevron-left"></i> Get Hexo running on Github Pages
+              <a href="/blog/2017/07/28/15619-cloud-computing/twitter-analytics-web-service/" rel="next" title="Twitter Analytics Web Service">
+                <i class="fa fa-chevron-left"></i> Twitter Analytics Web Service
               </a>
             
           </div>
@@ -379,8 +385,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2017/10/09/news-feeds-system/" rel="prev" title="News Feed System">
-                News Feed System <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2017/09/13/leetcode/063-unique-paths2/" rel="prev" title="063.Unique Paths2">
+                063.Unique Paths2 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -504,7 +510,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#First-and-foremost"><span class="nav-number">1.</span> <span class="nav-text">First and foremost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Not-working"><span class="nav-number">2.</span> <span class="nav-text">Not working?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Screen"><span class="nav-number">1.</span> <span class="nav-text">Screen</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic"><span class="nav-number">1.1.</span> <span class="nav-text">Basic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Keep-processes-running-after-we-disconnected"><span class="nav-number">1.2.</span> <span class="nav-text">Keep processes running after we disconnected</span></a></li></ol></li></ol></div>
             
 
           </div>

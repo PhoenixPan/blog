@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/088-merge-sorted-array/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/038-count-and-say/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/088-merge-sorted-array/" itemprop="url">088.Merge Sorted Array</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/038-count-and-say/" itemprop="url">038.Count and Say</a></h1>
         
 
         <div class="post-meta">
@@ -293,7 +293,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -332,10 +332,8 @@
       
         
           
-            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[1]</div><div class="line">1</div><div class="line">[]</div><div class="line">0</div><div class="line">[1,2,3,3,4,7,0,0,0]</div><div class="line">6</div><div class="line">[6,9,10]</div><div class="line">3</div><div class="line">[4,5,6,0,0,0]</div><div class="line">3</div><div class="line">[1,2,3]</div><div class="line">3</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-0ms"><a href="#Solution-1-accepted-0ms" class="headerlink" title="Solution 1: accepted 0ms"></a>Solution 1: accepted 0ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    m--;</div><div class="line">    n--;</div><div class="line">    <span class="keyword">while</span> (m &gt;= <span class="number">0</span> || n &gt;= <span class="number">0</span>) &#123;  <span class="comment">// this part is ugly</span></div><div class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;  <span class="comment">// not necessary, the rest of the nums1 is sorted</span></div><div class="line">            nums1[m + n + <span class="number">1</span>] = nums1[m];</div><div class="line">            m--;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (m &lt; <span class="number">0</span>) &#123;</div><div class="line">            nums1[m + n + <span class="number">1</span>] = nums2[n];  </div><div class="line">            n--;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[m] &gt;= nums2[n]) &#123;</div><div class="line">            nums1[m + n + <span class="number">1</span>] = nums1[m];</div><div class="line">            m--;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            nums1[m + n + <span class="number">1</span>] = nums2[n];</div><div class="line">            n--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="Conflict-can’t-avoid-we-need-two-loops"><a href="#Conflict-can’t-avoid-we-need-two-loops" class="headerlink" title="Conflict: can’t avoid, we need two loops"></a>Conflict: can’t avoid, we need two loops</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (n &lt; <span class="number">0</span> || nums1[m] &gt;= nums2[n]) &#123;  <span class="comment">// this line will raise error on nums2[n] when n &lt; 0</span></div><div class="line">    nums1[m + n + <span class="number">1</span>] = nums1[m];</div><div class="line">    m--;</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (m &lt; <span class="number">0</span> || nums2[n] &gt; nums1[m]) &#123;</div><div class="line">    nums1[m + n + <span class="number">1</span>] = nums2[n];</div><div class="line">    n--;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="Improved-version"><a href="#Improved-version" class="headerlink" title="Improved version"></a>Improved version</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    m--;</div><div class="line">    n--;</div><div class="line">    <span class="keyword">while</span> (m &gt;= <span class="number">0</span> &amp;&amp; n &gt;= <span class="number">0</span>) &#123;</div><div class="line">        nums1[m + n + <span class="number">1</span>] = nums1[m] &gt;= nums2[n]? nums1[m--] : nums2[n--];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (n &gt;= <span class="number">0</span>) &#123;  <span class="comment">// only need to deal with leftovers in nums2</span></div><div class="line">        nums1[m + n + <span class="number">1</span>] = nums2[n];</div><div class="line">        n--;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>This is a hard one.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	    	StringBuilder curr=<span class="keyword">new</span> StringBuilder(<span class="string">"1"</span>);</div><div class="line">	    	StringBuilder prev;</div><div class="line">	    	<span class="keyword">int</span> count;</div><div class="line">	    	<span class="keyword">char</span> say;</div><div class="line">	        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line">	        	prev=curr;</div><div class="line">	 	        curr=<span class="keyword">new</span> StringBuilder();       </div><div class="line">	 	        count=<span class="number">1</span>;</div><div class="line">	 	        say=prev.charAt(<span class="number">0</span>);</div><div class="line">	 	        </div><div class="line">	 	        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>,len=prev.length();j&lt;len;j++)&#123;</div><div class="line">	 	        	<span class="keyword">if</span> (prev.charAt(j)!=say)&#123;</div><div class="line">	 	        		curr.append(count).append(say);</div><div class="line">	 	        		count=<span class="number">1</span>;</div><div class="line">	 	        		say=prev.charAt(j);</div><div class="line">	 	        	&#125;</div><div class="line">	 	        	<span class="keyword">else</span> count++;</div><div class="line">	 	        &#125;</div><div class="line">	 	        curr.append(count).append(say);</div><div class="line">	        &#125;	       	        </div><div class="line">	        <span class="keyword">return</span> curr.toString();</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -384,7 +382,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/014-longest-common-prefix/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/008-string-to-integer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -403,7 +401,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/014-longest-common-prefix/" itemprop="url">014.Longest Common Prefix</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/008-string-to-integer/" itemprop="url">008.String To Integer</a></h1>
         
 
         <div class="post-meta">
@@ -438,7 +436,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -477,7 +475,12 @@
       
         
           
-            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String longestCommonPrefix(String[] strs) &#123;</div><div class="line">        int length = strs.length;</div><div class="line">        if (length == 0) &#123;</div><div class="line">            return &quot;&quot;;</div><div class="line">        &#125;</div><div class="line">        else if (length == 1)&#123;</div><div class="line">            return strs[0];</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            String answer = strs[0];</div><div class="line">            for (int i = 1; i &lt; length; i++) &#123;</div><div class="line">                if (answer.equals(&quot;&quot;))</div><div class="line">                    break;</div><div class="line">                else if (strs[i].startsWith(answer)) &#123;</div><div class="line">                   continue;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                	while (!strs[i].startsWith(answer)) &#123;</div><div class="line">                		answer = answer.substring(0, answer.length() - 1);</div><div class="line">                	&#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            return answer;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>A primitive solution that manipulates Strings. Spent 7 ms and beats 9.5%.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">public static int myAtoi(String str) &#123;</div><div class="line">	str = str.trim();</div><div class="line">	if (str.length() == 0)</div><div class="line">		return 0;</div><div class="line">	if ((str.charAt(0) &lt; &apos;0&apos; || str.charAt(0) &gt; &apos;9&apos;) &amp;&amp; str.charAt(0) != &apos;-&apos; &amp;&amp; str.charAt(0) != &apos;+&apos;) &#123;</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	String sign = &quot;&quot;;</div><div class="line">	int index = 0;</div><div class="line">	if (str.charAt(0) == &apos;-&apos; || str.charAt(0) == &apos;+&apos;) &#123;</div><div class="line">		index = 1;</div><div class="line">		if (str.length() == 1 || str.charAt(1) &lt; &apos;0&apos; || str.charAt(1) &gt; &apos;9&apos;)</div><div class="line">			return 0;</div><div class="line">		if (str.charAt(0) == &apos;-&apos;)</div><div class="line">			sign = &quot;-&quot;;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	StringBuilder sb = new StringBuilder();</div><div class="line">	for (int i = index; i &lt; str.length(); i++) &#123;</div><div class="line">		if (str.charAt(i) &gt;= 48 &amp;&amp; str.charAt(i) &lt;= 57) &#123;</div><div class="line">			sb.append(str.charAt(i));</div><div class="line">		&#125; else</div><div class="line">			break;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	String value = sb.toString();</div><div class="line">	if (value.length() &gt;= 10 &amp;&amp; sign.equals(&quot;-&quot;)) &#123;</div><div class="line">		if (value.length() &gt;= 11)</div><div class="line">			return Integer.parseInt(&quot;-2147483648&quot;);</div><div class="line">		else if (value.length() == 10 &amp;&amp; value.compareTo(&quot;2147483648&quot;) &gt; 0)</div><div class="line">			return Integer.parseInt(&quot;-2147483648&quot;);</div><div class="line">		else</div><div class="line">			return Integer.parseInt(sign + value);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	else if (value.length() &gt;= 10 &amp;&amp; sign.equals(&quot;&quot;)) &#123;</div><div class="line">		if (value.length() &gt;= 11)</div><div class="line">			return Integer.parseInt(&quot;2147483647&quot;);</div><div class="line">		else if (value.length() == 10 &amp;&amp; value.compareTo(&quot;2147483647&quot;) &gt; 0)</div><div class="line">			return Integer.parseInt(&quot;2147483647&quot;);</div><div class="line">		else</div><div class="line">			return Integer.parseInt(value);</div><div class="line">	&#125; else</div><div class="line">		return Integer.parseInt(sign + value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-2-accepted"><a href="#Solution-2-accepted" class="headerlink" title="Solution 2: accepted"></a>Solution 2: accepted</h2><p>Improved based on the first one, it now beats 14.9%.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">public static int myAtoi(String str) &#123;</div><div class="line"></div><div class="line">	int max = Integer.MAX_VALUE;</div><div class="line">	int min = Integer.MIN_VALUE;</div><div class="line">	int sign = 1;</div><div class="line">	boolean start = false;</div><div class="line">	StringBuilder sb = new StringBuilder();</div><div class="line"></div><div class="line">	for (int i = 0; i &lt; str.length(); i++) &#123;</div><div class="line">		char thisChar = str.charAt(i);</div><div class="line">		if (thisChar == &apos; &apos; &amp;&amp; !start) &#123;</div><div class="line">			continue;</div><div class="line">		&#125; else if ((thisChar == &apos;-&apos; || thisChar == &apos;+&apos;) &amp;&amp; !start) &#123;</div><div class="line">			start = true;</div><div class="line">			if (thisChar == &apos;-&apos;)</div><div class="line">				sign = -1;</div><div class="line">		&#125; else if (thisChar &lt; &apos;0&apos; || thisChar &gt; &apos;9&apos;)</div><div class="line">			break;</div><div class="line">		else &#123;</div><div class="line">			start = true;</div><div class="line">			sb.append(thisChar);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	if (sb.length() == 0)</div><div class="line">		return 0;</div><div class="line"></div><div class="line">	String value = sb.toString();</div><div class="line">	if (value.length() &gt;= 10 &amp;&amp; sign == -1) &#123;</div><div class="line">		if (value.length() &gt;= 11)</div><div class="line">			return min;</div><div class="line">		else if (value.length() == 10 &amp;&amp; value.compareTo(&quot;2147483648&quot;) &gt;= 0)</div><div class="line">			return min;</div><div class="line">		else</div><div class="line">			return Integer.parseInt(value) * sign;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	else if (value.length() &gt;= 10 &amp;&amp; sign == 1) &#123;</div><div class="line">		if (value.length() &gt;= 11)</div><div class="line">			return max;</div><div class="line">		else if (value.length() == 10 &amp;&amp; value.compareTo(&quot;2147483647&quot;) &gt;= 0)</div><div class="line">			return max;</div><div class="line">		else</div><div class="line">			return Integer.parseInt(value);</div><div class="line">	&#125; else</div><div class="line">		return Integer.parseInt(value) * sign;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-3-accepted"><a href="#Solution-3-accepted" class="headerlink" title="Solution 3: accepted"></a>Solution 3: accepted</h2><p>Manipulate numbers are more efficient than manipulating Strings. Now we have 85%.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public static int myAtoi(String str) &#123;</div><div class="line">	int max = Integer.MAX_VALUE;</div><div class="line">	int min = Integer.MIN_VALUE;</div><div class="line">	int digit; </div><div class="line">	int result = 0; </div><div class="line">	boolean isNegative = false;</div><div class="line">	boolean start = false; //whether we have the first valid character </div><div class="line"></div><div class="line">	for (int i = 0; i &lt; str.length(); i++) &#123;</div><div class="line">		char thisChar = str.charAt(i);</div><div class="line">		if (!start &amp;&amp; thisChar == &apos; &apos;) &#123;</div><div class="line">			continue;</div><div class="line">		&#125; else if (!start &amp;&amp; (thisChar == &apos;-&apos; || thisChar == &apos;+&apos;)) &#123;</div><div class="line">			start = true;</div><div class="line">			if (thisChar == &apos;-&apos;)</div><div class="line">				isNegative = true;</div><div class="line">		&#125; else if (thisChar &lt; &apos;0&apos; || thisChar &gt; &apos;9&apos;)</div><div class="line">			break;</div><div class="line">		else &#123;</div><div class="line">			start = true;</div><div class="line">			digit = thisChar - &apos;0&apos;;</div><div class="line">			if (result &gt; max / 10 || (result == max / 10 &amp;&amp; digit &gt; 7)) &#123; // 7 is max % 10</div><div class="line">				if (isNegative)</div><div class="line">					return min;</div><div class="line">				else</div><div class="line">					return max;</div><div class="line">			&#125;</div><div class="line">			result = result * 10 + digit;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -580,7 +583,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -677,7 +680,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/013-roman-to-integer/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/002-add-two-numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -696,7 +699,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/013-roman-to-integer/" itemprop="url">013.Roman To Integer</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/002-add-two-numbers/" itemprop="url">002.Add two numbers</a></h1>
         
 
         <div class="post-meta">
@@ -731,7 +734,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -770,12 +773,8 @@
       
         
           
-            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int romanToInt(String s) &#123;</div><div class="line">	int num = 0;</div><div class="line">	int length = s.length();</div><div class="line">	char[] input = s.toCharArray();</div><div class="line">	HashMap&lt;Character, Integer&gt; mymap = new HashMap&lt;Character, Integer&gt;();	</div><div class="line">    mymap.put(&apos;I&apos;,1);</div><div class="line">	mymap.put(&apos;V&apos;,5);</div><div class="line">	mymap.put(&apos;X&apos;,10);</div><div class="line">	mymap.put(&apos;L&apos;,50);</div><div class="line">	mymap.put(&apos;C&apos;,100);</div><div class="line">	mymap.put(&apos;D&apos;,500);</div><div class="line">	mymap.put(&apos;M&apos;,1000);</div><div class="line">    	</div><div class="line">	for (int i = length - 1; i &gt;= 0; i--) &#123;</div><div class="line">        char current = input[i];</div><div class="line">		    </div><div class="line">        if (i == length - 1) &#123;</div><div class="line">            num += mymap.get(current);</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        char after = input[i + 1];</div><div class="line">        </div><div class="line">		if (mymap.get(current) &lt; mymap.get(after)) </div><div class="line">		    num -= mymap.get(current);</div><div class="line">		else </div><div class="line">		    num += mymap.get(current);</div><div class="line">	&#125;	</div><div class="line">	return num;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>30 to 37~45.62 (15-16ms)<br>from char[] input = s.toCharArray()<br>to s.charAt(i)  </p>
-<p>25 to 30<br>from char current<br>to int current  </p>
-<p>18 to 25:<br>from  after = input[i +1]<br>to after = current   </p>
-<p>Doesn’t make difference:<br>length<br>charAt / char[]  </p>
-<h2 id="Solution-2-accepted"><a href="#Solution-2-accepted" class="headerlink" title="Solution 2: accepted"></a>Solution 2: accepted</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int romanToInt(String s) &#123;</div><div class="line">	int num = 0;</div><div class="line">	int after = 0;</div><div class="line">	int length = s.length();</div><div class="line">	</div><div class="line">	HashMap&lt;Character, Integer&gt; mymap = new HashMap&lt;Character, Integer&gt;();	</div><div class="line">    mymap.put(&apos;I&apos;,1);</div><div class="line">	mymap.put(&apos;V&apos;,5);</div><div class="line">	mymap.put(&apos;X&apos;,10);</div><div class="line">	mymap.put(&apos;L&apos;,50);</div><div class="line">	mymap.put(&apos;C&apos;,100);</div><div class="line">	mymap.put(&apos;D&apos;,500);</div><div class="line">	mymap.put(&apos;M&apos;,1000);</div><div class="line">    	</div><div class="line">	for (int i = length - 1; i &gt;= 0; i--) &#123;</div><div class="line">        int current = mymap.get(s.charAt(i));</div><div class="line">		    </div><div class="line">        if (i == length - 1) &#123;</div><div class="line">            num += current;</div><div class="line">            after = current;</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">		if (current &lt; after) </div><div class="line">		    num -= current;</div><div class="line">		else </div><div class="line">		    num += current;</div><div class="line">		after = current;</div><div class="line">	&#125;	</div><div class="line">	return num;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Try to make it simple and readable.<br>Be aware of the concepts of reference and pointer, know how Java pass values.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</div><div class="line">        </div><div class="line">        ListNode output = new ListNode(0);</div><div class="line">        ListNode operation = output;</div><div class="line">        int carry = 0;</div><div class="line">        </div><div class="line">        if (l1 == null &amp;&amp; l2 == null)</div><div class="line">            return l1;</div><div class="line">        </div><div class="line">        while (l1 != null || l2 != null || carry &gt; 0) &#123; </div><div class="line">            int num1 = l1 == null ? 0 : l1.val;</div><div class="line">            int num2 = l2 == null ? 0 : l2.val;</div><div class="line">            int sum = num1 + num2 + carry;           // Get the total of all numbers, which could exceed 9</div><div class="line">            carry = sum / 10;                        // Get the carry</div><div class="line">            </div><div class="line">            operation.next = new ListNode(sum % 10); // Only take the remainder</div><div class="line">            operation = operation.next;</div><div class="line"></div><div class="line">            if (l1 != null)                          // Avoid NPE for .next</div><div class="line">                l1 = l1.next == null? null : l1.next;</div><div class="line">            if (l2 != null)</div><div class="line">                l2 = l2.next == null? null : l2.next;</div><div class="line">    </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        return output.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -878,7 +877,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -922,6 +921,155 @@
 <h2 id="Solution-2-accepted-261ms"><a href="#Solution-2-accepted-261ms" class="headerlink" title="Solution 2: accepted 261ms"></a>Solution 2: accepted 261ms</h2><p>Simplified. But do we need to check the entire number?</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt; <span class="number">0</span> &amp;&amp; x % <span class="number">10</span> == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">int</span> original = x;</div><div class="line">    <span class="keyword">int</span> reverse = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</div><div class="line">        reverse = reverse * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">        x /= <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> reverse == original;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h5 id="Improvement-accepted-221ms"><a href="#Improvement-accepted-221ms" class="headerlink" title="Improvement: accepted 221ms"></a>Improvement: accepted 221ms</h5><p>We only need to check half of the number<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt; <span class="number">0</span> &amp;&amp; x % <span class="number">10</span> == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">int</span> reverse = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (x &gt; reverse) &#123;</div><div class="line">        reverse = reverse * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">        x /= <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> (x == reverse || x == reverse/<span class="number">10</span>);  <span class="comment">// for 123321 and 12321</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/005-longest-palindromic-substring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/005-longest-palindromic-substring/" itemprop="url">005.Longest Palindromic substring</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1��-time-limit-exceeded"><a href="#Solution-1��-time-limit-exceeded" class="headerlink" title="Solution 1��? time limit exceeded"></a>Solution 1��? time limit exceeded</h2><p>Time: O(n^2), Space: O(1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String longestPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() &lt; 2)</div><div class="line">            return s;</div><div class="line">            </div><div class="line">        String output = &quot;&quot;;</div><div class="line">        </div><div class="line">        for (int i = 0; i &lt; s.length(); i++) &#123;</div><div class="line">           for (int j = 0; j &lt; i + 1; j++) &#123;</div><div class="line">               int start = j;</div><div class="line">               int end = i;</div><div class="line">               while (s.charAt(start) == s.charAt(end)) &#123;</div><div class="line">                   if (end - start == 2 || end - start == 1) &#123;</div><div class="line">                        output = output.length() &gt;= s.substring(j,i + 1).length()? output: s.substring(j,i + 1);</div><div class="line">                        break;</div><div class="line">                   &#125;</div><div class="line">                   if (end == 0 || start == i)</div><div class="line">                       break;</div><div class="line">                   start++;</div><div class="line">                   end--;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">        &#125;</div><div class="line">    return output;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Mutation: Replacing string manipulation with int values, but it dones’t improve the performance.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String longestPalindrome(String s) &#123;</div><div class="line">        </div><div class="line">        int length = s.length();</div><div class="line">        int startLocation = 0;</div><div class="line">        int longestLength = 0;</div><div class="line">        if (s == null || length &lt; 2)</div><div class="line">            return s;</div><div class="line">        </div><div class="line">        for (int i = 0; i &lt; length; i++) &#123;</div><div class="line">           for (int j = 0; j &lt; i + 1; j++) &#123;</div><div class="line">               int start = j;</div><div class="line">               int end = i;</div><div class="line">               while (s.charAt(start) == s.charAt(end)) &#123;</div><div class="line">                   if (end - start == 2 || end - start == 1) &#123;</div><div class="line">                        if (longestLength &lt; i - j + 1) &#123;</div><div class="line">                            startLocation = j;</div><div class="line">                            longestLength = i - j + 1;</div><div class="line">                        &#125;</div><div class="line">                        break;</div><div class="line">                   &#125;</div><div class="line">                   if (end == 0 || start == i)</div><div class="line">                       break;</div><div class="line">                   start++;</div><div class="line">                   end--;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">        &#125;</div><div class="line">    return s.substring(startLocation, startLocation + longestLength);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Solution-2-accepted-37"><a href="#Solution-2-accepted-37" class="headerlink" title="Solution 2: accepted, 37%"></a>Solution 2: accepted, 37%</h2><p>中间��?��?   </p>
+<p>Time: O(2 n^2), Space: O(1)<br>avoid unnecessary check, but still O(n^2), failed the “aaaaaaaa…” test case.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">public static String longestPalindrome(String s) &#123;</div><div class="line">	if (s == null || s.length() &lt; 2) return s;</div><div class="line">    	int len = s.length();</div><div class="line">    	int start = 0;</div><div class="line">    	int max = 0;</div><div class="line">        for(int i = 0; i &lt; len; i++) &#123; </div><div class="line">        	// break if it&apos;s not possible to find longer output</div><div class="line">        	if (len - i &lt; max / 2)</div><div class="line">        		break;</div><div class="line">        	</div><div class="line">        	// for &quot;aba&quot;</div><div class="line">        	int left = i;</div><div class="line">        	int right = i;</div><div class="line">        	while (left &gt;= 0 &amp;&amp; right &lt; len &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</div><div class="line">        		left--;</div><div class="line">        		right++;</div><div class="line">        	&#125;</div><div class="line">        	if (right - left - 2 &gt;= max) &#123;</div><div class="line">        		max = right - left - 2;</div><div class="line">        		start = left + 1;</div><div class="line">        	&#125;    	</div><div class="line">        	</div><div class="line">        	// for &quot;abba&quot;</div><div class="line">        	left = i;</div><div class="line">        	right = i + 1;</div><div class="line">        	while (left &gt;= 0 &amp;&amp; right &lt; len &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</div><div class="line">        		left--;</div><div class="line">        		right++;</div><div class="line">        	&#125;</div><div class="line">        	if (right - left - 2 &gt;= max) &#123;</div><div class="line">        		max = right - left - 2;</div><div class="line">        		start = left + 1;</div><div class="line">        	&#125;    	</div><div class="line">        &#125;        </div><div class="line">        return s.substring(start, start + max + 1);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>We should be able to cut the time to half by check “aba” and “abba” in the same loop:</p>
+<h2 id="Solution-3-accepted-99"><a href="#Solution-3-accepted-99" class="headerlink" title="Solution 3: accepted, 99%"></a>Solution 3: accepted, 99%</h2><p>Amaing boost in performace simply because I changed the duplicated code block in solution 2 to method. Is this the truth?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    private int start, max;</div><div class="line"></div><div class="line">    public String longestPalindrome(String s) &#123;</div><div class="line">        if (s == null || s.length() &lt; 2) return s;</div><div class="line">    	int len = s.length();</div><div class="line">        for(int i = 0; i &lt; len; i++) &#123; </div><div class="line">        	// break if it&apos;s not possible to find longer output</div><div class="line">        	if (len - i &lt; max / 2)</div><div class="line">        		break;</div><div class="line">        	extendPalindrome(s, i, i);</div><div class="line">        	extendPalindrome(s, i, i + 1);</div><div class="line">        &#125;        </div><div class="line">        return s.substring(start, start + max);</div><div class="line">    &#125;</div><div class="line">    private void extendPalindrome(String s, int left, int right) &#123;</div><div class="line">        while (left &gt;= 0 &amp;&amp; right &lt; s.length() &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</div><div class="line">    		left--;</div><div class="line">    		right++;</div><div class="line">    	&#125;</div><div class="line">    	if (max &lt; right - left - 1) &#123;</div><div class="line">    		start = left + 1;</div><div class="line">    		max = right - left - 1;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Test-case-1"><a href="#Test-case-1" class="headerlink" title="Test case 1"></a>Test case 1</h2><p>Solution 1: ~100ms<br>Solution 2: ~6ms  (without “len - i &lt; output.length() / 2” it will be 10ms and will not be accepted)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">System.out.println(longestPalindrome(&quot;&quot;) + &quot;/&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;a&quot;) + &quot;/a&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aa&quot;) + &quot;/aa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aaa&quot;) + &quot;/aaa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;abc&quot;) + &quot;/a&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aabaa&quot;) + &quot;/aabaa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;ababababa&quot;) + &quot;/ababababa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kaba&quot;) + &quot;/aba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;abak&quot;) + &quot;/aba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kabad&quot;) + &quot;/aba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kabba&quot;) + &quot;/abba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kabbad&quot;) + &quot;/abba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aaaakabbad&quot;) + &quot;/aaaa&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;kabbadaaaa&quot;) + &quot;/abba&quot;);</div><div class="line">System.out.println(longestPalindrome(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;));</div></pre></td></tr></table></figure>
 
           
         
@@ -1024,7 +1172,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -1114,7 +1262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/007-reverse-integer/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/013-roman-to-integer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1133,7 +1281,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/007-reverse-integer/" itemprop="url">007.Reverse Integer</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/013-roman-to-integer/" itemprop="url">013.Roman To Integer</a></h1>
         
 
         <div class="post-meta">
@@ -1168,7 +1316,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -1207,13 +1355,12 @@
       
         
           
-            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">10000</div><div class="line">123321</div><div class="line">-2147483412</div><div class="line">2147483412</div><div class="line">-2147483648</div><div class="line">2147483647</div><div class="line">1534236469</div><div class="line">-1534236469</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Basicly hard code, not wise at all.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> reversed = <span class="number">0</span>;</div><div class="line">    	<span class="keyword">int</span> digit = <span class="number">0</span>;</div><div class="line">    	<span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</div><div class="line">		<span class="keyword">if</span> (digit == <span class="number">9</span>) &#123;<span class="comment">//2147483648</span></div><div class="line">			<span class="keyword">if</span> (reversed &gt; <span class="number">214748364</span> || reversed &lt; -<span class="number">214748364</span>)</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (reversed == <span class="number">214748364</span> &amp;&amp; x % <span class="number">10</span> &gt;<span class="number">7</span>)</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (reversed == -<span class="number">214748364</span> &amp;&amp; x % <span class="number">10</span> &gt;<span class="number">8</span>)</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// not happening as input is int</span></div><div class="line">		&#125;</div><div class="line">    		reversed = reversed * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">    		x = x / <span class="number">10</span>;</div><div class="line">		digit++;</div><div class="line">        &#125;</div><div class="line">	<span class="keyword">return</span> reversed;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution-2-accepted-41ms-54"><a href="#Solution-2-accepted-41ms-54" class="headerlink" title="Solution 2: accepted 41ms, 54%"></a>Solution 2: accepted 41ms, 54%</h2><p>Concise and fast. A smart way to detect overflow.   </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> reversed = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (x != <span class="number">0</span>) &#123; <span class="comment">// x could be negative</span></div><div class="line">    <span class="keyword">int</span> before = reversed;</div><div class="line">    <span class="keyword">int</span> tail = x % <span class="number">10</span>; <span class="comment">// this improves speed</span></div><div class="line">    reversed = reversed * <span class="number">10</span> + tail;</div><div class="line">    <span class="keyword">if</span> ((reversed - tail) / <span class="number">10</span> != before)  <span class="comment">// check overflow</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    x /= <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> reversed;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution-3-accepted-36ms-92"><a href="#Solution-3-accepted-36ms-92" class="headerlink" title="Solution 3: accepted 36ms 92%"></a>Solution 3: accepted 36ms 92%</h2><p>Even more concise and faster! Jump out of the “box”!  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">  <span class="keyword">long</span> reversed = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</div><div class="line">    reversed = reversed * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">    <span class="keyword">if</span> (reversed &gt; Integer.MAX_VALUE || reversed &lt; Integer.MIN_VALUE )</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    x /= <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> (<span class="keyword">int</span>)reversed;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int romanToInt(String s) &#123;</div><div class="line">	int num = 0;</div><div class="line">	int length = s.length();</div><div class="line">	char[] input = s.toCharArray();</div><div class="line">	HashMap&lt;Character, Integer&gt; mymap = new HashMap&lt;Character, Integer&gt;();	</div><div class="line">    mymap.put(&apos;I&apos;,1);</div><div class="line">	mymap.put(&apos;V&apos;,5);</div><div class="line">	mymap.put(&apos;X&apos;,10);</div><div class="line">	mymap.put(&apos;L&apos;,50);</div><div class="line">	mymap.put(&apos;C&apos;,100);</div><div class="line">	mymap.put(&apos;D&apos;,500);</div><div class="line">	mymap.put(&apos;M&apos;,1000);</div><div class="line">    	</div><div class="line">	for (int i = length - 1; i &gt;= 0; i--) &#123;</div><div class="line">        char current = input[i];</div><div class="line">		    </div><div class="line">        if (i == length - 1) &#123;</div><div class="line">            num += mymap.get(current);</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        char after = input[i + 1];</div><div class="line">        </div><div class="line">		if (mymap.get(current) &lt; mymap.get(after)) </div><div class="line">		    num -= mymap.get(current);</div><div class="line">		else </div><div class="line">		    num += mymap.get(current);</div><div class="line">	&#125;	</div><div class="line">	return num;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>30 to 37~45.62 (15-16ms)<br>from char[] input = s.toCharArray()<br>to s.charAt(i)  </p>
+<p>25 to 30<br>from char current<br>to int current  </p>
+<p>18 to 25:<br>from  after = input[i +1]<br>to after = current   </p>
+<p>Doesn’t make difference:<br>length<br>charAt / char[]  </p>
+<h2 id="Solution-2-accepted"><a href="#Solution-2-accepted" class="headerlink" title="Solution 2: accepted"></a>Solution 2: accepted</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int romanToInt(String s) &#123;</div><div class="line">	int num = 0;</div><div class="line">	int after = 0;</div><div class="line">	int length = s.length();</div><div class="line">	</div><div class="line">	HashMap&lt;Character, Integer&gt; mymap = new HashMap&lt;Character, Integer&gt;();	</div><div class="line">    mymap.put(&apos;I&apos;,1);</div><div class="line">	mymap.put(&apos;V&apos;,5);</div><div class="line">	mymap.put(&apos;X&apos;,10);</div><div class="line">	mymap.put(&apos;L&apos;,50);</div><div class="line">	mymap.put(&apos;C&apos;,100);</div><div class="line">	mymap.put(&apos;D&apos;,500);</div><div class="line">	mymap.put(&apos;M&apos;,1000);</div><div class="line">    	</div><div class="line">	for (int i = length - 1; i &gt;= 0; i--) &#123;</div><div class="line">        int current = mymap.get(s.charAt(i));</div><div class="line">		    </div><div class="line">        if (i == length - 1) &#123;</div><div class="line">            num += current;</div><div class="line">            after = current;</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">		if (current &lt; after) </div><div class="line">		    num -= current;</div><div class="line">		else </div><div class="line">		    num += current;</div><div class="line">		after = current;</div><div class="line">	&#125;	</div><div class="line">	return num;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1316,7 +1463,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -1459,7 +1606,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -1500,149 +1647,6 @@
           
             <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Use -1 as flag of inbalanced tree. Use another variable for better practice in production.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> maxDepth(root) != -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> left = maxDepth(root.left);</div><div class="line">        <span class="keyword">int</span> right = maxDepth(root.right);</div><div class="line">        <span class="keyword">if</span> (Math.abs(left - right) &gt; <span class="number">1</span> || left == -<span class="number">1</span> || right == -<span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Math.max(left, right) + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/111-minimum-depth-of-binary-tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/111-minimum-depth-of-binary-tree/" itemprop="url">111.Minimum Depth of Binary Tree</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>DFS.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">int</span> left = minDepth(root.left);</div><div class="line">            <span class="keyword">int</span> right = minDepth(root.right);</div><div class="line">            <span class="keyword">if</span> (root.left == <span class="keyword">null</span> || root.right == <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="keyword">return</span> Math.max(left, right) + <span class="number">1</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> Math.min(left, right) + <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         

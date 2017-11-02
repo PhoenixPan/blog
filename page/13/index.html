@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/062-unique-paths1/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/056-merge-intervals/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/062-unique-paths1/" itemprop="url">062.Unique Paths1</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/056-merge-intervals/" itemprop="url">056.Merge Intervals</a></h1>
         
 
         <div class="post-meta">
@@ -293,7 +293,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -332,9 +332,9 @@
       
         
           
-            <h2 id="Solution-1-accepted-1ms"><a href="#Solution-1-accepted-1ms" class="headerlink" title="Solution 1: accepted 1ms"></a>Solution 1: accepted 1ms</h2><p>Two-dimension DP: For ways to current position, w(current), equals to ways to its top plus ways to its left, w(current) = w(top) + w(left).<br>Time: O(m<em>n)<br>Space: O(m</em>n)  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">      <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">              <span class="keyword">if</span>(i==<span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) </div><div class="line">                  dp[i][i] = <span class="number">1</span>;</div><div class="line">              <span class="keyword">else</span></div><div class="line">                  dp[i][j] = dp[Math.max(<span class="number">0</span>, i-<span class="number">1</span>)][j] + dp[i][Math.max(<span class="number">0</span>, j-<span class="number">1</span>)];</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> dp[m-<span class="number">1</span>][n-<span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2:"></a>Solution 2:</h2><p>One-dimension DP.  </p>
+            <h2 id="Solution-1-accepted-28ms-59"><a href="#Solution-1-accepted-28ms-59" class="headerlink" title="Solution 1: accepted 28ms 59%"></a>Solution 1: accepted 28ms 59%</h2><p>Time: O(2n)<br>Space: O(n)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (intervals.size() &lt; <span class="number">2</span>) </div><div class="line">            <span class="keyword">return</span> intervals;</div><div class="line"></div><div class="line">        List&lt;Interval&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Collections.sort(intervals, <span class="keyword">new</span> IntervalComparator());</div><div class="line">        </div><div class="line">        Interval temp = <span class="keyword">new</span> Interval();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.size() - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (intervals.get(i).end &lt; intervals.get(i + <span class="number">1</span>).start) &#123;</div><div class="line">                result.add(intervals.get(i));</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (intervals.get(i).start == intervals.get(i + <span class="number">1</span>).start) &#123;</div><div class="line">                intervals.get(i + <span class="number">1</span>).end = Math.max(intervals.get(i).end, intervals.get(i + <span class="number">1</span>).end);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                intervals.get(i + <span class="number">1</span>).start = intervals.get(i).start;</div><div class="line">                intervals.get(i + <span class="number">1</span>).end = Math.max(intervals.get(i).end, intervals.get(i + <span class="number">1</span>).end);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        result.add(intervals.get(intervals.size() - <span class="number">1</span>));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">IntervalComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Interval</span>&gt; </span>&#123;</div><div class="line">        </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval a, Interval b)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span> (a.start &lt; b.start)</div><div class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (a.start &gt; b.start)</div><div class="line">                <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span> </div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Simplified"><a href="#Simplified" class="headerlink" title="Simplified"></a>Simplified</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (intervals.size() &lt; <span class="number">2</span>) </div><div class="line">            <span class="keyword">return</span> intervals;</div><div class="line"></div><div class="line">        List&lt;Interval&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        Collections.sort(intervals, <span class="keyword">new</span> Comparator&lt;Interval&gt;() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval a, Interval b)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> a.start - b.start;</div><div class="line">        &#125;</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        Interval temp = <span class="keyword">new</span> Interval();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.size() - <span class="number">1</span>; i++) &#123;</div><div class="line">            Interval current = intervals.get(i);</div><div class="line">            Interval next = intervals.get(i + <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> (current.end &lt; next.start) &#123;</div><div class="line">                result.add(current);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                next.start = current.start;</div><div class="line">                next.end = Math.max(current.end, next.end);</div><div class="line">            &#125; </div><div class="line">        &#125;</div><div class="line">        result.add(intervals.get(intervals.size() - <span class="number">1</span>));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -383,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/058-length-of-last-word/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/014-longest-common-prefix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -402,7 +402,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/058-length-of-last-word/" itemprop="url">058.Length of Last Word</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/014-longest-common-prefix/" itemprop="url">014.Longest Common Prefix</a></h1>
         
 
         <div class="post-meta">
@@ -437,7 +437,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -476,11 +476,7 @@
       
         
           
-            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&quot;&quot;</div><div class="line">&quot;Hello World&quot;</div><div class="line">&quot;OneWord&quot;</div><div class="line">&quot;Space &quot;</div><div class="line">&quot; Space&quot;</div><div class="line">&quot;b   a    &quot;</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-5ms"><a href="#Solution-1-accepted-5ms" class="headerlink" title="Solution 1: accepted 5ms"></a>Solution 1: accepted 5ms</h2><p>Time: O(n)<br>Space: O(1)  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    s = s.trim();</div><div class="line">    <span class="keyword">int</span> len = s.length();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="keyword">if</span> (s.charAt(i) == <span class="string">' '</span>) &#123;</div><div class="line">            <span class="keyword">return</span> len - i- <span class="number">1</span>;</div><div class="line">            <span class="comment">// return s.substring(i + 1, len).length();  // improved</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> len == <span class="number">0</span>? <span class="number">0</span> : len;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Other-solutions"><a href="#Other-solutions" class="headerlink" title="Other solutions"></a>Other solutions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> s.trim().length()-s.trim().lastIndexOf(<span class="string">" "</span>)-<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        String s1 = s.trim();</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = s1.length() - <span class="number">1</span>; i &gt;=<span class="number">0</span>; i--)&#123;</div><div class="line">            <span class="keyword">if</span> (s1.charAt(i) != <span class="string">' '</span>)&#123;</div><div class="line">                count ++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">       <span class="keyword">return</span> count; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String longestCommonPrefix(String[] strs) &#123;</div><div class="line">        int length = strs.length;</div><div class="line">        if (length == 0) &#123;</div><div class="line">            return &quot;&quot;;</div><div class="line">        &#125;</div><div class="line">        else if (length == 1)&#123;</div><div class="line">            return strs[0];</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            String answer = strs[0];</div><div class="line">            for (int i = 1; i &lt; length; i++) &#123;</div><div class="line">                if (answer.equals(&quot;&quot;))</div><div class="line">                    break;</div><div class="line">                else if (strs[i].startsWith(answer)) &#123;</div><div class="line">                   continue;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                	while (!strs[i].startsWith(answer)) &#123;</div><div class="line">                		answer = answer.substring(0, answer.length() - 1);</div><div class="line">                	&#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            return answer;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -529,7 +525,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/001-two-sum/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/063-unique-paths2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -548,7 +544,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/001-two-sum/" itemprop="url">001.Two sum</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/063-unique-paths2/" itemprop="url">063.Unique Paths2</a></h1>
         
 
         <div class="post-meta">
@@ -583,7 +579,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -622,22 +618,11 @@
       
         
           
-            <h2 id="Solution-1-time-limit-exceeded"><a href="#Solution-1-time-limit-exceeded" class="headerlink" title="Solution 1: time limit exceeded"></a>Solution 1: time limit exceeded</h2><p>Time complexity: O(n^2)<br>Space complexity: O(1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public static int[] twoSum(int[] nums, int target) &#123;</div><div class="line">  if (nums == null)</div><div class="line">    return null;</div><div class="line">    </div><div class="line">  int len = nums.length;</div><div class="line">        </div><div class="line">  for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">    for (int j = i + 1; j &lt; nums.length; j++) &#123;</div><div class="line">      if (nums[i] + nums[j] == target) &#123;</div><div class="line">        System.out.println(i + &quot; &quot; + j);</div><div class="line">        return new int[] &#123;i,j&#125;;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return new int[] &#123;0,0&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Solution-2-accepted"><a href="#Solution-2-accepted" class="headerlink" title="Solution 2: accepted"></a>Solution 2: accepted</h2><p>Two-pass hashing, using Hashmap to reduce the time for each lookup to O(1).  </p>
-<p>Time complexity: O(n)<br>Space complexity: O(n)  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public static int[] twoSumMap(int[] nums, int target) &#123;</div><div class="line">  if (nums == null)</div><div class="line">  return null;</div><div class="line">    </div><div class="line">  Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();</div><div class="line">  for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">    int complement = target - nums[i];</div><div class="line">    if (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123; // Can&apos;t use any element twice</div><div class="line">      return new int[] &#123;i, map.get(complement)&#125;;</div><div class="line">    &#125;</div><div class="line">    map.put(nums[i], i);</div><div class="line">  &#125;</div><div class="line">  return null;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution 3"></a>Solution 3</h2><p>Array Approaching  </p>
-<p>Time complexity: O(nlogn + n) (time used to sort the array should be counted)<br>Space complexity: O(n)  </p>
-<p>We can also use array. We order the array first and then we find the indices of the minimum (0) and the maximum (n-1), and then add these two numbers together and compare the result with the target. If the result is larget than the target, we decrement the maximum index, otherwise we increment the minimum index.</p>
-<h2 id="Other-Notes"><a href="#Other-Notes" class="headerlink" title="Other Notes"></a>Other Notes</h2><ol>
-<li><p>Creating a temporary array almost does not cost time: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int[] array = new int[2];</div><div class="line">array[0] = i;                      same as      return new int[] &#123;i, j&#125;;</div><div class="line">array[1] = j;                      ======&gt;</div><div class="line">return array;</div></pre></td></tr></table></figure>
-</li>
-<li><p>Should verify the input;</p>
-</li>
-<li>Should return null while the result is not excepted;</li>
-<li>Define nums.length to get a tiny gain;</li>
-</ol>
+            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[0,0]]</div><div class="line">[[0,0,0],[0,1,0],[0,0,0]]</div><div class="line">[[0,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,0,0]]</div><div class="line">[[0,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,0,1]]</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-2ms"><a href="#Solution-1-accepted-2ms" class="headerlink" title="Solution 1: accepted 2ms"></a>Solution 1: accepted 2ms</h2><p>DP: do we really need to create another grid? Nope.<br>Time: O(mn)<br>Space: O(2mn)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="keyword">int</span>[][] obstacleGrid)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (obstacleGrid[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> m = obstacleGrid[<span class="number">0</span>].length;</div><div class="line">    <span class="keyword">int</span> n = obstacleGrid.length;</div><div class="line"></div><div class="line">    <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="keyword">if</span>(i==<span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) &#123; </div><div class="line">                dp[i][i] = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (obstacleGrid[j][i] == <span class="number">1</span>)</div><div class="line">                    dp[i][j] = <span class="number">0</span>;</div><div class="line">                <span class="keyword">else</span> </div><div class="line">                    dp[i][j] = dp[Math.max(<span class="number">0</span>, i-<span class="number">1</span>)][j] + dp[i][Math.max(<span class="number">0</span>, j-<span class="number">1</span>)];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dp[m-<span class="number">1</span>][n-<span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-2-accepted-2ms"><a href="#Solution-2-accepted-2ms" class="headerlink" title="Solution 2: accepted 2ms"></a>Solution 2: accepted 2ms</h2><p>Time: O(mn)<br>Space: O(mn)   </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="keyword">int</span>[][] input)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (input[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> m = input[<span class="number">0</span>].length;</div><div class="line">    <span class="keyword">int</span> n = input.length;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="keyword">if</span>(i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) </div><div class="line">                input[j][i] = <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                input[j][i] = (input[j][i] == <span class="number">1</span>)? <span class="number">0</span> : input[Math.max(<span class="number">0</span>, j-<span class="number">1</span>)][i] + input[j][Math.max(<span class="number">0</span>, i-<span class="number">1</span>)];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> input[n-<span class="number">1</span>][m-<span class="number">1</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -686,7 +671,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/08/16/screen/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/08/16/linux/screen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -705,7 +690,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/08/16/screen/" itemprop="url">Linux - screen</a></h1>
+                <a class="post-title-link" href="/blog/2017/08/16/linux/screen/" itemprop="url">Linux - screen</a></h1>
         
 
         <div class="post-meta">
@@ -740,7 +725,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Linux/" itemprop="url" rel="index">
+                  <a href="/blog/categories/linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
                   </a>
                 </span>
@@ -847,7 +832,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/28/twitter-analytics-web-service/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/28/15619-cloud-computing/twitter-analytics-web-service/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -866,7 +851,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/28/twitter-analytics-web-service/" itemprop="url">Twitter Analytics Web Service</a></h1>
+                <a class="post-title-link" href="/blog/2017/07/28/15619-cloud-computing/twitter-analytics-web-service/" itemprop="url">Twitter Analytics Web Service</a></h1>
         
 
         <div class="post-meta">
@@ -901,7 +886,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>
@@ -988,7 +973,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/25/social-networking-timeline-with-heterogeneous-backends/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/25/15619-cloud-computing/social-networking-timeline-with-heterogeneous-backends/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1007,7 +992,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/25/social-networking-timeline-with-heterogeneous-backends/" itemprop="url">Social Networking Timeline with Heterogeneous Backends</a></h1>
+                <a class="post-title-link" href="/blog/2017/07/25/15619-cloud-computing/social-networking-timeline-with-heterogeneous-backends/" itemprop="url">Social Networking Timeline with Heterogeneous Backends</a></h1>
         
 
         <div class="post-meta">
@@ -1042,7 +1027,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>
@@ -1184,7 +1169,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/17/project3.2_guide/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/17/15619-cloud-computing/project3.2_guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1203,7 +1188,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/17/project3.2_guide/" itemprop="url">15619 Project3.2 Guide</a></h1>
+                <a class="post-title-link" href="/blog/2017/07/17/15619-cloud-computing/project3.2_guide/" itemprop="url">15619 Project3.2 Guide</a></h1>
         
 
         <div class="post-meta">
@@ -1238,7 +1223,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>
@@ -1335,7 +1320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/14/project3.1_guide/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/14/15619-cloud-computing/project3.1_guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1354,7 +1339,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/14/project3.1_guide/" itemprop="url">15619 Project3.1 Guide</a></h1>
+                <a class="post-title-link" href="/blog/2017/07/14/15619-cloud-computing/project3.1_guide/" itemprop="url">15619 Project3.1 Guide</a></h1>
         
 
         <div class="post-meta">
@@ -1389,7 +1374,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>
@@ -1555,7 +1540,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/12/project2.3_guide/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/12/15619-cloud-computing/project2.3_guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1574,7 +1559,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/12/project2.3_guide/" itemprop="url">15619 Project2.3 Guide</a></h1>
+                <a class="post-title-link" href="/blog/2017/07/12/15619-cloud-computing/project2.3_guide/" itemprop="url">15619 Project2.3 Guide</a></h1>
         
 
         <div class="post-meta">
@@ -1609,7 +1594,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>
@@ -1703,7 +1688,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/10/project2.1_guide/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/10/15619-cloud-computing/project2.1_guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1722,7 +1707,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/07/10/project2.1_guide/" itemprop="url">15619 Project2.1 Guide</a></h1>
+                <a class="post-title-link" href="/blog/2017/07/10/15619-cloud-computing/project2.1_guide/" itemprop="url">15619 Project2.1 Guide</a></h1>
         
 
         <div class="post-meta">
@@ -1757,7 +1742,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>

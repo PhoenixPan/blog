@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="Project2.1 Horizontal Scaling and Advanced Resource ScalingGoal: Using APIs to programatically control AWS Load Balancer and Auto Scaling Group. Workflow Create working instances Create an elastic loa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Twitter Analytics Web Service">
-<meta property="og:url" content="http://www.phoenixpan.com/blog/2017/07/28/twitter-analytics-web-service/index.html">
+<meta property="og:title" content="15619 Project2.1 Guide">
+<meta property="og:url" content="http://www.phoenixpan.com/blog/2017/07/10/15619-cloud-computing/project2.1_guide/index.html">
 <meta property="og:site_name" content="Phoenix Pan&#39;s">
+<meta property="og:description" content="Project2.1 Horizontal Scaling and Advanced Resource ScalingGoal: Using APIs to programatically control AWS Load Balancer and Auto Scaling Group. Workflow Create working instances Create an elastic loa">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-30T01:20:16.461Z">
+<meta property="og:updated_time" content="2017-10-10T14:17:22.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Twitter Analytics Web Service">
+<meta name="twitter:title" content="15619 Project2.1 Guide">
+<meta name="twitter:description" content="Project2.1 Horizontal Scaling and Advanced Resource ScalingGoal: Using APIs to programatically control AWS Load Balancer and Auto Scaling Group. Workflow Create working instances Create an elastic loa">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://www.phoenixpan.com/blog/2017/07/28/twitter-analytics-web-service/"/>
+  <link rel="canonical" href="http://www.phoenixpan.com/blog/2017/07/10/15619-cloud-computing/project2.1_guide/"/>
 
 
 
 
 
-  <title>Twitter Analytics Web Service | Phoenix Pan's</title>
+  <title>15619 Project2.1 Guide | Phoenix Pan's</title>
   
 
 
@@ -239,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/28/twitter-analytics-web-service/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/07/10/15619-cloud-computing/project2.1_guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -256,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Twitter Analytics Web Service</h1>
+          <h1 class="post-title" itemprop="name headline">15619 Project2.1 Guide</h1>
         
 
         <div class="post-meta">
@@ -268,8 +271,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-28T14:30:09+10:00">
-                2017-07-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-10T18:45:09+10:00">
+                2017-07-10
               </time>
             
 
@@ -291,7 +294,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/15619-Cloud-Computing/" itemprop="url" rel="index">
+                  <a href="/blog/categories/15619-cloud-computing/" itemprop="url" rel="index">
                     <span itemprop="name">15619 Cloud Computing</span>
                   </a>
                 </span>
@@ -328,7 +331,21 @@
       
 
       
-        
+        <h1 id="Project2-1-Horizontal-Scaling-and-Advanced-Resource-Scaling"><a href="#Project2-1-Horizontal-Scaling-and-Advanced-Resource-Scaling" class="headerlink" title="Project2.1 Horizontal Scaling and Advanced Resource Scaling"></a>Project2.1 Horizontal Scaling and Advanced Resource Scaling</h1><p>Goal: Using APIs to programatically control AWS Load Balancer and Auto Scaling Group.</p>
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Create working instances</li>
+<li>Create an elastic load balancer LB1: set up health check page</li>
+<li>Create an auto-scaling launch configuration</li>
+<li>Create an auto-scaling group: attach the ELB just created (advanced - load balancing) and use the same subnet</li>
+</ol>
+<h2 id="Elastic-Load-Balancer"><a href="#Elastic-Load-Balancer" class="headerlink" title="Elastic Load Balancer"></a>Elastic Load Balancer</h2><p>Elastic Load Balancer automatically divides traffic to connected instances and handles instance failures by doing health checks. The default distribution strategy is Round-Robin. If an instance is unhealthy, it will stop routing requests to it.</p>
+<h2 id="Auto-Scaling-Group"><a href="#Auto-Scaling-Group" class="headerlink" title="Auto Scaling Group"></a>Auto Scaling Group</h2><p>Auto Scaling Group automatically adds or removes identical resources by responding to changes in demands. </p>
+<p><strong>Auto Scaling Policy:</strong> Auto Scaling Group reacts when user-specified threadhols(i.e. CPU utilization) are triggered(by CloudWatch). It maintains a desired number(between specified minium and maximum) of instances at all times. It can also scale based on specific schedule(i.e. more server during the weekend). Auto Scaling Group does health checks as well. If an instance is unhealthy, it will launch new instances to replace them. </p>
+<p><strong>Auto Scaling Template:</strong>  instance AMI, instance type, key pairs, security group, etc. The applications in the instances should run automatically when the instances are up.</p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ol>
+<li>The auto-generated instances will NOT be tagged if you terminate it too soon after you launched them!</li>
+</ol>
+
       
     </div>
     
@@ -352,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/07/25/social-networking-timeline-with-heterogeneous-backends/" rel="next" title="Social Networking Timeline with Heterogeneous Backends">
-                <i class="fa fa-chevron-left"></i> Social Networking Timeline with Heterogeneous Backends
+              <a href="/blog/2017/07/09/15619-cloud-computing/project1.2-guide/" rel="next" title="15619 Project1.2 Guide">
+                <i class="fa fa-chevron-left"></i> 15619 Project1.2 Guide
               </a>
             
           </div>
@@ -362,8 +379,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2017/08/16/screen/" rel="prev" title="Linux - screen">
-                Linux - screen <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2017/07/12/15619-cloud-computing/project2.3_guide/" rel="prev" title="15619 Project2.3 Guide">
+                15619 Project2.3 Guide <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -414,8 +431,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -468,6 +494,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Project2-1-Horizontal-Scaling-and-Advanced-Resource-Scaling"><span class="nav-number">1.</span> <span class="nav-text">Project2.1 Horizontal Scaling and Advanced Resource Scaling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Workflow"><span class="nav-number">1.1.</span> <span class="nav-text">Workflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Load-Balancer"><span class="nav-number">1.2.</span> <span class="nav-text">Elastic Load Balancer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Auto-Scaling-Group"><span class="nav-number">1.3.</span> <span class="nav-text">Auto Scaling Group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">1.4.</span> <span class="nav-text">Tips</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
