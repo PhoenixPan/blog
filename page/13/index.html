@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode/059-spiral-matrix-ii" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/09/13/leetcode/059-spiral-matrix-ii/" class="article-date">
+  <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/leetcode/">LeetCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/09/13/leetcode/059-spiral-matrix-ii/">059.Spiral Matrix II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] generateMatrix(<span class="keyword">int</span> n) &#123;</div><div class="line">	<span class="keyword">int</span>[][] ret = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</div><div class="line">	<span class="keyword">int</span> left = <span class="number">0</span>,top = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> right = n -<span class="number">1</span>,down = n - <span class="number">1</span>;</div><div class="line">	<span class="keyword">int</span> count = <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (left &lt;= right) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = left; j &lt;= right; j ++) &#123;</div><div class="line">			ret[top][j] = count++;</div><div class="line">		&#125;</div><div class="line">		top ++;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = top; i &lt;= down; i ++) &#123;</div><div class="line">			ret[i][right] = count ++;</div><div class="line">		&#125;</div><div class="line">		right --;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = right; j &gt;= left; j --) &#123;</div><div class="line">			ret[down][j] = count ++;</div><div class="line">		&#125;</div><div class="line">		down --;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = down; i &gt;= top; i --) &#123;</div><div class="line">			ret[i][left] = count ++;</div><div class="line">		&#125;</div><div class="line">		left ++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ret;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/059-spiral-matrix-ii/" data-id="cj9iaz2pe00304wef4gm3kzzr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode/062-unique-paths1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2017/09/13/leetcode/062-unique-paths1/" class="article-date">
@@ -95,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/062-unique-paths1/" data-id="cj9iaukr90033nwefsimnox5r" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/062-unique-paths1/" data-id="cj9iaz2pf00324wefvhtoi0td" class="article-share-link">Share</a>
       
       
     </footer>
@@ -105,9 +146,9 @@
 
 
   
-    <article id="post-leetcode/064-minimum-path-sum" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode/009-palindrome-number" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2017/09/13/leetcode/064-minimum-path-sum/" class="article-date">
+    <a href="/blog/2017/09/13/leetcode/009-palindrome-number/" class="article-date">
   <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
 </a>
     
@@ -123,7 +164,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/09/13/leetcode/064-minimum-path-sum/">064.Minimum Path Sum</a>
+      <a class="article-title" href="/blog/2017/09/13/leetcode/009-palindrome-number/">009.Palindrome Number</a>
     </h1>
   
 
@@ -131,53 +172,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Solution-1-accepted-5ms"><a href="#Solution-1-accepted-5ms" class="headerlink" title="Solution 1: accepted 5ms"></a>Solution 1: accepted 5ms</h2><p>DP.<br>Time: O(n)<br>Space: O(n) (extra space 0)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123; </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.length; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].length; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) </div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span>)</div><div class="line">                    grid[i][j] = grid[i][j] + grid[i][j-<span class="number">1</span>];</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">0</span>)</div><div class="line">                    grid[i][j] = grid[i][j] + grid[i-<span class="number">1</span>][j];</div><div class="line">                <span class="keyword">else</span></div><div class="line">                    grid[i][j] = grid[i][j] + Math.min(grid[i][j-<span class="number">1</span>], grid[i-<span class="number">1</span>][j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> grid[grid.length-<span class="number">1</span>][grid[<span class="number">0</span>].length-<span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>The given number has to be an integer. So “if (reversed &gt; 214748364 || reversed &lt; -214748364)” would be fine.<br>Even if it is a fit, the is not a palindrome.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt;= <span class="number">2147483642</span>) <span class="comment">// making huge difference in performance, probably due to the speciality of the test cases </span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	<span class="keyword">int</span> original = x;</div><div class="line">	<span class="keyword">int</span> reversed = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> digit = <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</div><div class="line">		<span class="keyword">if</span> (digit == <span class="number">9</span>) &#123;</div><div class="line">			<span class="keyword">if</span> (reversed &gt; <span class="number">214748364</span> || reversed &lt; -<span class="number">214748364</span>)</div><div class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line">	</div><div class="line">		reversed = reversed * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">		x = x / <span class="number">10</span>;</div><div class="line">		digit++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> original == reversed;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-2-accepted-261ms"><a href="#Solution-2-accepted-261ms" class="headerlink" title="Solution 2: accepted 261ms"></a>Solution 2: accepted 261ms</h2><p>Simplified. But do we need to check the entire number?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt; <span class="number">0</span> &amp;&amp; x % <span class="number">10</span> == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">int</span> original = x;</div><div class="line">    <span class="keyword">int</span> reverse = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</div><div class="line">        reverse = reverse * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">        x /= <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> reverse == original;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Improvement-accepted-221ms"><a href="#Improvement-accepted-221ms" class="headerlink" title="Improvement: accepted 221ms"></a>Improvement: accepted 221ms</h5><p>We only need to check half of the number<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt; <span class="number">0</span> &amp;&amp; x % <span class="number">10</span> == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">int</span> reverse = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (x &gt; reverse) &#123;</div><div class="line">        reverse = reverse * <span class="number">10</span> + x % <span class="number">10</span>;</div><div class="line">        x /= <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> (x == reverse || x == reverse/<span class="number">10</span>);  <span class="comment">// for 123321 and 12321</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/064-minimum-path-sum/" data-id="cj9iaukra0035nwefl2euug6v" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode/014-longest-common-prefix" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/09/13/leetcode/014-longest-common-prefix/" class="article-date">
-  <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/leetcode/">LeetCode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/09/13/leetcode/014-longest-common-prefix/">014.Longest Common Prefix</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public String longestCommonPrefix(String[] strs) &#123;</div><div class="line">        int length = strs.length;</div><div class="line">        if (length == 0) &#123;</div><div class="line">            return &quot;&quot;;</div><div class="line">        &#125;</div><div class="line">        else if (length == 1)&#123;</div><div class="line">            return strs[0];</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            String answer = strs[0];</div><div class="line">            for (int i = 1; i &lt; length; i++) &#123;</div><div class="line">                if (answer.equals(&quot;&quot;))</div><div class="line">                    break;</div><div class="line">                else if (strs[i].startsWith(answer)) &#123;</div><div class="line">                   continue;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                	while (!strs[i].startsWith(answer)) &#123;</div><div class="line">                		answer = answer.substring(0, answer.length() - 1);</div><div class="line">                	&#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            return answer;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/014-longest-common-prefix/" data-id="cj9iaukpv000znwefjihibr4m" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/009-palindrome-number/" data-id="cj9iaz2o700194wefne0cz1jk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -237,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/08/16/linux/screen/" data-id="cj9iauktq007gnwefo5ij7q0c" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/08/16/linux/screen/" data-id="cj9iaz2rr00784wefulqsphyg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/07/28/15619-cloud-computing/twitter-analytics-web-service/" data-id="cj9iaukpi000dnwefzq445vf0" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/07/28/15619-cloud-computing/twitter-analytics-web-service/" data-id="cj9iaz2nq000j4weftgmbif4h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -372,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/07/25/15619-cloud-computing/social-networking-timeline-with-heterogeneous-backends/" data-id="cj9iaukpj000gnwef7h3ob3p3" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/07/25/15619-cloud-computing/social-networking-timeline-with-heterogeneous-backends/" data-id="cj9iaz2nl00094wefb8cw11it" class="article-share-link">Share</a>
       
       
     </footer>
@@ -422,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/07/17/15619-cloud-computing/project3.2_guide/" data-id="cj9iaukph000cnwefzbmhc3t5" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/07/17/15619-cloud-computing/project3.2_guide/" data-id="cj9iaz2nf00054wefdsy7hd7h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -541,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/07/14/15619-cloud-computing/project3.1_guide/" data-id="cj9iaukpf0009nwefj5gybgya" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/07/14/15619-cloud-computing/project3.1_guide/" data-id="cj9iaz2n800024wefsgkt59cj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -588,7 +592,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/07/12/15619-cloud-computing/project2.3_guide/" data-id="cj9iaukpd0008nwef6obt73fy" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/07/12/15619-cloud-computing/project2.3_guide/" data-id="cj9iaz2ng00064wefldmxpugu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -642,7 +646,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/07/10/15619-cloud-computing/project2.1_guide/" data-id="cj9iaukp90006nwefjh3gd4jw" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/07/10/15619-cloud-computing/project2.1_guide/" data-id="cj9iaz2ni00084wefav2khrz5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -696,15 +700,15 @@
           </li>
         
           <li>
-            <a href="/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/">237.Delete Node in a Linked List</a>
-          </li>
-        
-          <li>
             <a href="/blog/2017/10/12/leetcode/141-linked-list-cycle/">141.Linked List Cycle</a>
           </li>
         
           <li>
             <a href="/blog/2017/10/12/leetcode/142-linked-list-cycle-ii/">142.Linked List Cycle II</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/">237.Delete Node in a Linked List</a>
           </li>
         
           <li>
