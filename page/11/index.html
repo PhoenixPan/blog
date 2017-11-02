@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/213-house-robber-ii/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/088-merge-sorted-array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/213-house-robber-ii/" itemprop="url">213.House Robber II</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/088-merge-sorted-array/" itemprop="url">088.Merge Sorted Array</a></h1>
         
 
         <div class="post-meta">
@@ -293,7 +293,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -332,9 +332,10 @@
       
         
           
-            <h2 id="Test-case"><a href="#Test-case" class="headerlink" title="Test case"></a>Test case</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[]</div><div class="line">[1]</div><div class="line">[1,2]</div><div class="line">[2,1]</div><div class="line">[1,3,2]</div><div class="line">[1,2,3]</div><div class="line">[1,2,3,4,5,6,8]</div><div class="line">[8,6,5,4,3,2,1]</div><div class="line">[1,2,3,4,5,6,7,8]</div><div class="line">[8,7,6,5,4,3,2,1]</div><div class="line">[1,0,3,5,6,4,1,4,2,9,5,8]</div><div class="line">[1,0,3,5,6,4,1,4,2,9,5,8,6]</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-0ms"><a href="#Solution-1-accepted-0ms" class="headerlink" title="Solution 1: accepted 0ms"></a>Solution 1: accepted 0ms</h2><p>Time: O(n), Space: O(1)<br>Based on the solution of House Robber 1, the only difference is that, we cannot rob both of the first and the last house at one time. So we assume two situations, one includes only the first house, the other includes only the last house.    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> len = nums.length;</div><div class="line">        <span class="keyword">if</span> (len == <span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">int</span> group1 = robRange(nums, <span class="number">1</span>, len);        </div><div class="line">        <span class="keyword">int</span> group2 = robRange(nums, <span class="number">0</span>, len-<span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> Math.max(group1, group2);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">robRange</span><span class="params">(<span class="keyword">int</span> nums[], <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> doit = <span class="number">0</span>; <span class="comment">// total stash if we do rob the current house</span></div><div class="line">        <span class="keyword">int</span> dont = <span class="number">0</span>; <span class="comment">// total stash if don't rob the current house</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; end; i++) &#123;</div><div class="line">            <span class="keyword">int</span> current = dont + nums[i];</div><div class="line">            dont = Math.max(doit, dont);</div><div class="line">            doit = current;</div><div class="line">        &#125;       </div><div class="line">        <span class="keyword">return</span> Math.max(dont, doit);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[1]</div><div class="line">1</div><div class="line">[]</div><div class="line">0</div><div class="line">[1,2,3,3,4,7,0,0,0]</div><div class="line">6</div><div class="line">[6,9,10]</div><div class="line">3</div><div class="line">[4,5,6,0,0,0]</div><div class="line">3</div><div class="line">[1,2,3]</div><div class="line">3</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-0ms"><a href="#Solution-1-accepted-0ms" class="headerlink" title="Solution 1: accepted 0ms"></a>Solution 1: accepted 0ms</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    m--;</div><div class="line">    n--;</div><div class="line">    <span class="keyword">while</span> (m &gt;= <span class="number">0</span> || n &gt;= <span class="number">0</span>) &#123;  <span class="comment">// this part is ugly</span></div><div class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;  <span class="comment">// not necessary, the rest of the nums1 is sorted</span></div><div class="line">            nums1[m + n + <span class="number">1</span>] = nums1[m];</div><div class="line">            m--;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (m &lt; <span class="number">0</span>) &#123;</div><div class="line">            nums1[m + n + <span class="number">1</span>] = nums2[n];  </div><div class="line">            n--;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[m] &gt;= nums2[n]) &#123;</div><div class="line">            nums1[m + n + <span class="number">1</span>] = nums1[m];</div><div class="line">            m--;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            nums1[m + n + <span class="number">1</span>] = nums2[n];</div><div class="line">            n--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Conflict-can’t-avoid-we-need-two-loops"><a href="#Conflict-can’t-avoid-we-need-two-loops" class="headerlink" title="Conflict: can’t avoid, we need two loops"></a>Conflict: can’t avoid, we need two loops</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (n &lt; <span class="number">0</span> || nums1[m] &gt;= nums2[n]) &#123;  <span class="comment">// this line will raise error on nums2[n] when n &lt; 0</span></div><div class="line">    nums1[m + n + <span class="number">1</span>] = nums1[m];</div><div class="line">    m--;</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (m &lt; <span class="number">0</span> || nums2[n] &gt; nums1[m]) &#123;</div><div class="line">    nums1[m + n + <span class="number">1</span>] = nums2[n];</div><div class="line">    n--;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Improved-version"><a href="#Improved-version" class="headerlink" title="Improved version"></a>Improved version</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    m--;</div><div class="line">    n--;</div><div class="line">    <span class="keyword">while</span> (m &gt;= <span class="number">0</span> &amp;&amp; n &gt;= <span class="number">0</span>) &#123;</div><div class="line">        nums1[m + n + <span class="number">1</span>] = nums1[m] &gt;= nums2[n]? nums1[m--] : nums2[n--];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (n &gt;= <span class="number">0</span>) &#123;  <span class="comment">// only need to deal with leftovers in nums2</span></div><div class="line">        nums1[m + n + <span class="number">1</span>] = nums2[n];</div><div class="line">        n--;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -437,7 +438,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -479,6 +480,445 @@
             <h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1:"></a>Solution 1:</h2><p>In this question we need to rearrange a string according to certain order. We need to find out the order of rearrangement.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public static String convert(String s, int numRows) &#123;</div><div class="line"></div><div class="line">		if (numRows &lt; 2 || s == null || s.length() &lt; numRows)</div><div class="line">			return s;</div><div class="line"></div><div class="line">		StringBuilder sb = new StringBuilder();</div><div class="line">		int circleLength = 0;</div><div class="line">		if (numRows &lt; 3)</div><div class="line">			circleLength = numRows;</div><div class="line">		else</div><div class="line">			circleLength = numRows * 2 - 2;</div><div class="line"></div><div class="line">		for (int i = 1; i &lt;= numRows; i++) &#123;</div><div class="line">			for (int j = 1; j &lt;= s.length(); j++) &#123;</div><div class="line">				if (j % circleLength == i) &#123;</div><div class="line">					sb.append(s.charAt(j - 1));</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">				if (i == 2 &amp;&amp; j % circleLength == 0) &#123;</div><div class="line">					sb.append(s.charAt(j - 1));</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">				if (i &gt; 2 &amp;&amp; i != numRows &amp;&amp; j % circleLength == circleLength - i + 2) &#123;</div><div class="line">					sb.append(s.charAt(j - 1));</div><div class="line"></div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		return sb.toString();</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2:"></a>Solution 2:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public String convert(String s, int nRows) &#123;  </div><div class="line">	int len = s.length();  </div><div class="line">	if (len == 0 || nRows &lt; 2) return s;  </div><div class="line"></div><div class="line">	String ret = &quot;&quot;;  </div><div class="line">	int lag = 2*nRows - 2; //循环周期  </div><div class="line">	for (int i = 0; i &lt; nRows; i++) &#123;  </div><div class="line">	    for (int j = i; j &lt; len; j += lag) &#123;  </div><div class="line">		ret += s.charAt(j);  </div><div class="line"></div><div class="line">		//非首行和末行时还要加��?��?  </div><div class="line">		if (i &gt; 0 &amp;&amp; i &lt; nRows-1) &#123;  </div><div class="line">		    int t = j + lag - 2*i;  </div><div class="line">		    if (t &lt; len) &#123;  </div><div class="line">			ret += s.charAt(t);  </div><div class="line">		    &#125;  </div><div class="line">		&#125;  </div><div class="line">	    &#125;  </div><div class="line">	&#125;  </div><div class="line">	return ret;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/003-longest-substring-without-repeating-characters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/003-longest-substring-without-repeating-characters/" itemprop="url">003.Longest substring without repeating characters</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-Time-limit-exceeded"><a href="#Solution-1-Time-limit-exceeded" class="headerlink" title="Solution 1: Time limit exceeded"></a>Solution 1: Time limit exceeded</h2><p>Time: O(n^2), Space: O(n)   </p>
+<p>The look-backs lead to maximum O(n^2) time complexity.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public static int lengthOfLongestSubstring(String s) &#123;</div><div class="line">  if (s == null)</div><div class="line">    return 0;</div><div class="line"></div><div class="line">  int len = s.length();  </div><div class="line">  if (len &lt; 2)</div><div class="line">    return len;</div><div class="line"></div><div class="line">  HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">  int left = 0;</div><div class="line">  int right = 0;</div><div class="line">  int max = 0;</div><div class="line">  for (int i = 0; i &lt; len; i++) &#123;</div><div class="line">    char current = s.charAt(i);</div><div class="line"></div><div class="line">  if (map.containsKey(current)) &#123;</div><div class="line">    i = map.get(current);           // ISSUE: look back</div><div class="line">    left = i;</div><div class="line">    right = i;</div><div class="line">    map.clear();</div><div class="line">    max = max &gt; right - left? max : right - left;</div><div class="line">  &#125;</div><div class="line">  else &#123;</div><div class="line">    map.put(current, i);</div><div class="line">    right++;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">max = max &gt; right - left? max : right - left;</div><div class="line">return max;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Solution-2-Accepted"><a href="#Solution-2-Accepted" class="headerlink" title="Solution 2: Accepted"></a>Solution 2: Accepted</h2><p>Time: O(n), Space: O(n)  </p>
+<p>Store the previous result rather than looking back.  </p>
+<p>Interesting: change from String to StringBuilder does not bring any performance boost.  </p>
+<p>Using String<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int lengthOfLongestSubstring(String s) &#123;</div><div class="line">        int max = 0;</div><div class="line">        String temp = &quot;&quot;;</div><div class="line">        </div><div class="line">        if (s.equals(&quot;&quot;) || s == null)</div><div class="line">            return 0;</div><div class="line">            </div><div class="line">        for (int i = 0; i &lt; s.length(); i++) &#123;</div><div class="line">            String current = s.charAt(i) + &quot;&quot;;</div><div class="line">            if (temp.length() == 0 || temp.indexOf(current) == -1) &#123;</div><div class="line">                temp = temp + current;</div><div class="line">            &#125;</div><div class="line">            else &#123;</div><div class="line">                max = max &gt; temp.length()? max : temp.length();</div><div class="line">                temp = temp.substring(temp.indexOf(current) + 1, temp.length()) + current;  // store previous result</div><div class="line">            &#125;</div><div class="line">        &#125;    </div><div class="line">        max = max &gt; temp.length()? max : temp.length();</div><div class="line">        </div><div class="line">        return max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Using StringBuilder<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLongestSubstring(String s) &#123;</div><div class="line">    int max = 0;</div><div class="line">    StringBuilder temp = new StringBuilder();</div><div class="line"></div><div class="line">    if (s.equals(&quot;&quot;) || s == null)</div><div class="line">        return 0;</div><div class="line"></div><div class="line">    for (int i = 0; i &lt; s.length(); i++) &#123;</div><div class="line">        String current = Character.toString(s.charAt(i));</div><div class="line">        if (temp.length() == 0 || temp.indexOf(current) == -1) &#123;</div><div class="line">            temp.append(current);</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            max = max &gt; temp.length()? max : temp.length();</div><div class="line">            String head = temp.substring(temp.indexOf(current) + 1, temp.length()) + current;</div><div class="line">            temp.setLength(0);</div><div class="line">            temp.append(head);</div><div class="line">        &#125;</div><div class="line">    &#125;    </div><div class="line">    max = max &gt; temp.length()? max : temp.length();</div><div class="line"></div><div class="line">    return max;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Solution-3-Accepted"><a href="#Solution-3-Accepted" class="headerlink" title="Solution 3: Accepted"></a>Solution 3: Accepted</h2><p>Improved solution 1 without looking back.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLongestSubstring(String s) &#123;</div><div class="line">    if (s == null) return 0;</div><div class="line">    if (s.length() == 0) return 0;</div><div class="line">		</div><div class="line">    HashMap&lt;Character, Integer&gt; map = new HashMap&lt;Character, Integer&gt;();</div><div class="line">    int left = 0;</div><div class="line">    int max = 0;</div><div class="line">    for (int right = 0; right &lt; s.length(); right++)&#123;</div><div class="line">      char current = s.charAt(right);</div><div class="line">        if (map.containsKey(current))&#123;</div><div class="line">            left = Math.max(left, map.get(current) + 1); // ignores the &quot;current&quot; char BEFORE the left pointer</div><div class="line">            // left = map.get(current); // returns &quot;7&quot; in test case &quot;adbccba&quot;</div><div class="line">        &#125;</div><div class="line">        map.put(current, right);</div><div class="line">        max = Math.max(max, right - left + 1);</div><div class="line">    &#125;</div><div class="line">    return max;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Solution-4-Accepted"><a href="#Solution-4-Accepted" class="headerlink" title="Solution 4: Accepted"></a>Solution 4: Accepted</h2><p>Improved solution 3, replacing hashmap with array. Even faster.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public static int lengthOfLongestSubstring2(String s) &#123;</div><div class="line">	if (s == null) return 0;</div><div class="line">	if (s.length() == 0) return 0;</div><div class="line">	    </div><div class="line">    	int[] cache = new int[256]; // char</div><div class="line">    	int left = 0;</div><div class="line">	int max = 0;</div><div class="line">	for (int right = 0; right &lt; s.length(); right++) &#123;</div><div class="line">		char current = s.charAt(right);</div><div class="line">		if (cache[current] &gt; 0) &#123;</div><div class="line">			left = Math.max(left, cache[current]);</div><div class="line">		&#125;</div><div class="line">		cache[current] = right + 1;</div><div class="line">		max = Math.max(max, right - left + 1);</div><div class="line">	&#125;</div><div class="line">	return max;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Test-case-1"><a href="#Test-case-1" class="headerlink" title="Test case 1"></a>Test case 1</h2><p>Solution 1: ~70ms<br>Solution 2: ~20ms<br>Solution 3: ~10ms<br>Solution 4: ~4ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\&quot;#$%&amp;&apos;()*+,-./:;&lt;=&gt;?@[\\]^_`&#123;|&#125;~ abcdefghijklmnopqrstuvwxyzABCD&quot;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/213-house-robber-ii/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/213-house-robber-ii/" itemprop="url">213.House Robber II</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Test-case"><a href="#Test-case" class="headerlink" title="Test case"></a>Test case</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[]</div><div class="line">[1]</div><div class="line">[1,2]</div><div class="line">[2,1]</div><div class="line">[1,3,2]</div><div class="line">[1,2,3]</div><div class="line">[1,2,3,4,5,6,8]</div><div class="line">[8,6,5,4,3,2,1]</div><div class="line">[1,2,3,4,5,6,7,8]</div><div class="line">[8,7,6,5,4,3,2,1]</div><div class="line">[1,0,3,5,6,4,1,4,2,9,5,8]</div><div class="line">[1,0,3,5,6,4,1,4,2,9,5,8,6]</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-0ms"><a href="#Solution-1-accepted-0ms" class="headerlink" title="Solution 1: accepted 0ms"></a>Solution 1: accepted 0ms</h2><p>Time: O(n), Space: O(1)<br>Based on the solution of House Robber 1, the only difference is that, we cannot rob both of the first and the last house at one time. So we assume two situations, one includes only the first house, the other includes only the last house.    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> len = nums.length;</div><div class="line">        <span class="keyword">if</span> (len == <span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">int</span> group1 = robRange(nums, <span class="number">1</span>, len);        </div><div class="line">        <span class="keyword">int</span> group2 = robRange(nums, <span class="number">0</span>, len-<span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> Math.max(group1, group2);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">robRange</span><span class="params">(<span class="keyword">int</span> nums[], <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> doit = <span class="number">0</span>; <span class="comment">// total stash if we do rob the current house</span></div><div class="line">        <span class="keyword">int</span> dont = <span class="number">0</span>; <span class="comment">// total stash if don't rob the current house</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; end; i++) &#123;</div><div class="line">            <span class="keyword">int</span> current = dont + nums[i];</div><div class="line">            dont = Math.max(doit, dont);</div><div class="line">            doit = current;</div><div class="line">        &#125;       </div><div class="line">        <span class="keyword">return</span> Math.max(dont, doit);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/209-minimum-size-subarray-sum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Phoenix Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Pan's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/209-minimum-size-subarray-sum/" itemprop="url">209.Minimum Size Subarray Sum</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Solution-1-accepted-3ms"><a href="#Solution-1-accepted-3ms" class="headerlink" title="Solution 1: accepted 3ms"></a>Solution 1: accepted 3ms</h2><p>Two pointers.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span>[] nums)</span> </span>&#123;        </div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> end = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> min = Integer.MAX_VALUE;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            sum += nums[i];</div><div class="line">            end = i;</div><div class="line">            <span class="keyword">if</span> (sum &gt;= s) &#123;</div><div class="line">                <span class="keyword">while</span> (sum - nums[start] &gt;= s) &#123;</div><div class="line">                    sum -= nums[start];</div><div class="line">                    start++;</div><div class="line">                &#125;</div><div class="line">                min = Math.min(min, end - start + <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> min == Integer.MAX_VALUE ? <span class="number">0</span> : min;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -581,7 +1021,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -628,441 +1068,6 @@
 <p>Time: O(nm)<br>Space: O(1)  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">searchMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;   </div><div class="line"></div><div class="line">  <span class="keyword">if</span> (matrix.length &lt; <span class="number">1</span> || matrix[<span class="number">0</span>].length &lt; <span class="number">1</span>) </div><div class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  <span class="keyword">int</span> m = martrix.length;</div><div class="line">  <span class="keyword">int</span> n = matrix[<span class="number">0</span>].length;</div><div class="line">  <span class="keyword">int</span> row = m - <span class="number">1</span>;</div><div class="line">  <span class="keyword">int</span> col = <span class="number">0</span>;</div><div class="line"></div><div class="line">  <span class="keyword">while</span> (row &gt;= <span class="number">0</span> &amp;&amp; col &lt; n) &#123;          </div><div class="line">    <span class="keyword">if</span> (matrix[row][col] &gt; target) &#123;</div><div class="line">      row--;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (matrix[row][col] &lt; target) &#123;</div><div class="line">      col++;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">  &#125; </div><div class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Follow-up: if every row is straightly ascending (the first element of this row is larger than the last element in last row), the complexity could be O(logM+logN). Treate it as a 1D array, do a binary search (row = mid/column, col = mid%column).  </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/049-group-anagrams/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/049-group-anagrams/" itemprop="url">049.Group Anagrams</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-2-accepted"><a href="#Solution-2-accepted" class="headerlink" title="Solution 2: accepted"></a>Solution 2: accepted</h2><p>Try to divide it into two parts.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;</div><div class="line">        <span class="keyword">if</span> (strs == <span class="keyword">null</span> || strs.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;();</div><div class="line">        Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;String, List&lt;String&gt;&gt;();</div><div class="line">        <span class="keyword">for</span> (String s : strs) &#123;</div><div class="line">            <span class="keyword">char</span>[] ca = s.toCharArray();</div><div class="line">            Arrays.sort(ca);</div><div class="line">            String keyStr = String.valueOf(ca);</div><div class="line">            <span class="keyword">if</span> (!map.containsKey(keyStr)) map.put(keyStr, <span class="keyword">new</span> ArrayList&lt;String&gt;());</div><div class="line">            map.get(keyStr).add(s);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;(map.values());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/279-perfect-squares/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/279-perfect-squares/" itemprop="url">279.Perfect Squares</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1-accepted-48ms"><a href="#Solution-1-accepted-48ms" class="headerlink" title="Solution 1: accepted 48ms"></a>Solution 1: accepted 48ms</h2><ol>
-<li>Base case: dp[0] = 0;  </li>
-<li>Induction rule:<br><strong>dp[i] = min(dp[i - j <em> j] + 1) where j </em> j &lt;= i</strong><br>dp[1] = dp[0] + 1 = 1;<br>dp[2] = dp[1] + 1 = 2;<br>dp[3] = dp[3] + 1 = 3;<br>dp[4] = min(dp[4-1<em>1=3] + 1, dp[4-2</em>2=0] + 1) = 1;  </li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</div><div class="line">    Arrays.fill(dp, Integer.MAX_VALUE);</div><div class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> j = <span class="number">1</span>; </div><div class="line">        <span class="keyword">while</span> (j * j &lt;= i) &#123;</div><div class="line">            dp[i] = Math.min(dp[i], dp[i - j * j] + <span class="number">1</span>);</div><div class="line">            j++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dp[n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/278-first-bad-version/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Phoenix Pan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Phoenix Pan's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/278-first-bad-version/" itemprop="url">278.First Bad Version</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T12:29:25+10:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Solution-1-accepted-18ms"><a href="#Solution-1-accepted-18ms" class="headerlink" title="Solution 1: accepted 18ms"></a>Solution 1: accepted 18ms</h2><p>Binary search.  </p>
-<p>Feel the differences and commonalities. The first solution is recommended, as it is a wild card solution.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstBadVersion</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> lo = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> hi = n;</div><div class="line">    <span class="keyword">while</span> (lo + <span class="number">1</span> &lt; hi) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (isBadVersion(mid)) &#123;</div><div class="line">            hi = mid;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            lo = mid;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> isBadVersion(lo)? lo : hi;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstBadVersion</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> lo = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> hi = n;</div><div class="line">    <span class="keyword">while</span>(lo &lt; hi) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (isBadVersion(mid))</div><div class="line">            hi = mid;</div><div class="line">        <span class="keyword">else</span> </div><div class="line">            lo = mid + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> lo; <span class="comment">// hi is ok as well</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstBadVersion</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> lo = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> hi = n;</div><div class="line">    <span class="keyword">while</span>(lo &lt;= hi) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (isBadVersion(mid))</div><div class="line">            hi = mid - <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span> </div><div class="line">            lo = mid + <span class="number">1</span>; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> lo;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1165,7 +1170,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -1253,7 +1258,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/300-longest-increasing-subsequence/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/278-first-bad-version/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1272,7 +1277,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/300-longest-increasing-subsequence/" itemprop="url">300.Longest Increasing Subsequence</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/278-first-bad-version/" itemprop="url">278.First Bad Version</a></h1>
         
 
         <div class="post-meta">
@@ -1307,7 +1312,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -1346,8 +1351,11 @@
       
         
           
-            <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[10,9,2,5,3,7,101,18]</div><div class="line">[2,5,3,4]</div><div class="line">[2,5,3,4,6]</div><div class="line">[2,3,4,5]</div><div class="line">[5,4,3,2]</div><div class="line">[0]</div><div class="line">[1,1,1,1]</div></pre></td></tr></table></figure>
-<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1:"></a>Solution 1:</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> len = nums.length;</div><div class="line">        <span class="keyword">if</span> (len &lt; <span class="number">2</span>) <span class="keyword">return</span> len;</div><div class="line">        </div><div class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">            map.put(i, <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> max = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (nums[j] &lt; nums[i]) &#123;</div><div class="line">                    <span class="keyword">int</span> bigger = map.get(i) &gt; map.get(j) + <span class="number">1</span> ? map.get(i) : map.get(j) + <span class="number">1</span>;</div><div class="line">                    map.put(i, bigger);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            max = max &gt; map.get(i)? max :  map.get(i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted-18ms"><a href="#Solution-1-accepted-18ms" class="headerlink" title="Solution 1: accepted 18ms"></a>Solution 1: accepted 18ms</h2><p>Binary search.  </p>
+<p>Feel the differences and commonalities. The first solution is recommended, as it is a wild card solution.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstBadVersion</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> lo = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> hi = n;</div><div class="line">    <span class="keyword">while</span> (lo + <span class="number">1</span> &lt; hi) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (isBadVersion(mid)) &#123;</div><div class="line">            hi = mid;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            lo = mid;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> isBadVersion(lo)? lo : hi;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstBadVersion</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> lo = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> hi = n;</div><div class="line">    <span class="keyword">while</span>(lo &lt; hi) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (isBadVersion(mid))</div><div class="line">            hi = mid;</div><div class="line">        <span class="keyword">else</span> </div><div class="line">            lo = mid + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> lo; <span class="comment">// hi is ok as well</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstBadVersion</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> lo = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> hi = n;</div><div class="line">    <span class="keyword">while</span>(lo &lt;= hi) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (isBadVersion(mid))</div><div class="line">            hi = mid - <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span> </div><div class="line">            lo = mid + <span class="number">1</span>; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> lo;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1396,7 +1404,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/054-spiral-matrix/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/09/13/leetcode/279-perfect-squares/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -1415,7 +1423,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/09/13/leetcode/054-spiral-matrix/" itemprop="url">054.Spiral Matrix</a></h1>
+                <a class="post-title-link" href="/blog/2017/09/13/leetcode/279-perfect-squares/" itemprop="url">279.Perfect Squares</a></h1>
         
 
         <div class="post-meta">
@@ -1450,7 +1458,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
@@ -1489,8 +1497,11 @@
       
         
           
-            <p>##Solution 2: accepted</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> m = matrix.length;<span class="comment">// rows</span></div><div class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> result;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].length;<span class="comment">// columns</span></div><div class="line">        <span class="keyword">int</span> topOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> rightOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> bottomOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> leftOffset = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            <span class="comment">// top</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = leftOffset; i &lt; n - rightOffset; i++) &#123;</div><div class="line">                result.add(matrix[topOffset][i]);</div><div class="line">            &#125;</div><div class="line">            topOffset++;</div><div class="line">            <span class="keyword">if</span> (topOffset + bottomOffset == m) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// right</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = topOffset; i &lt; m - bottomOffset; i++) &#123;</div><div class="line">                result.add(matrix[i][n - <span class="number">1</span> - rightOffset]);</div><div class="line">            &#125;</div><div class="line">            rightOffset++;</div><div class="line">            <span class="keyword">if</span> (leftOffset + rightOffset == n) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// bottom</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span> - rightOffset; i &gt;= leftOffset; i--) &#123;</div><div class="line">                result.add(matrix[m - <span class="number">1</span> - bottomOffset][i]);</div><div class="line">            &#125;</div><div class="line">            bottomOffset++;</div><div class="line">            <span class="keyword">if</span> (topOffset + bottomOffset == m) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// left</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = m - <span class="number">1</span> - bottomOffset; i &gt;= topOffset; i--) &#123;</div><div class="line">                result.add(matrix[i][leftOffset]);</div><div class="line">            &#125;</div><div class="line">            leftOffset++;</div><div class="line">            <span class="keyword">if</span> (leftOffset + rightOffset == n) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+            <h2 id="Solution-1-accepted-48ms"><a href="#Solution-1-accepted-48ms" class="headerlink" title="Solution 1: accepted 48ms"></a>Solution 1: accepted 48ms</h2><ol>
+<li>Base case: dp[0] = 0;  </li>
+<li>Induction rule:<br><strong>dp[i] = min(dp[i - j <em> j] + 1) where j </em> j &lt;= i</strong><br>dp[1] = dp[0] + 1 = 1;<br>dp[2] = dp[1] + 1 = 2;<br>dp[3] = dp[3] + 1 = 3;<br>dp[4] = min(dp[4-1<em>1=3] + 1, dp[4-2</em>2=0] + 1) = 1;  </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</div><div class="line">    Arrays.fill(dp, Integer.MAX_VALUE);</div><div class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> j = <span class="number">1</span>; </div><div class="line">        <span class="keyword">while</span> (j * j &lt;= i) &#123;</div><div class="line">            dp[i] = Math.min(dp[i], dp[i - j * j] + <span class="number">1</span>);</div><div class="line">            j++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dp[n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1593,7 +1604,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/LeetCode/" itemprop="url" rel="index">
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
