@@ -51,7 +51,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.phoenixpan.com/blog"></form>
@@ -62,9 +62,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-leetcode/120-triangle" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode/125-valid-palindrome" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2017/09/13/leetcode/120-triangle/" class="article-date">
+    <a href="/blog/2017/09/13/leetcode/125-valid-palindrome/" class="article-date">
   <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
 </a>
     
@@ -80,7 +80,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/09/13/leetcode/120-triangle/">120.Triangle</a>
+      <a class="article-title" href="/blog/2017/09/13/leetcode/125-valid-palindrome/">125.Valid Palindrome</a>
     </h1>
   
 
@@ -88,14 +88,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[[-10]]</div><div class="line">[[1],[3,4],[2,3,4]]</div><div class="line">[ [2], [3,4], [6,5,7], [4,1,8,3]]</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-11ms"><a href="#Solution-1-accepted-11ms" class="headerlink" title="Solution 1: accepted 11ms"></a>Solution 1: accepted 11ms</h2><p>DP<br>Time: O(mn)<br>Space: O(mn)  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; triangle)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; triangle.size(); i++) &#123;</div><div class="line">        ArrayList&lt;Integer&gt; row = (ArrayList)triangle.get(i);            </div><div class="line">        ArrayList&lt;Integer&gt; lastRow = (ArrayList)triangle.get(i-<span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; row.size(); j++) &#123;</div><div class="line">            <span class="keyword">if</span> (j == <span class="number">0</span>) &#123;</div><div class="line">                row.set(j, row.get(j) + lastRow.get(<span class="number">0</span>));</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j == row.size() - <span class="number">1</span>) &#123;</div><div class="line">                row.set(j, row.get(j) + lastRow.get(lastRow.size()-<span class="number">1</span>));</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                row.set(j, row.get(j) + Math.min(lastRow.get(j-<span class="number">1</span>), lastRow.get(j)));</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> minimum = Integer.MAX_VALUE;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i: triangle.get(triangle.size()-<span class="number">1</span>)) &#123;</div><div class="line">        minimum = Math.min(minimum, i);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> minimum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&quot;0P&quot;</div><div class="line">&quot;ab&quot;</div><div class="line">&quot;,.&quot;</div><div class="line">&quot;,a,&quot;</div><div class="line">&quot;,aa.&quot;</div><div class="line">&quot;&quot;</div><div class="line">&quot;a&quot;</div><div class="line">&quot;bab&quot;</div><div class="line">&quot;baab&quot;</div><div class="line">&quot;babb&quot;</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-10ms"><a href="#Solution-1-accepted-10ms" class="headerlink" title="Solution 1: accepted 10ms"></a>Solution 1: accepted 10ms</h2><p>Two pointers.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    s = s.toLowerCase();</div><div class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> r = s.length() - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">char</span> lc = s.charAt(l);</div><div class="line">        <span class="keyword">char</span> rc = s.charAt(r);</div><div class="line">        <span class="keyword">if</span> (lc &lt; <span class="number">48</span> || (<span class="number">57</span> &lt; lc &amp;&amp; lc &lt; <span class="number">97</span>) || lc &gt; <span class="number">122</span>) &#123;</div><div class="line">            l++;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (rc &lt; <span class="number">48</span> || (<span class="number">57</span> &lt; rc &amp;&amp; rc &lt; <span class="number">97</span>) || rc &gt; <span class="number">122</span>) &#123;</div><div class="line">            r--;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (lc != rc) &#123;</div><div class="line">            System.out.println(lc + <span class="string">" "</span> + rc);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            l++;</div><div class="line">            r--;</div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(l &lt; r &amp;&amp; s.charAt(l) != s.charAt(r)) <span class="comment">// two left in the middle</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Improved to 8ms using Character functions.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> r = s.length() - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">char</span> lc = s.charAt(l);</div><div class="line">        <span class="keyword">char</span> rc = s.charAt(r);</div><div class="line">        <span class="keyword">if</span> (!Character.isLetterOrDigit(lc)) &#123;</div><div class="line">            l++;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!Character.isLetterOrDigit(rc)) &#123;</div><div class="line">            r--;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (Character.toLowerCase(lc) != Character.toLowerCase(rc)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            l++;</div><div class="line">            r--;</div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(l &lt; r &amp;&amp; s.charAt(l) != s.charAt(r)) <span class="comment">// two left in the middle</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/120-triangle/" data-id="cj9ibjm5r004mk0ef5cjz7bxt" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/125-valid-palindrome/" data-id="cj9ik6g3s004l24efidmuvhko" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,51 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/121-best-time-to-buy-and-sell-stock/" data-id="cj9ibjm5s004ok0eftz0xascd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode/125-valid-palindrome" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/09/13/leetcode/125-valid-palindrome/" class="article-date">
-  <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/LeetCode/">LeetCode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/09/13/leetcode/125-valid-palindrome/">125.Valid Palindrome</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&quot;0P&quot;</div><div class="line">&quot;ab&quot;</div><div class="line">&quot;,.&quot;</div><div class="line">&quot;,a,&quot;</div><div class="line">&quot;,aa.&quot;</div><div class="line">&quot;&quot;</div><div class="line">&quot;a&quot;</div><div class="line">&quot;bab&quot;</div><div class="line">&quot;baab&quot;</div><div class="line">&quot;babb&quot;</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted-10ms"><a href="#Solution-1-accepted-10ms" class="headerlink" title="Solution 1: accepted 10ms"></a>Solution 1: accepted 10ms</h2><p>Two pointers.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    s = s.toLowerCase();</div><div class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> r = s.length() - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">char</span> lc = s.charAt(l);</div><div class="line">        <span class="keyword">char</span> rc = s.charAt(r);</div><div class="line">        <span class="keyword">if</span> (lc &lt; <span class="number">48</span> || (<span class="number">57</span> &lt; lc &amp;&amp; lc &lt; <span class="number">97</span>) || lc &gt; <span class="number">122</span>) &#123;</div><div class="line">            l++;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (rc &lt; <span class="number">48</span> || (<span class="number">57</span> &lt; rc &amp;&amp; rc &lt; <span class="number">97</span>) || rc &gt; <span class="number">122</span>) &#123;</div><div class="line">            r--;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (lc != rc) &#123;</div><div class="line">            System.out.println(lc + <span class="string">" "</span> + rc);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            l++;</div><div class="line">            r--;</div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(l &lt; r &amp;&amp; s.charAt(l) != s.charAt(r)) <span class="comment">// two left in the middle</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Improved to 8ms using Character functions.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> r = s.length() - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">        <span class="keyword">char</span> lc = s.charAt(l);</div><div class="line">        <span class="keyword">char</span> rc = s.charAt(r);</div><div class="line">        <span class="keyword">if</span> (!Character.isLetterOrDigit(lc)) &#123;</div><div class="line">            l++;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!Character.isLetterOrDigit(rc)) &#123;</div><div class="line">            r--;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (Character.toLowerCase(lc) != Character.toLowerCase(rc)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            l++;</div><div class="line">            r--;</div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(l &lt; r &amp;&amp; s.charAt(l) != s.charAt(r)) <span class="comment">// two left in the middle</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/125-valid-palindrome/" data-id="cj9ibjm5t004qk0ef2ud7btau" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/121-best-time-to-buy-and-sell-stock/" data-id="cj9ik6g3t004n24efcpjsrs5z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/136-single-number/" data-id="cj9ibjm5u004sk0efwngwxxbc" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/136-single-number/" data-id="cj9ik6g3u004p24ef0wueo7h4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,9 +196,9 @@
 
 
   
-    <article id="post-leetcode/016-3sum-closest" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode/038-count-and-say" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2017/09/13/leetcode/016-3sum-closest/" class="article-date">
+    <a href="/blog/2017/09/13/leetcode/038-count-and-say/" class="article-date">
   <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
 </a>
     
@@ -257,7 +214,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/09/13/leetcode/016-3sum-closest/">016.3Sum Closest</a>
+      <a class="article-title" href="/blog/2017/09/13/leetcode/038-count-and-say/">038.Count and Say</a>
     </h1>
   
 
@@ -265,55 +222,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Solution-1-skipped"><a href="#Solution-1-skipped" class="headerlink" title="Solution 1: skipped"></a>Solution 1: skipped</h2><p>Brute force with 3 loops, time complexity O(n^3)</p>
-<h2 id="Solution-2-accepted-66"><a href="#Solution-2-accepted-66" class="headerlink" title="Solution 2: accepted 66%"></a>Solution 2: accepted 66%</h2><p>Time:O(n^2), Space: O(1)<br>Two pointer solution, similar to Question 015, 3 Sum.  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> len = nums.length;</div><div class="line">        <span class="keyword">int</span> gap = Integer.MAX_VALUE;</div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (len == <span class="number">3</span>)</div><div class="line">          <span class="keyword">return</span> nums[<span class="number">0</span>] + nums[<span class="number">1</span>] + nums[<span class="number">2</span>];</div><div class="line"></div><div class="line">        Arrays.sort(nums);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">2</span>; i++) &#123;</div><div class="line">            <span class="keyword">int</span> j = i + <span class="number">1</span>;</div><div class="line">            <span class="keyword">int</span> k = len - <span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span> (k &gt; j) &#123;</div><div class="line">              <span class="keyword">int</span> sum = nums[i] + nums[j] + nums[k];</div><div class="line">              <span class="keyword">if</span> (Math.abs(sum - target) &lt; gap) &#123;</div><div class="line">                gap = Math.abs(sum - target);</div><div class="line">                result = sum;</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">if</span> (sum == target) &#123;</div><div class="line">                <span class="keyword">return</span> sum;</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; target) &#123;</div><div class="line">                k--;</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">else</span> &#123;</div><div class="line">                j++;</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>This is a hard one.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	    	StringBuilder curr=<span class="keyword">new</span> StringBuilder(<span class="string">"1"</span>);</div><div class="line">	    	StringBuilder prev;</div><div class="line">	    	<span class="keyword">int</span> count;</div><div class="line">	    	<span class="keyword">char</span> say;</div><div class="line">	        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line">	        	prev=curr;</div><div class="line">	 	        curr=<span class="keyword">new</span> StringBuilder();       </div><div class="line">	 	        count=<span class="number">1</span>;</div><div class="line">	 	        say=prev.charAt(<span class="number">0</span>);</div><div class="line">	 	        </div><div class="line">	 	        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>,len=prev.length();j&lt;len;j++)&#123;</div><div class="line">	 	        	<span class="keyword">if</span> (prev.charAt(j)!=say)&#123;</div><div class="line">	 	        		curr.append(count).append(say);</div><div class="line">	 	        		count=<span class="number">1</span>;</div><div class="line">	 	        		say=prev.charAt(j);</div><div class="line">	 	        	&#125;</div><div class="line">	 	        	<span class="keyword">else</span> count++;</div><div class="line">	 	        &#125;</div><div class="line">	 	        curr.append(count).append(say);</div><div class="line">	        &#125;	       	        </div><div class="line">	        <span class="keyword">return</span> curr.toString();</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/016-3sum-closest/" data-id="cj9ibjm41001jk0eflsdy7o33" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode/043-multiply-strings" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/09/13/leetcode/043-multiply-strings/" class="article-date">
-  <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/LeetCode/">LeetCode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/09/13/leetcode/043-multiply-strings/">043.Multiply Strings</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">multiply</span><span class="params">(String num1, String num2)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> m = num1.length(), n = num2.length();</div><div class="line">    <span class="keyword">int</span>[] pos = <span class="keyword">new</span> <span class="keyword">int</span>[m + n];</div><div class="line">   </div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = m - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = n - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</div><div class="line">            <span class="keyword">int</span> mul = (num1.charAt(i) - <span class="string">'0'</span>) * (num2.charAt(j) - <span class="string">'0'</span>); </div><div class="line">            <span class="keyword">int</span> p1 = i + j, p2 = i + j + <span class="number">1</span>;</div><div class="line">            <span class="keyword">int</span> sum = mul + pos[p2];</div><div class="line"></div><div class="line">            pos[p1] += sum / <span class="number">10</span>;</div><div class="line">            pos[p2] = (sum) % <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;  </div><div class="line">    </div><div class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> p : pos) <span class="keyword">if</span>(!(sb.length() == <span class="number">0</span> &amp;&amp; p == <span class="number">0</span>)) sb.append(p);</div><div class="line">    <span class="keyword">return</span> sb.length() == <span class="number">0</span> ? <span class="string">"0"</span> : sb.toString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/043-multiply-strings/" data-id="cj9ibjm4g0028k0efhm13yeae" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/038-count-and-say/" data-id="cj9ik6g2c002524ef93ibyb1d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -358,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/139-word-break/" data-id="cj9ibjm5x004yk0efjonbh0c7" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/139-word-break/" data-id="cj9ik6g3w004t24efj3gnfj5o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -368,9 +283,9 @@
 
 
   
-    <article id="post-leetcode/021-merge-two-sorted-lists" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode/036-valid-sudoku" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2017/09/13/leetcode/021-merge-two-sorted-lists/" class="article-date">
+    <a href="/blog/2017/09/13/leetcode/036-valid-sudoku/" class="article-date">
   <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
 </a>
     
@@ -386,7 +301,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/09/13/leetcode/021-merge-two-sorted-lists/">021.Merge Two Sorted Lists</a>
+      <a class="article-title" href="/blog/2017/09/13/leetcode/036-valid-sudoku/">036.Valid Sudoku</a>
     </h1>
   
 
@@ -394,14 +309,144 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Test-case"><a href="#Test-case" class="headerlink" title="Test case"></a>Test case</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[][]</div><div class="line">[1][]</div><div class="line">[][1]</div><div class="line">[-1,0,5][1,2,3]</div></pre></td></tr></table></figure>
-<h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Well…this is a 2ms solution, but only beats 2%! We have to do more!<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</div><div class="line">        ListNode result = new ListNode(0);</div><div class="line">        ListNode temp = result;</div><div class="line"></div><div class="line">        while (l1 != null || l2 != null) &#123;</div><div class="line">            if (l1 == null) &#123;</div><div class="line">                temp.next = new ListNode(l2.val);</div><div class="line">                l2 = l2.next == null? null : l2.next;</div><div class="line">            &#125; else if (l2 == null) &#123;</div><div class="line">                temp.next = new ListNode(l1.val);</div><div class="line">                l1 = l1.next == null? null : l1.next;</div><div class="line">            &#125; else if (l1.val &gt;= l2.val) &#123;</div><div class="line">                temp.next = new ListNode(l2.val);</div><div class="line">                l2 = l2.next == null? null : l2.next;</div><div class="line">            &#125; else if (l1.val &lt; l2.val) &#123;</div><div class="line">                temp.next = new ListNode(l1.val);</div><div class="line">                l1 = l1.next == null? null : l1.next;</div><div class="line">            &#125;</div><div class="line">            temp = temp.next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        return result.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Solution-2-accepted"><a href="#Solution-2-accepted" class="headerlink" title="Solution 2: accepted"></a>Solution 2: accepted</h2><p>We only need to concatenate what’s left to the final result. This will significantly improve the performance when one list is much longer than the other.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</div><div class="line">        ListNode result = new ListNode(0);</div><div class="line">        ListNode temp = result;</div><div class="line"></div><div class="line">        while (l1 != null &amp;&amp; l2 != null) &#123;</div><div class="line">            if (l1.val &gt;= l2.val) &#123;</div><div class="line">                temp.next = new ListNode(l2.val);</div><div class="line">                l2 = l2.next == null? null : l2.next;</div><div class="line">            &#125; else if (l1.val &lt; l2.val) &#123;</div><div class="line">                temp.next = new ListNode(l1.val);</div><div class="line">                l1 = l1.next == null? null : l1.next;</div><div class="line">            &#125;</div><div class="line">            temp = temp.next;</div><div class="line">        &#125;</div><div class="line">        if (l1 != null)</div><div class="line">            temp.next = l1;</div><div class="line">        else if (l2 != null)</div><div class="line">            temp.next = l2;</div><div class="line">        </div><div class="line">        return result.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p>We only need to make sure that the board is valid. The worst case is O(n^2) and we will surely come up with a better solution. </p>
+<h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Space for speed.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</div><div class="line">        HashSet&lt;Character&gt; rows = <span class="keyword">new</span> HashSet&lt;Character&gt;();</div><div class="line">        HashSet&lt;Character&gt; columns = <span class="keyword">new</span> HashSet&lt;Character&gt;();</div><div class="line">        HashSet&lt;Character&gt; cube = <span class="keyword">new</span> HashSet&lt;Character&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(board[i][j]!=<span class="string">'.'</span> &amp;&amp; !rows.add(board[i][j]))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">if</span>(board[j][i]!=<span class="string">'.'</span> &amp;&amp; !columns.add(board[j][i]))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">int</span> RowIndex = <span class="number">3</span>*(i/<span class="number">3</span>);</div><div class="line">            <span class="keyword">int</span> ColIndex = <span class="number">3</span>*(i%<span class="number">3</span>);</div><div class="line">            <span class="keyword">if</span>(board[RowIndex + j/<span class="number">3</span>][ColIndex + j%<span class="number">3</span>]!=<span class="string">'.'</span> &amp;&amp; !cube.add(board[RowIndex + j/<span class="number">3</span>][ColIndex + j%<span class="number">3</span>]))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/021-merge-two-sorted-lists/" data-id="cj9ibjm44001mk0ef20mognm0" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/036-valid-sudoku/" data-id="cj9ik6g28001z24efzvxa97e3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/035-search-insert-positio" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/09/13/leetcode/035-search-insert-positio/" class="article-date">
+  <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/LeetCode/">LeetCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/09/13/leetcode/035-search-insert-positio/">035.Search Insert Positio</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Solution-1-accepted-7ms"><a href="#Solution-1-accepted-7ms" class="headerlink" title="Solution 1: accepted 7ms"></a>Solution 1: accepted 7ms</h2><p>Normal iteration.<br>Time: O(n)<br>Space: O(1)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> prev = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (nums[i] == target)</div><div class="line">            <span class="keyword">return</span> i;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; prev &amp;&amp; target &lt; nums[i])</div><div class="line">            <span class="keyword">return</span> i; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> nums.length;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Solution-2-accepted-7ms"><a href="#Solution-2-accepted-7ms" class="headerlink" title="Solution 2: accepted 7ms"></a>Solution 2: accepted 7ms</h2><p>Binary search.<br>Time: O(logn)<br>Space: O(1)  </p>
+<pre><code class="java">
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/035-search-insert-positio/" data-id="cj9ik6g26001v24ef48qzt25a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/034-search-for-a-range" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/09/13/leetcode/034-search-for-a-range/" class="article-date">
+  <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/LeetCode/">LeetCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/09/13/leetcode/034-search-for-a-range/">034.Search for a Range</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Test-cases"><a href="#Test-cases" class="headerlink" title="Test cases"></a>Test cases</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[]</div><div class="line">0</div><div class="line">[5, 7, 7, 8, 8, 10]</div><div class="line">8</div><div class="line">[5, 7, 7, 8, 10]</div><div class="line">8</div><div class="line">[2,2,3,4,4,4,4,4,4,4,4,5,6,7]</div><div class="line">4</div><div class="line">[4,4,4,4,4,4,5]</div><div class="line">4</div><div class="line">[4,4,4,4,4,4,4,5]</div><div class="line">5</div><div class="line">[4,5,5,5,5,5]</div><div class="line">4</div><div class="line">[2,3,4,4,4,5,6,7]</div><div class="line">1</div></pre></td></tr></table></figure>
+<h2 id="Solution-1-accepted-7ms"><a href="#Solution-1-accepted-7ms" class="headerlink" title="Solution 1: accepted 7ms"></a>Solution 1: accepted 7ms</h2><p>Binary search with wildcard <code>while (lo + 1 &lt; hi)</code> plus final conditions.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] searchRange(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">    <span class="keyword">int</span> lo = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> hi = nums.length - <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (hi &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (lo + <span class="number">1</span> &lt; hi) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</div><div class="line">            hi = mid;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</div><div class="line">            lo = mid;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (nums[lo] != target) &#123;</div><div class="line">                lo++;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[hi] != target) &#123;</div><div class="line">                hi--;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;lo, hi&#125;;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (nums[lo] == target &amp;&amp; nums[hi] == target)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;lo, hi&#125;;</div><div class="line">    <span class="keyword">if</span> (nums[lo] == target)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;lo, lo&#125;;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (nums[hi] == target)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;hi, hi&#125;;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Alternative<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] searchRange(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">    <span class="keyword">int</span> lo = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> hi = nums.length - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (lo &lt;= hi) &#123;</div><div class="line">        <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</div><div class="line">            hi = mid - <span class="number">1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</div><div class="line">            lo = mid + <span class="number">1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (nums[lo] != target) &#123;</div><div class="line">                lo++;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[hi] != target) &#123;</div><div class="line">                hi--;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;lo, hi&#125;;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/034-search-for-a-range/" data-id="cj9ik6g25001t24efidb8s92x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode/064-minimum-path-sum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/09/13/leetcode/064-minimum-path-sum/" class="article-date">
+  <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/LeetCode/">LeetCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/09/13/leetcode/064-minimum-path-sum/">064.Minimum Path Sum</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Solution-1-accepted-5ms"><a href="#Solution-1-accepted-5ms" class="headerlink" title="Solution 1: accepted 5ms"></a>Solution 1: accepted 5ms</h2><p>DP.<br>Time: O(n)<br>Space: O(n) (extra space 0)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123; </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.length; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].length; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) </div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span>)</div><div class="line">                    grid[i][j] = grid[i][j] + grid[i][j-<span class="number">1</span>];</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">0</span>)</div><div class="line">                    grid[i][j] = grid[i][j] + grid[i-<span class="number">1</span>][j];</div><div class="line">                <span class="keyword">else</span></div><div class="line">                    grid[i][j] = grid[i][j] + Math.min(grid[i][j-<span class="number">1</span>], grid[i-<span class="number">1</span>][j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> grid[grid.length-<span class="number">1</span>][grid[<span class="number">0</span>].length-<span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/064-minimum-path-sum/" data-id="cj9ik6g2w003724efbpjeg0yn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -443,49 +488,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/153-find-minimum-in-rotated-sorted-array/" data-id="cj9ibjm650052k0efvy39evzh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode/002-add-two-numbers" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/09/13/leetcode/002-add-two-numbers/" class="article-date">
-  <time datetime="2017-09-13T02:29:25.000Z" itemprop="datePublished">2017-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/LeetCode/">LeetCode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/09/13/leetcode/002-add-two-numbers/">002.Add two numbers</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Solution-1-accepted"><a href="#Solution-1-accepted" class="headerlink" title="Solution 1: accepted"></a>Solution 1: accepted</h2><p>Try to make it simple and readable.<br>Be aware of the concepts of reference and pointer, know how Java pass values.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</div><div class="line">        </div><div class="line">        ListNode output = new ListNode(0);</div><div class="line">        ListNode operation = output;</div><div class="line">        int carry = 0;</div><div class="line">        </div><div class="line">        if (l1 == null &amp;&amp; l2 == null)</div><div class="line">            return l1;</div><div class="line">        </div><div class="line">        while (l1 != null || l2 != null || carry &gt; 0) &#123; </div><div class="line">            int num1 = l1 == null ? 0 : l1.val;</div><div class="line">            int num2 = l2 == null ? 0 : l2.val;</div><div class="line">            int sum = num1 + num2 + carry;           // Get the total of all numbers, which could exceed 9</div><div class="line">            carry = sum / 10;                        // Get the carry</div><div class="line">            </div><div class="line">            operation.next = new ListNode(sum % 10); // Only take the remainder</div><div class="line">            operation = operation.next;</div><div class="line"></div><div class="line">            if (l1 != null)                          // Avoid NPE for .next</div><div class="line">                l1 = l1.next == null? null : l1.next;</div><div class="line">            if (l2 != null)</div><div class="line">                l2 = l2.next == null? null : l2.next;</div><div class="line">    </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        return output.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/002-add-two-numbers/" data-id="cj9ibjm3n000vk0efjcu63eqe" class="article-share-link">Share</a>
+      <a data-url="http://www.phoenixpan.com/blog/2017/09/13/leetcode/153-find-minimum-in-rotated-sorted-array/" data-id="cj9ik6g42005324efmpy3c85f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -506,7 +509,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Kategorier</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/15619-Cloud-Computing/">15619 Cloud Computing</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/General/">General</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/System-Design/">System Design</a></li></ul>
     </div>
@@ -520,7 +523,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Arkiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/07/">July 2017</a></li></ul>
     </div>
@@ -530,17 +533,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Siste innlegg</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/blog/2017/10/12/leetcode/086-partition-list/">086. Partition List</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/">237.Delete Node in a Linked List</a>
-          </li>
         
           <li>
             <a href="/blog/2017/10/12/leetcode/142-linked-list-cycle-ii/">142.Linked List Cycle II</a>
@@ -548,6 +543,14 @@
         
           <li>
             <a href="/blog/2017/10/12/leetcode/141-linked-list-cycle/">141.Linked List Cycle</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/10/12/leetcode/237-delete-node-in-a-linked-list/">237.Delete Node in a Linked List</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/10/12/leetcode/086-partition-list/">086. Partition List</a>
           </li>
         
           <li>
