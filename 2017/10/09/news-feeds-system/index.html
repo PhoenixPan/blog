@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Install Hexo1npm install hexo-cli -g Initialize the blog12345hexo init blognpm installhexo g #generatehexo s #serverhexo d #deploy To deploy on Github, we need to install git deployer and modify the _">
+<meta name="description" content="News Feed SystemBasics Your news feed consists of the timelines of all your friends or users that you are following Core algorithm: merge k sorted array/list/any Daily active users(DAU), monthly activ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Get Hexo running on Github Pages">
-<meta property="og:url" content="http://www.phoenixpan.com/blog/2017/10/06/general/configure-hexo-for-github-pages/index.html">
+<meta property="og:title" content="News Feed System">
+<meta property="og:url" content="http://www.phoenixpan.com/blog/2017/10/09/news-feeds-system/index.html">
 <meta property="og:site_name" content="Phoenix Pan&#39;s">
-<meta property="og:description" content="Install Hexo1npm install hexo-cli -g Initialize the blog12345hexo init blognpm installhexo g #generatehexo s #serverhexo d #deploy To deploy on Github, we need to install git deployer and modify the _">
+<meta property="og:description" content="News Feed SystemBasics Your news feed consists of the timelines of all your friends or users that you are following Core algorithm: merge k sorted array/list/any Daily active users(DAU), monthly activ">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-27T13:08:21.760Z">
+<meta property="og:updated_time" content="2017-10-26T12:48:45.420Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Get Hexo running on Github Pages">
-<meta name="twitter:description" content="Install Hexo1npm install hexo-cli -g Initialize the blog12345hexo init blognpm installhexo g #generatehexo s #serverhexo d #deploy To deploy on Github, we need to install git deployer and modify the _">
+<meta name="twitter:title" content="News Feed System">
+<meta name="twitter:description" content="News Feed SystemBasics Your news feed consists of the timelines of all your friends or users that you are following Core algorithm: merge k sorted array/list/any Daily active users(DAU), monthly activ">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://www.phoenixpan.com/blog/2017/10/06/general/configure-hexo-for-github-pages/"/>
+  <link rel="canonical" href="http://www.phoenixpan.com/blog/2017/10/09/news-feeds-system/"/>
 
 
 
 
 
-  <title>Get Hexo running on Github Pages | Phoenix Pan's</title>
+  <title>News Feed System | Phoenix Pan's</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/06/general/configure-hexo-for-github-pages/">
+    <link itemprop="mainEntityOfPage" href="http://www.phoenixpan.com/blog/blog/2017/10/09/news-feeds-system/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phoenix Pan">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Get Hexo running on Github Pages</h1>
+          <h1 class="post-title" itemprop="name headline">News Feed System</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-06T23:44:12+11:00">
-                2017-10-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-09T22:15:03+11:00">
+                2017-10-09
               </time>
             
 
@@ -294,8 +294,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/General/" itemprop="url" rel="index">
-                    <span itemprop="name">General</span>
+                  <a href="/blog/categories/System-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">System Design</span>
                   </a>
                 </span>
 
@@ -331,13 +331,64 @@
       
 
       
-        <h2 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure>
-<h2 id="Initialize-the-blog"><a href="#Initialize-the-blog" class="headerlink" title="Initialize the blog"></a>Initialize the blog</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo init blog</div><div class="line">npm install</div><div class="line">hexo g #generate</div><div class="line">hexo s #server</div><div class="line">hexo d #deploy</div></pre></td></tr></table></figure>
-<p>To deploy on Github, we need to install git deployer and modify the _config.yml file in root:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#Configure _config.yml </div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:PhoenixPan/blog.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-<p>You have to add your local ssh key to your github account, otherwise you won’t be able to display the site, find instruction <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="external">here</a></p>
-<h2 id="Install-themes"><a href="#Install-themes" class="headerlink" title="Install themes"></a>Install themes</h2><p>Clone the new theme under themes directory<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/iissnan/hexo-theme-next.git themes/next</div></pre></td></tr></table></figure></p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">hexo-theme-next</a><br><a href="https://linghucong.js.org/2016/04/15/2016-04-15-hexo-github-pages-blog/" target="_blank" rel="external">手把手教你使用Hexo + Github Pages搭建个人独立博客</a></p>
+        <h1 id="News-Feed-System"><a href="#News-Feed-System" class="headerlink" title="News Feed System"></a>News Feed System</h1><h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><ol>
+<li>Your <strong>news feed</strong> consists of the <strong>timelines</strong> of all your friends or users that you are following</li>
+<li>Core algorithm: merge k sorted array/list/any</li>
+<li>Daily active users(DAU), monthly active users(MAU), query per second(QPS). Peak value and growth expectation</li>
+<li>Number of reads and writes</li>
+<li>Examples:  <ul>
+<li>Twitter</li>
+<li>Facebook</li>
+<li>朋友圈</li>
+</ul>
+</li>
+</ol>
+<h2 id="Pull-model-and-Push-model"><a href="#Pull-model-and-Push-model" class="headerlink" title="Pull model and Push model"></a>Pull model and Push model</h2><h3 id="Pull-model"><a href="#Pull-model" class="headerlink" title="Pull model"></a>Pull model</h3><p>Get the first N tweets from K(all of your) following users, merge them, and then take the first N tweets. </p>
+<p><strong>Problem:</strong> Long waiting period. It takes K times blocking (阻塞型) DB read request to load the news feed.</p>
+<p><strong>Solution:</strong> Cache, for both timeline and news feed:</p>
+<ol>
+<li>Cache timeline: cache the most recent n tweets for each user (DB read –&gt; cache read)</li>
+<li>Cache news feed: If read within x seconds from the last time, read from cache. If not, only merge the K tweets after a certain timestamp (such as since the last update)</li>
+</ol>
+<h3 id="Push-mode"><a href="#Push-mode" class="headerlink" title="Push mode"></a>Push mode</h3><p>Store a news feed list in the <strong>database</strong> for each user. When a user publishes a new tweet, do a <strong>fanout</strong> to push the tweet to all the news feed lists of his/her followers. The fanout is performed asynchronously in another task. </p>
+<p><strong>Problem:</strong> Delayed display for some users. If we have a star user who has 100 million followers, the fanout will have 100 million write operations, which could take hours and is unacceptable for those unlucky followers. </p>
+<p><strong>Solution:</strong> Rank users by active level; find star users(who have a lot of followers) and use pull model for them.</p>
+<h3 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h3><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>pull</th>
+<th>push</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DB read</td>
+<td>K (num of following)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>DB write</td>
+<td>1</td>
+<td>K (num of follower)</td>
+</tr>
+<tr>
+<td>Demand for resources</td>
+<td>expensive (memory)</td>
+<td>cheap (disk)</td>
+</tr>
+<tr>
+<td>Delay</td>
+<td>low</td>
+<td>high (to hear from stars)</td>
+</tr>
+<tr>
+<td>Active level</td>
+<td>users post frequently</td>
+<td>users post unfrequently</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -362,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/09/28/leetcode/150-evaluate-reverse-polish-notation/" rel="next" title="150.Evaluate Reverse Polish Notation">
-                <i class="fa fa-chevron-left"></i> 150.Evaluate Reverse Polish Notation
+              <a href="/blog/2017/10/07/enable-https-connection-for-github-pages-with-custom-domain/" rel="next" title="Enable Https Connection For GithubPages With Custom Domain">
+                <i class="fa fa-chevron-left"></i> Enable Https Connection For GithubPages With Custom Domain
               </a>
             
           </div>
@@ -372,8 +423,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2017/10/07/general/enable-https-connection-for-github-pages-with-custom-domain/" rel="prev" title="Enable Https Connection For GithubPages With Custom Domain">
-                Enable Https Connection For GithubPages With Custom Domain <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2017/10/11/user-system/" rel="prev" title="User System">
+                User System <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -449,7 +500,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">131</span>
+                  <span class="site-state-item-count">132</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -497,7 +548,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Hexo"><span class="nav-number">1.</span> <span class="nav-text">Install Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Initialize-the-blog"><span class="nav-number">2.</span> <span class="nav-text">Initialize the blog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-themes"><span class="nav-number">3.</span> <span class="nav-text">Install themes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#News-Feed-System"><span class="nav-number">1.</span> <span class="nav-text">News Feed System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basics"><span class="nav-number">1.1.</span> <span class="nav-text">Basics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pull-model-and-Push-model"><span class="nav-number">1.2.</span> <span class="nav-text">Pull model and Push model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pull-model"><span class="nav-number">1.2.1.</span> <span class="nav-text">Pull model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Push-mode"><span class="nav-number">1.2.2.</span> <span class="nav-text">Push mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparison"><span class="nav-number">1.2.3.</span> <span class="nav-text">Comparison</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
